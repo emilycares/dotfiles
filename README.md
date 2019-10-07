@@ -29,3 +29,7 @@ https://github.com/micmine/dockterm
 
 wallpaper manager
 https://github.com/micmine/background
+
+## Wallpapers
+The Wallpapers in this repository are not mine I don't have any rights on them.
+If this is a problem for your copyright I can link you ore your picture.
