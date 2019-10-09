@@ -1,5 +1,7 @@
 # dotfiles
 
+![DEMO](demo.png)
+
 ## Tools i use on my Desktop:
 Window manager
 https://github.com/Airblader/i3
