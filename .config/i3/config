@@ -90,14 +90,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# workspace monitor
-workspace $ws1 output $m2
-workspace $ws2 output $m2
-workspace $ws3 output $m2
-workspace $ws8 output $m1
-workspace $ws9 output $m1
-workspace $ws10 output $m1
-
 # change focus
 bindsym Mod1+$left focus left
 bindsym Mod1+$down focus down
@@ -137,7 +129,7 @@ bindsym Mod1+w layout tabbed
 bindsym Mod1+e layout toggle split
 
 # toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
+bindsym Mod1+Shif+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym Mod1+space focus mode_toggle
@@ -236,12 +228,13 @@ bindsym Mod1+ctrl+l exec bash ~/Documents/bash/lockscreen/lockscreen.sh
 bindsym Mod1+ctrl+d exec bash ~/Documents/bash/dockterm/dockterm.sh
 bindsym Mod1+ctrl+s exec termite -e "nvim"
 
+bindsym Print exec flameshot gui
+
 # System applications
 exec --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
 exec --no-startup-id bash ~/.config/polybar/launch.sh
 exec --no-startup-id wal -i ~/Wallpapers/leafs.jpg
-exec --no-startup-id flameshot &
 
 # Applicaton workspaces
 #assign [class="Visual Studio Code"] $ws2
@@ -251,12 +244,12 @@ exec --no-startup-id flameshot &
 #assign [class="teamspeak"] $ws10
 
 #Workspace output
-workspace $ws1 output $m2
-workspace $ws2 output $m2
-workspace $ws3 output $m2
-workspace $ws4 output $m2
-workspace $ws9 output $m1
-workspace $ws10 output $m1
+#workspace $ws1 output $m2
+#workspace $ws2 output $m2
+#workspace $ws3 output $m2
+#workspace $ws4 output $m2
+#workspace $ws9 output $m1
+#workspace $ws10 output $m1
 
 #Startup windows
 #exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
@@ -264,7 +257,7 @@ workspace $ws10 output $m1
 #exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/thunderbird'
 #exec --no-startup-id i3-msg 'workspace 10; exec /usr/local/bin/teamspeak'
 
-exec_always ~/tools/i3scripts/autoname_workspaces.py
+exec_always ~/Documents/python/i3scripts/autoname_workspaces.py
 ######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
