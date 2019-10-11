@@ -5,45 +5,45 @@
 ## Keybindings
 Default i3 but some added
 
-alt + ctrl + g = chrome
-alt + ctrl + k = keepassxc
-alt + ctrl + p = pavucontrol
-alt + ctrl + l = lockscreen
-alt + ctrl + d = dockterm
-alt + ctrl + s = new nvim Window
-alt + b = background
-alt + m = screen off
-print = flameshot
+alt + ctrl + g = chrome <br/>
+alt + ctrl + k = keepassxc <br/>
+alt + ctrl + p = pavucontrol <br/>
+alt + ctrl + l = lockscreen <br/>
+alt + ctrl + d = dockterm <br/>
+alt + ctrl + s = new nvim Window <br/>
+alt + b = background <br/>
+alt + m = screen off <br/>
+print = flameshot <br/>
 
 ## Tools i use on my Desktop:
-Window manager
-https://github.com/Airblader/i3
+Window manager <br/>
+https://github.com/Airblader/i3 <br/>
 
-Theme manager
-https://github.com/dylanaraps/pywal
-https://github.com/dlasagno/vscode-wal-theme
+Theme manager <br/>
+https://github.com/dylanaraps/pywal <br/> 
+https://github.com/dlasagno/vscode-wal-theme<br/>
 
-vim setup
-https://github.com/SpaceVim/SpaceVim
+vim setup <br/>
+https://github.com/SpaceVim/SpaceVim <br/>
 
-terminal
-https://github.com/thestinger/termite
+terminal <br/>
+https://github.com/thestinger/termite <br/>
 
-icons
-https://github.com/ryanoasis/nerd-fonts
+icons <br/>
+https://github.com/ryanoasis/nerd-fonts <br/>
 
-screenshot
-https://github.com/lupoDharkael/flameshot
+screenshot <br/>
+https://github.com/lupoDharkael/flameshot <br/>
 
 ## Tools i build for my Desktop:
-lockscreen
-https://github.com/micmine/lockscreen
+lockscreen <br/>
+https://github.com/micmine/lockscreen <br/>
 
-testing
-https://github.com/micmine/dockterm
+testing <br/>
+https://github.com/micmine/dockterm <br/>
 
-wallpaper manager
-https://github.com/micmine/background
+wallpaper manager <br/>
+https://github.com/micmine/background <br/>
 
 ## Wallpapers
 The Wallpapers in this repository are not mine I don't have any rights on them.
