@@ -2,6 +2,19 @@
 
 ![DEMO](demo.png)
 
+## Keybindings
+Default i3 but some added
+
+alt + ctrl + g = chrome
+alt + ctrl + k = keepassxc
+alt + ctrl + p = pavucontrol
+alt + ctrl + l = lockscreen
+alt + ctrl + d = dockterm
+alt + ctrl + s = new nvim Window
+alt + b = background
+alt + m = screen off
+print = flameshot
+
 ## Tools i use on my Desktop:
 Window manager
 https://github.com/Airblader/i3
