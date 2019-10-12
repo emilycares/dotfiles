@@ -63,12 +63,6 @@ bindsym Mod1+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 # installed.
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
-# change wallpaper
-bindsym Mod1+b exec background
-
-# monitor off
-bindsym Mod1+m exec sleep 1 && xset dpms force off
-
 # i3 help
 #bindsym Mod1+m exec xrandr --output eDP-1-1 --right-of HDMI-1-1
 #bindsym Mod1+m exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1
@@ -217,18 +211,16 @@ gaps inner 15
 gaps outer 15
 
 #application keybindings
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 bindsym Mod1+ctrl+g exec google-chrome-stable
 bindsym Mod1+ctrl+k exec keepassxc
-bindsym Mod1+ctrl+e exec eclipse 
 bindsym Mod1+ctrl+p exec pavucontrol
 bindsym Mod1+ctrl+n exec nautilus
 bindsym Mod1+ctrl+l exec bash ~/Documents/bash/lockscreen/lockscreen.sh
 bindsym Mod1+ctrl+d exec bash ~/Documents/bash/dockterm/dockterm.sh
 bindsym Mod1+ctrl+s exec termite -e "nvim"
-
 bindsym Print exec flameshot gui
+bindsym Mod1+b exec background
+bindsym Mod1+m exec sleep 1 && xset dpms force offer
 
 # System applications
 exec --no-startup-id compton --config ~/.config/compton.conf
