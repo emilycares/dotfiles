@@ -1,3 +1,16 @@
+font pango:monospace 8
+
+set_from_resource $fg i3wm.color7
+set_from_resource $bg i3wm.color2
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -171,6 +184,6 @@ bindsym Mod1+m exec sleep 1 && xset dpms force offer
 exec --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
 exec --no-startup-id bash ~/.config/polybar/launch.sh
-exec --no-startup-id wal -i ~/Wallpapers/leafs.jpg
+exec --no-startup-id wal -i ~/Wallpapers/climbing.png
 
 exec_always ~/Documents/python/i3scripts/autoname_workspaces.py
