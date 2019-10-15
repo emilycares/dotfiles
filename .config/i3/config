@@ -151,8 +151,8 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 15
+for_window [class="^.*"] border pixel 2 
+gaps inner 15 
 gaps outer 15
 
 #application keybindings
