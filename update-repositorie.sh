@@ -7,21 +7,21 @@ mkdir -p .config/polybar
 mkdir -p .config/termite
 mkdir -p Wallpapers
 
-#i3-gaps
+# i3-gaps
 cp ~/.config/i3/config .config/i3/config
 
 # polybar
 cp ~/.config/polybar/launch.sh .config/polybar/launch.sh
 cp ~/.config/polybar/config.ini .config/polybar/config.ini
 
-#termite
+# termite
 cp ~/.config/termite/config .config/termite/config
 
-#Wallpapers
+# Wallpapers
 cp ~/Wallpapers/* Wallpapers/
 
-#compton
+# compton
 cp ~/.config/compton.conf .config/
 
-
-echo Finish
+# See waths charging
+git diff
