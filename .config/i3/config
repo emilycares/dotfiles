@@ -176,7 +176,7 @@ bindsym Mod1+m exec sleep 1 && xset dpms force offer
 
 # System applications
 exec --no-startup-id compton --config ~/.config/compton.conf
-exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
+#exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
 exec --no-startup-id bash ~/.config/polybar/launch.sh
 exec --no-startup-id wal -i ~/Wallpapers/climbing.png
 
