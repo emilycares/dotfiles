@@ -158,8 +158,8 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 15
+for_window [class="^.*"] border pixel 2 
+gaps inner 15 
 gaps outer 15
 
 # floating rule's
@@ -177,7 +177,7 @@ bindsym Mod1+ctrl+d exec bash ~/Documents/bash/dockterm/dockterm.sh
 bindsym Mod1+ctrl+s exec termite -e "nvim"
 bindsym Print exec flameshot gui
 bindsym Mod1+b exec ~/Documents/bash/background/background.sh
-bindsym Mod1+m exec sleep 1 && xset dpms force offer
+bindsym Mod1+m exec sleep 1 && xset dpms force off
 
 # system applications
 exec --no-startup-id compton --config ~/.config/compton.conf
