@@ -14,6 +14,7 @@ cp ~/.config/i3/config .config/i3/config
 # polybar
 cp ~/.config/polybar/launch.sh .config/polybar/launch.sh
 cp ~/.config/polybar/config.ini .config/polybar/config.ini
+cp ~/.config/polybar/module.ini .config/polybar/module.ini
 
 # rofi
 cp ~/.config/rofi/config.rasi .config/rofi/config.rasi
