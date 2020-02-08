@@ -192,6 +192,7 @@ bindsym $mod+ctrl+s exec termite -e "nvim"
 bindsym Print exec flameshot gui
 bindsym $mod+b exec ~/Documents/bash/background/background.sh
 bindsym $mod+m exec sleep 1 && xset dpms force off
+bindsym $mod+ctrl+e exec emoji
 
 # system applications
 exec --no-startup-id compton --config ~/.config/compton.conf
