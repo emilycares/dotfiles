@@ -29,4 +29,4 @@ cp ~/Wallpapers/* Wallpapers/
 cp ~/.config/compton.conf .config/
 
 # See waths charging
-git diff
+# git diff
