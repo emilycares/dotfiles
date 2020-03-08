@@ -2,10 +2,13 @@
 
 echo Updating the configuration
 rm -rf .config/*
+rm -rf Wallpapers
 mkdir -p .config/i3
 mkdir -p .config/polybar
 mkdir -p .config/termite
 mkdir -p .config/rofi
+mkdir -p .config/dunst
+mkdir -p .config/glava
 mkdir -p Wallpapers
 
 # i3-gaps
@@ -19,6 +22,9 @@ cp ~/.config/polybar/module.ini .config/polybar/module.ini
 # rofi
 cp ~/.config/rofi/config.rasi .config/rofi/config.rasi
 
+# dunst
+cp ~/.config/dunst/reload_dunst.sh .config/dunst/
+
 # termite
 cp ~/.config/termite/config .config/termite/config
 
@@ -27,4 +33,4 @@ cp ~/Wallpapers/* Wallpapers/
 
 # compton
 cp ~/.config/compton.conf .config/
-cp -r ~/.config/glava .config/
+cp ~/.config/glava/change_glava.sh .config/glava/
