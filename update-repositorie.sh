@@ -27,6 +27,4 @@ cp ~/Wallpapers/* Wallpapers/
 
 # compton
 cp ~/.config/compton.conf .config/
-
-# See waths charging
-# git diff
+cp -r ~/.config/glava .config/
