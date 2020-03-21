@@ -6,7 +6,7 @@
 . "${HOME}/.cache/wal/colors.sh"
 
  reload_dunst() {
-    pkill dunst
+    killall dunst
     dunst \
 	-frame_width 0 \
         -lb "${color0}" \
