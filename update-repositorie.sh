@@ -38,4 +38,4 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 
 # nvim
 cp ~/.config/nvim/init.vim .config/nvim/
-
+cp ~/.config/nvim/coc-settings.json .config/nvim/

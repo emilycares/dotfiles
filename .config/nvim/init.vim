@@ -27,6 +27,7 @@ Plug 'dense-analysis/ale'
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdcommenter'
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -43,6 +44,11 @@ set laststatus=2
 set encoding=UTF-8
 set number
 set tabpagemax=15
+
+" jump to last line
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
@@ -67,6 +73,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <F2> <Plug>(coc-rename)
+nmap <C-_> <plug>NERDCommenterToggle
+
+" autoformat
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " ale
 let g:ale_fixers = {}
@@ -84,16 +95,32 @@ let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 
 " filetree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <F3> :NERDTreeToggle<CR>
+
+let g:nerdtree_is_open = 0
+function! ToggleNerdTree()
+    if g:nerdtree_is_open
+        NERDTreeClose
+        let g:nerdtree_is_open = 0
+    else
+        if @% == ""
+        	NERDTreeToggle                      
+    	else                                    
+        	NERDTreeFind                        
+    	endif 
+        let g:nerdtree_is_open = 1
+    endif
+endfunction
+map <C-b> :call ToggleNerdTree()<CR>
+
 let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-
+" git
 let g:gitgutter_terminal_reports_focus=0
 
+" line
 let g:lightline = {
 	\ 'colorscheme': 'onedark',
 	\   'active': {
