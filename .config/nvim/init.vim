@@ -26,6 +26,7 @@ Plug 'dense-analysis/ale'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -41,6 +42,7 @@ colorscheme onedark
 set laststatus=2
 set encoding=UTF-8
 set number
+set tabpagemax=15
 
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
@@ -83,6 +85,10 @@ let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 " filetree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <F3> :NERDTreeToggle<CR>
+let NERDTreeWinSize = 40
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
