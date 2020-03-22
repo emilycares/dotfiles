@@ -9,6 +9,7 @@ mkdir -p .config/termite
 mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
+mkdir -p .config/nvim
 mkdir -p Wallpapers
 
 # i3-gaps
@@ -34,3 +35,7 @@ cp ~/Wallpapers/* Wallpapers/
 # compton
 cp ~/.config/compton.conf .config/
 cp ~/.config/glava/change_glava.sh .config/glava/
+
+# nvim
+cp ~/.config/nvim/init.vim .config/nvim/
+

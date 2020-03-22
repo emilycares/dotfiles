@@ -23,9 +23,6 @@ Theme manager <br/>
 https://github.com/dylanaraps/pywal <br/> 
 https://github.com/dlasagno/vscode-wal-theme<br/>
 
-vim setup <br/>
-https://github.com/SpaceVim/SpaceVim <br/>
-
 terminal <br/>
 https://github.com/thestinger/termite <br/>
 
