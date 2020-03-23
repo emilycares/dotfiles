@@ -220,7 +220,7 @@ bindsym $mod+ctrl+e exec emoji
 exec --no-startup-id compton --config ~/.config/compton.conf
 #exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
 exec --no-startup-id bash ~/.config/polybar/launch.sh
-exec --no-startup-id wal -i ~/Wallpapers/ring.png
+exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/ring.png
 #exec --no-startup-id nm-applet
 
 exec_always ~/Documents/python/i3scripts/autoname_workspaces.py --norenumber_workspaces

@@ -1,4 +1,5 @@
 {
+  "tsserver.formatOnType": true,
   "suggest.noselect": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
