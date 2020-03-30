@@ -9,8 +9,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jreybert/vimagit'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
+
+" theme
+Plug 'joshdick/onedark.vim'
 
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -23,12 +25,12 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
+Plug 'jwalton512/vim-blade'
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -69,6 +71,7 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-java',
 	\ 'coc-phpls',
+	\ 'coc-css',
 	\ ]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -80,13 +83,6 @@ nmap <C-_> <plug>NERDCommenterToggle
 " autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" ale
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['eslint']
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
-
 " Colortheme
 let g:Hexokinase_highlighters = ['sign_column']
 
@@ -95,7 +91,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 
 " filetree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:nerdtree_is_open = 0
 function! ToggleNerdTree()
@@ -142,5 +137,3 @@ let g:lightline.separator = {
 let g:lightline.subseparator = {
         \   'left': '', 'right': ''
 	\}
-
-
