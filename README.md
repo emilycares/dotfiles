@@ -21,7 +21,9 @@ https://github.com/Airblader/i3 <br/>
 
 Theme manager <br/>
 https://github.com/dylanaraps/pywal <br/> 
-https://github.com/dlasagno/vscode-wal-theme<br/>
+
+Bar <br/>
+https://github.com/polybar/polybar <br/>
 
 terminal <br/>
 https://github.com/thestinger/termite <br/>
