@@ -18,7 +18,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Color preview
+" preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " javascipt
@@ -69,6 +69,7 @@ let g:coc_global_extensions = [
 			\ 'coc-snippets',
 			\ 'coc-pairs',
 			\ 'coc-tsserver',
+			\ 'coc-vetur',
 			\ 'coc-eslint',
 			\ 'coc-prettier',
 			\ 'coc-json',
@@ -85,10 +86,12 @@ nmap <C-_> <plug>NERDCommenterToggle
 
 " autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 autocmd BufWritePre * :Autoformat
 
-" Colortheme
+" mouse
+set mouse=a
+
+" preview
 let g:Hexokinase_highlighters = ['sign_column']
 
 " Tag autoclose
