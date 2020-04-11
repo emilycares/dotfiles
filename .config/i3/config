@@ -4,11 +4,12 @@ set $mod Mod1
 
 set_from_resource $fg i3wm.color7
 set_from_resource $bg i3wm.color2
+set_from_resource $fo i3wm.color1
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused          $fo     $fo     $fo  $fo       $fo
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $bg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
@@ -132,7 +133,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 #Monitor Wokspace
-#workspace number $ws1 output $m1 
+#workspace number $ws1 output $m1
 #workspace number $ws2 output $m1
 #workspace number $ws3 output $m1
 #workspace number $ws4 output $m1
@@ -152,28 +153,28 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-  bindsym $left       resize shrink width 1 px or 1 ppt
-  bindsym $down       resize grow height 1 px or 1 ppt
-  bindsym $up         resize shrink height 1 px or 1 ppt
-  bindsym $right      resize grow width 1 px or 1 ppt
+# These bindings trigger as soon as you enter the resize mode
+	bindsym $left       resize shrink width 1 px or 1 ppt
+		bindsym $down       resize grow height 1 px or 1 ppt
+		bindsym $up         resize shrink height 1 px or 1 ppt
+		bindsym $right      resize grow width 1 px or 1 ppt
 
-  bindsym Left        resize shrink width 1 px or 1 ppt
-  bindsym Down        resize grow height 1 px or 1 ppt
-  bindsym Up          resize shrink height 1 px or 1 ppt
-  bindsym Right       resize grow width 1 px or 1 ppt
+		bindsym Left        resize shrink width 1 px or 1 ppt
+		bindsym Down        resize grow height 1 px or 1 ppt
+		bindsym Up          resize shrink height 1 px or 1 ppt
+		bindsym Right       resize grow width 1 px or 1 ppt
 
-  # back to normal: Enter or Escape or $mod+r
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # gaps
-for_window [class="^.*"] border pixel 2 
-gaps inner 15 
+for_window [class="^.*"] border pixel 2
+gaps inner 15
 #gaps outer 15
 
 # floating rule's
@@ -191,17 +192,17 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym $mod+ctrl+l mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/Documents/bash/lockscreen/lockscreen.sh, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+	bindsym l exec --no-startup-id ~/Documents/bash/lockscreen/lockscreen.sh, mode "default"
+		bindsym s exec --no-startup-id i3exit suspend, mode "default"
+		bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+		bindsym e exec --no-startup-id i3exit logout, mode "default"
+		bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+		bindsym r exec --no-startup-id i3exit reboot, mode "default"
+		bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# exit system mode: "Enter" or "Escape"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 # application keybindings
