@@ -43,25 +43,42 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
+" leader
+let mapleader=" "
+
+" system clipboard
+set clipboard+=unnamedplus
+
 " simple
 colorscheme onedark
+syntax on
 set laststatus=2
 set encoding=UTF-8
 set number
 set tabpagemax=15
+set mouse=a
+
+" truecolor
+set termguicolors
+
+" highlight selected line
+set cursorline
 
 " jump to last line
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" replace
+nmap <leader>r :%s//gI<Left><Left><Left>
+
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
 map <c-p> :FZF<CR>
 
 " spellcheck
-" map <F6> :setlocal spell spelllang=de_ch<CR>
-map <F6> :setlocal spell spelllang=en_us<CR>
+map <F6>g :setlocal spell spelllang=de_ch<CR>
+map <F6>e :setlocal spell spelllang=en_us<CR>
 
 " IDE
 let g:coc_global_extensions = [
@@ -86,9 +103,6 @@ nmap <C-_> <plug>NERDCommenterToggle
 " autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 autocmd BufWritePre * :Autoformat
-
-" mouse
-set mouse=a
 
 " preview
 let g:Hexokinase_highlighters = ['sign_column']
