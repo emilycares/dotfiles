@@ -59,7 +59,9 @@ set tabpagemax=15
 set mouse=a
 
 " truecolor
-set termguicolors
+if (has("termguicolors"))
+	set termguicolors
+endif
 
 " highlight selected line
 set cursorline

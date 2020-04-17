@@ -17,10 +17,10 @@ client.background       $bg
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up l
-set $down k
-set $left j
-set $right semicolon
+set $up h
+set $down j
+set $left k
+set $right l
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
