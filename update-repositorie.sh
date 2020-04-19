@@ -10,6 +10,7 @@ mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
 mkdir -p .config/nvim
+mkdir -p .config/coc/extensions/node_modules/redhat.java
 mkdir -p Wallpapers
 
 # i3-gaps
@@ -39,6 +40,7 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 # nvim
 cp ~/.config/nvim/init.vim .config/nvim/
 cp ~/.config/nvim/coc-settings.json .config/nvim/
+cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml
 
 # tmux
 cp ~/.tmux.conf .config/.tmux.conf
