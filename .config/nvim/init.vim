@@ -10,6 +10,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
 
+" startscreen
+Plug 'mhinz/vim-startify'
+
 " theme
 Plug 'joshdick/onedark.vim'
 
@@ -81,6 +84,9 @@ map <c-p> :FZF<CR>
 " spellcheck
 map <F6>g :setlocal spell spelllang=de_ch<CR>
 map <F6>e :setlocal spell spelllang=en_us<CR>
+
+" goyo
+map g :Goyo<CR>
 
 " IDE
 let g:coc_global_extensions = [
