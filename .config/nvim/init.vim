@@ -37,6 +37,9 @@ Plug 'luchermitte/vim-refactor'
 " syntax
 Plug 'sheerun/vim-polyglot'
 
+" react
+Plug 'tasn/vim-tsx'
+
 " LaTeX
 Plug 'lervag/vimtex'
 
@@ -82,11 +85,11 @@ let g:fzf_commands_expect = 'ctrl-x'
 map <c-p> :FZF<CR>
 
 " spellcheck
-map <F6>g :setlocal spell spelllang=de_ch<CR>
-map <F6>e :setlocal spell spelllang=en_us<CR>
+nmap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
+nmap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
 " goyo
-map g :Goyo<CR>
+nmap <leader>g :Goyo<CR>
 
 " IDE
 let g:coc_global_extensions = [
