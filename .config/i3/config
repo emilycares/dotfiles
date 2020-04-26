@@ -212,6 +212,7 @@ bindsym $mod+ctrl+p exec pavucontrol
 bindsym $mod+ctrl+n exec nautilus
 #bindsym $mod+ctrl+l exec bash ~/Documents/bash/lockscreen/lockscreen.sh
 bindsym $mod+ctrl+d exec bash ~/Documents/bash/dockterm/dockterm.sh
+bindsym $mod+ctrl+r exec bash ~/Documents/bash/gitpick/gitpick.sh
 bindsym $mod+ctrl+s exec termite -e "nvim"
 bindsym Print exec flameshot gui
 bindsym $mod+b exec ~/Documents/bash/background/background.sh
