@@ -206,7 +206,7 @@ mode "$mode_system" {
 }
 
 # application keybindings
-bindsym $mod+ctrl+g exec google-chrome-stable --password-store=basic
+bindsym $mod+ctrl+g exec brave-browser
 bindsym $mod+ctrl+k exec keepassxc
 bindsym $mod+ctrl+p exec pavucontrol
 bindsym $mod+ctrl+n exec nautilus
