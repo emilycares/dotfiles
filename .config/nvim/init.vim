@@ -111,9 +111,10 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <F2> <Plug>(coc-rename)
 nmap <C-_> <plug>NERDCommenterToggle
 
-" autoformat
+"autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd BufWritePre * :Autoformat
+"autocmd BufWritePre * :Autoformat
+nmap <leader>f :Autoformat<CR>
 
 " preview
 let g:Hexokinase_highlighters = ['sign_column']
