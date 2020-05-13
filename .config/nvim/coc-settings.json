@@ -12,7 +12,8 @@
 		"graphql",
 		"php",
 		"blade.php",
-		"vue"
+		"vue",
+		"coc-flutter"
   ],
   "java.format.settings.url": "/data/home/michael/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }

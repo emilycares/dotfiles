@@ -40,6 +40,9 @@ Plug 'sheerun/vim-polyglot'
 " react
 Plug 'tasn/vim-tsx'
 
+" flutter
+Plug 'hankchiutw/flutter-reload.vim'
+
 " LaTeX
 Plug 'lervag/vimtex'
 
