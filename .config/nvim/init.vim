@@ -106,6 +106,9 @@ let g:coc_global_extensions = [
 			\ 'coc-java',
 			\ 'coc-phpls',
 			\ 'coc-css',
+			\ 'coc-vetur',
+			\ 'coc-eslint',
+			\ 'coc-flutter'
 			\ ]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)

@@ -225,5 +225,6 @@ exec --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id bash ~/.config/polybar/launch.sh
 exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/ring.png
 #exec --no-startup-id nm-applet
+exec --no-startup-id pacmd load-module module-loopback latency_msec=1
 
 exec_always ~/Documents/python/i3scripts/autoname_workspaces.py --norenumber_workspaces
