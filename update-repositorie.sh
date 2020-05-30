@@ -6,6 +6,7 @@ rm -rf Wallpapers
 mkdir -p .config/i3
 mkdir -p .config/polybar
 mkdir -p .config/termite
+mkdir -p .config/alacritty
 mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
@@ -29,6 +30,9 @@ cp ~/.config/dunst/reload_dunst.sh .config/dunst/
 
 # termite
 cp ~/.config/termite/config .config/termite/config
+
+# alacritty
+cp ~/.config/alacritty/alacritty.yml .config/alacritty/alacritty.yml
 
 # Wallpapers
 cp ~/Wallpapers/* Wallpapers/
