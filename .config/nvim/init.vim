@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'ashisha/image.vim'
 
 " javascipt
 Plug 'pangloss/vim-javascript'
