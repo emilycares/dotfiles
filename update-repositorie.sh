@@ -11,6 +11,7 @@ mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
 mkdir -p .config/nvim
+mkdir -p .config/fish
 mkdir -p .config/coc/extensions/node_modules/redhat.java
 mkdir -p Wallpapers
 
@@ -33,6 +34,9 @@ cp ~/.config/termite/config .config/termite/config
 
 # alacritty
 cp ~/.config/alacritty/alacritty.yml .config/alacritty/alacritty.yml
+
+# fish
+cp ~/.config/fish/config.fish .config/fish/config.fish
 
 # Wallpapers
 cp ~/Wallpapers/* Wallpapers/
