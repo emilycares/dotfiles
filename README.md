@@ -25,8 +25,8 @@ https://github.com/dylanaraps/pywal <br/>
 Bar <br/>
 https://github.com/polybar/polybar <br/>
 
-terminal <br/>
-https://github.com/thestinger/termite <br/>
+alacritty <br/>
+https://github.com/alacritty/alacritty <br/>
 
 icons <br/>
 https://github.com/ryanoasis/nerd-fonts <br/>
