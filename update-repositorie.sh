@@ -2,7 +2,6 @@
 
 echo Updating the configuration
 rm -rf .config/*
-rm -rf Wallpapers
 mkdir -p .config/i3
 mkdir -p .config/polybar
 mkdir -p .config/termite
@@ -14,7 +13,6 @@ mkdir -p .config/nvim
 mkdir -p .config/fish
 mkdir -p .config/zathura
 mkdir -p .config/coc/extensions/node_modules/redhat.java
-mkdir -p Wallpapers
 
 # i3-gaps
 cp ~/.config/i3/config .config/i3/config
@@ -35,9 +33,6 @@ cp ~/.config/termite/config .config/termite/config
 
 # alacritty
 cp ~/.config/alacritty/alacritty.yml .config/alacritty/alacritty.yml
-
-# Wallpapers
-cp ~/Wallpapers/* Wallpapers/
 
 # compton
 cp ~/.config/compton.conf .config/
