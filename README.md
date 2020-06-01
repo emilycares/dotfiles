@@ -5,7 +5,7 @@
 ## Keybindings
 Default i3 but some added
 
-alt + ctrl + g = chrome <br/>
+alt + ctrl + g = brave <br/>
 alt + ctrl + k = keepassxc <br/>
 alt + ctrl + p = pavucontrol <br/>
 alt + ctrl + l = lockscreen <br/>
