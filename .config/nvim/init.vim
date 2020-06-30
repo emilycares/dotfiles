@@ -1,13 +1,11 @@
 call plug#begin('~/.vim/plugged')
 " General
 Plug 'itchyny/lightline.vim'
-Plug 'webberwu/vim-fugitive'
 Plug 'lokaltog/vim-powerline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'altercation/vim-colors-solarized'
-Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
 
 " startscreen
@@ -15,10 +13,16 @@ Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
+"Plug 'morhetz/gruvbox'
 
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
+Plug 'junegunn/gv.vim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }

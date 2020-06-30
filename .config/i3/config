@@ -181,7 +181,6 @@ gaps inner 15
 for_window [class="feh"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Sxiv"] floating enable
-for_window [instance="origin.exe"] floating enable
 
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% #increase sound volume
@@ -221,9 +220,9 @@ bindsym $mod+ctrl+e exec emoji
 
 # system applications
 exec --no-startup-id compton --config ~/.config/compton.conf
-#exec --no-startup-id xrandr --auto --output $m1 --mode 1920x1080 --right-of $m2
+#exec --no-startup-id xrandr --auto --output HDMI-1 --right-of HDMI-0
 exec --no-startup-id bash ~/.config/polybar/launch.sh
-exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/ring.png
+exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/plant.png
 #exec --no-startup-id nm-applet
 exec --no-startup-id pacmd load-module module-loopback latency_msec=1
 

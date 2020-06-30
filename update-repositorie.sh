@@ -44,7 +44,7 @@ cp ~/.config/nvim/coc-settings.json .config/nvim/
 cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml
 
 # tmux
-cp ~/.tmux.conf .config/.tmux.conf
+cp ~/.tmux.conf .tmux.conf
 
 # fish
 cp ~/.config/fish/config.fish .config/fish/config.fish
