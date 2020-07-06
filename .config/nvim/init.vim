@@ -41,6 +41,7 @@ Plug 'luchermitte/vim-refactor'
 
 " syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'godlygeek/tabular'
 
 " react
 Plug 'tasn/vim-tsx'

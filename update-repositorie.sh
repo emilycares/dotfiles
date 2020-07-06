@@ -10,7 +10,6 @@ mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
 mkdir -p .config/nvim
-mkdir -p .config/fish
 mkdir -p .config/zathura
 mkdir -p .config/coc/extensions/node_modules/redhat.java
 
@@ -45,9 +44,6 @@ cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .conf
 
 # tmux
 cp ~/.tmux.conf .tmux.conf
-
-# fish
-cp ~/.config/fish/config.fish .config/fish/config.fish
 
 # zathura
 cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
