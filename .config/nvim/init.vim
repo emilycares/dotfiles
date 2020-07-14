@@ -42,6 +42,7 @@ Plug 'luchermitte/vim-refactor'
 " syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
+Plug 'editorconfig/editorconfig-vim'
 
 " react
 Plug 'tasn/vim-tsx'
@@ -122,6 +123,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <F2> <Plug>(coc-rename)
 nmap <C-_> <plug>NERDCommenterToggle
+
+" Fix broken
+nmap <leader>q :CocFix<CR>
 
 "autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
