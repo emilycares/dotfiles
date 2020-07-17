@@ -1,6 +1,6 @@
 font pango:monospace 8
 
-set $mod Mod1
+set $mod Mod4
 
 set_from_resource $fg i3wm.color7
 set_from_resource $bg i3wm.color2
