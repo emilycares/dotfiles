@@ -211,7 +211,7 @@ bindsym $mod+ctrl+n exec nautilus
 #bindsym $mod+ctrl+l exec bash ~/Documents/bash/lockscreen/lockscreen.sh
 bindsym $mod+ctrl+d exec bash ~/Documents/bash/dockterm/dockterm.sh
 bindsym $mod+ctrl+r exec bash ~/Documents/bash/gitpick/gitpick.sh
-bindsym $mod+ctrl+s exec termite -e "nvim"
+bindsym $mod+ctrl+s exec alacritty -e "nvim"
 bindsym Print exec flameshot gui
 bindsym $mod+b exec ~/Documents/bash/background/background.sh
 bindsym $mod+m exec sleep 1 && xset dpms force off

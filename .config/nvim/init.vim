@@ -13,7 +13,7 @@ Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -92,7 +92,10 @@ nmap <leader>r :%s//gI<Left><Left><Left>
 
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
-map <c-p> :FZF<CR>
+" search file names
+nmap <c-p> :FZF<CR>
+nmap <leader><C-f> :Rg<CR>
+
 
 " spellcheck
 nmap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -100,6 +103,9 @@ nmap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
 " goyo
 nmap <leader>g :Goyo<CR>
+
+" latex
+let g:tex_flavor = 'latex'
 
 " IDE
 let g:coc_global_extensions = [
@@ -115,7 +121,8 @@ let g:coc_global_extensions = [
 			\ 'coc-css',
 			\ 'coc-vetur',
 			\ 'coc-eslint',
-			\ 'coc-flutter'
+			\ 'coc-flutter',
+			\ 'coc-go'
 			\ ]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -155,7 +162,7 @@ function! ToggleNerdTree()
 		let g:nerdtree_is_open = 1
 	endif
 endfunction
-map <C-b> :call ToggleNerdTree()<CR>
+nmap <C-b> :call ToggleNerdTree()<CR>
 
 let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
