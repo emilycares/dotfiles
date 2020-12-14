@@ -14,6 +14,7 @@ Plug 'mhinz/vim-startify'
 " theme
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
+Plug 'pineapplegiant/spaceduck'
 
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -92,14 +93,20 @@ nmap <leader>r :%s//gI<Left><Left><Left>
 
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
-" search file names
-nmap <c-p> :FZF<CR>
-nmap <leader><C-f> :Rg<CR>
+map <c-p> :FZF<CR>
 
+" search file names
+nmap <leader><C-f> :Rg<CR>
 
 " spellcheck
 nmap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
 nmap <leader><F6>e :setlocal spell spelllang=en_us<CR>
+
+" file switcher
+filetype plugin on
+autocmd BufReadPre,FileReadPre *.ts set ft=typescript
+autocmd BufReadPre,FileReadPre *.html set ft=html
+autocmd BufReadPre,FileReadPre *.scss set ft=scss
 
 " goyo
 nmap <leader>g :Goyo<CR>
@@ -134,7 +141,6 @@ nmap <C-_> <plug>NERDCommenterToggle
 " Fix broken
 nmap <leader>q :CocFix<CR>
 
-"autoformat
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "autocmd BufWritePre * :Autoformat
 nmap <leader>f :Autoformat<CR>

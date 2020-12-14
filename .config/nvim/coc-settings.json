@@ -2,5 +2,8 @@
   "java.home": "/home/michael/.sdkman/candidates/java/current",
   "tsserver.formatOnType": true,
   "suggest.noselect": false,
-  "java.format.settings.url": "/data/home/michael/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
+  "java.format.settings.url": "/data/home/michael/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+  "eslint.options": {
+    "configFile": "/home/michael/.eslintrc"
+  }
 }
