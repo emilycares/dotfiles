@@ -41,6 +41,7 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 cp ~/.config/nvim/init.vim .config/nvim/
 cp ~/.config/nvim/coc-settings.json .config/nvim/
 cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml
+cp -r ~/.config/nvim/ftplugin .config/nvim
 
 # tmux
 cp ~/.tmux.conf .tmux.conf
