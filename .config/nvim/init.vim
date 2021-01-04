@@ -39,6 +39,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
 Plug 'luchermitte/vim-refactor'
+Plug 'vim-syntastic/syntastic'
 
 " syntax
 Plug 'sheerun/vim-polyglot'
@@ -46,7 +47,7 @@ Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
 
 " react
-Plug 'tasn/vim-tsx'
+"Plug 'tasn/vim-tsx'
 
 " flutter
 Plug 'hankchiutw/flutter-reload.vim'
@@ -67,13 +68,14 @@ let mapleader=" "
 set clipboard+=unnamedplus
 
 " simple
-colorscheme onedark
+colorscheme gruvbox
 syntax on
 set laststatus=2
 set encoding=UTF-8
 set number
 set tabpagemax=15
 set mouse=a
+set relativenumber
 
 " truecolor
 if (has("termguicolors"))
@@ -129,7 +131,8 @@ let g:coc_global_extensions = [
 			\ 'coc-vetur',
 			\ 'coc-eslint',
 			\ 'coc-flutter',
-			\ 'coc-go'
+			\ 'coc-go',
+			\ 'coc-rust-analyzer'
 			\ ]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -137,6 +140,18 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <F2> <Plug>(coc-rename)
 nmap <C-_> <plug>NERDCommenterToggle
+
+" syntastic
+let g:syntastic_java_checkers = ['checkstyle']
+let g:syntastic_java_checkstyle_classpath = '/data/home/michael/tools/checkstyle-8.27.jar'
+let g:syntastic_java_checkstyle_conf_file = '/data/home/michael/Documents/java/smash/groupsync-service/conf/checkstyle/checkstyle.xml'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Fix broken
 nmap <leader>q :CocFix<CR>
@@ -180,7 +195,7 @@ let g:gitgutter_terminal_reports_focus=0
 
 " line
 let g:lightline = {
-			\ 'colorscheme': 'onedark',
+			\ 'colorscheme': 'gruvbox',
 			\   'active': {
 			\     'left':[ [ 'mode', 'paste' ],
 			\              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
