@@ -1,19 +1,22 @@
 call plug#begin('~/.vim/plugged')
 " General
-Plug 'itchyny/lightline.vim'
-Plug 'lokaltog/vim-powerline'
+Plug 'junegunn/goyo.vim'
+
+" line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" File tree
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'altercation/vim-colors-solarized'
-Plug 'junegunn/goyo.vim'
 
 " startscreen
 Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'pineapplegiant/spaceduck'
 
 " fuzzy finder
@@ -24,6 +27,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/gv.vim'
+Plug 'APZelos/blamer.nvim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -76,6 +80,7 @@ set number
 set tabpagemax=15
 set mouse=a
 set relativenumber
+set scrolloff=8
 
 " truecolor
 if (has("termguicolors"))
@@ -91,18 +96,18 @@ if has("autocmd")
 endif
 
 " replace
-nmap <leader>r :%s//gI<Left><Left><Left>
+noremap <leader>r :%s//gI<Left><Left><Left>
 
 " fuzzy finder
 let g:fzf_commands_expect = 'ctrl-x'
-map <c-p> :FZF<CR>
+noremap <c-p> :FZF<CR>
 
 " search file names
-nmap <leader><C-f> :Rg<CR>
+noremap <leader><C-f> :Rg<CR>
 
 " spellcheck
-nmap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
-nmap <leader><F6>e :setlocal spell spelllang=en_us<CR>
+noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
+noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
 " file switcher
 filetype plugin on
@@ -134,31 +139,19 @@ let g:coc_global_extensions = [
 			\ 'coc-go',
 			\ 'coc-rust-analyzer'
 			\ ]
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <F2> <Plug>(coc-rename)
-nmap <C-_> <plug>NERDCommenterToggle
-
-" syntastic
-let g:syntastic_java_checkers = ['checkstyle']
-let g:syntastic_java_checkstyle_classpath = '/data/home/michael/tools/checkstyle-8.27.jar'
-let g:syntastic_java_checkstyle_conf_file = '/data/home/michael/Documents/java/smash/groupsync-service/conf/checkstyle/checkstyle.xml'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+noremap <silent> gd <Plug>(coc-definition)
+noremap <silent> gy <Plug>(coc-type-definition)
+noremap <silent> gi <Plug>(coc-implementation)
+noremap <silent> gr <Plug>(coc-references)
+noremap <F2> <Plug>(coc-rename)
+noremap <C-_> <plug>NERDCommenterToggle
 
 " Fix broken
-nmap <leader>q :CocFix<CR>
+noremap <leader>q :CocFix<CR>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"autocmd BufWritePre * :Autoformat
-nmap <leader>f :Autoformat<CR>
+autocmd BufWritePre *.ts,*.js :Prettier
+noremap <leader>f :Autoformat<CR>
 
 " preview
 let g:Hexokinase_highlighters = ['sign_column']
@@ -183,7 +176,7 @@ function! ToggleNerdTree()
 		let g:nerdtree_is_open = 1
 	endif
 endfunction
-nmap <C-b> :call ToggleNerdTree()<CR>
+noremap <C-b> :call ToggleNerdTree()<CR>
 
 let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
@@ -192,25 +185,3 @@ let NERDTreeDirArrows = 1
 
 " git
 let g:gitgutter_terminal_reports_focus=0
-
-" line
-let g:lightline = {
-			\ 'colorscheme': 'gruvbox',
-			\   'active': {
-			\     'left':[ [ 'mode', 'paste' ],
-			\              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-			\     ]
-			\   },
-			\   'component': {
-			\     'lineinfo': ' %3l:%-2v',
-			\   },
-			\   'component_function': {
-			\     'gitbranch': 'fugitive#head',
-			\   }
-			\ }
-let g:lightline.separator = {
-			\   'left': '', 'right': ''
-			\}
-let g:lightline.subseparator = {
-			\   'left': '', 'right': ''
-			\}
