@@ -17,9 +17,9 @@ client.background       $bg
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up h
+set $up k
 set $down j
-set $left k
+set $left h
 set $right l
 
 # use Mouse+$mod to drag floating windows to their wanted position
@@ -173,8 +173,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 15
+for_window [class="^.*"] border pixel 1
+#gaps inner 15
 #gaps outer 15
 
 # floating rule's

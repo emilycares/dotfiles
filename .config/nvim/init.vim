@@ -31,24 +31,32 @@ Plug 'APZelos/blamer.nvim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'ashisha/image.vim'
 
 " javascipt
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " IDE
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier'
+Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
 Plug 'luchermitte/vim-refactor'
 Plug 'vim-syntastic/syntastic'
 
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'steelsojka/completion-buffers'
+
 " syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
+
+Plug 'ThePrimeagen/vim-be-good'
 
 " react
 "Plug 'tasn/vim-tsx'
@@ -122,35 +130,27 @@ nmap <leader>g :Goyo<CR>
 let g:tex_flavor = 'latex'
 
 " IDE
-let g:coc_global_extensions = [
-			\ 'coc-snippets',
-			\ 'coc-pairs',
-			\ 'coc-tsserver',
-			\ 'coc-vetur',
-			\ 'coc-eslint',
-			\ 'coc-prettier',
-			\ 'coc-json',
-			\ 'coc-java',
-			\ 'coc-phpls',
-			\ 'coc-css',
-			\ 'coc-vetur',
-			\ 'coc-eslint',
-			\ 'coc-flutter',
-			\ 'coc-go',
-			\ 'coc-rust-analyzer'
-			\ ]
-noremap <silent> gd <Plug>(coc-definition)
-noremap <silent> gy <Plug>(coc-type-definition)
-noremap <silent> gi <Plug>(coc-implementation)
-noremap <silent> gr <Plug>(coc-references)
-noremap <F2> <Plug>(coc-rename)
 noremap <C-_> <plug>NERDCommenterToggle
+" gruvbox lsp error
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lum"
+endif
+lua << EOF
+vim.lsp.set_log_level("debug")
+EOF
+lua require('lsp')
+set completeopt=menuone,noinsert
+let g:completion_chain_complete_list = [
+			\{'complete_items': ['path', 'buffers', 'lsp']}
+			\]
+"augroup lsp
+	"au!
+		"au FileType java 
+"augroup end
 
-" Fix broken
-noremap <leader>q :CocFix<CR>
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd BufWritePre *.ts,*.js :Prettier
+" format
+autocmd BufWritePre *.ts,*.js,*.vue :PrettierAsync
 noremap <leader>f :Autoformat<CR>
 
 " preview
