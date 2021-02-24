@@ -20,8 +20,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'pineapplegiant/spaceduck'
 
 " fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -52,6 +53,7 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'steelsojka/completion-buffers'
 
 " syntax
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
@@ -81,6 +83,7 @@ set clipboard+=unnamedplus
 
 " simple
 colorscheme gruvbox
+set background=dark
 syntax on
 set laststatus=2
 set encoding=UTF-8
@@ -107,11 +110,10 @@ endif
 noremap <leader>r :%s//gI<Left><Left><Left>
 
 " fuzzy finder
-let g:fzf_commands_expect = 'ctrl-x'
-noremap <c-p> :FZF<CR>
+nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 
 " search file names
-noremap <leader><C-f> :Rg<CR>
+noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
 
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -144,10 +146,9 @@ set completeopt=menuone,noinsert
 let g:completion_chain_complete_list = [
 			\{'complete_items': ['path', 'buffers', 'lsp']}
 			\]
-"augroup lsp
-	"au!
-		"au FileType java 
-"augroup end
+
+" syntax
+lua require('syntax')
 
 " format
 autocmd BufWritePre *.ts,*.js,*.vue :PrettierAsync

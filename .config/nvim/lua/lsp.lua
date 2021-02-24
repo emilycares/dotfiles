@@ -11,6 +11,7 @@ local custom_attach = function()
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', 'gd', 'vim.lsp.buf.definition()')
   mapper('n', '<leader>K', 'vim.lsp.buf.hover()')
+  mapper('n', '<leader>q', 'vim.lsp.buf.code_action()')
   mapper('n', 'gi', 'vim.lsp.buf.implementation()')
   mapper('n', 'gr', 'vim.lsp.buf.references()')
   mapper('n', '<F2>', 'vim.lsp.buf.rename()')
@@ -68,17 +69,3 @@ require('jdtls').start_or_attach({
 	root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'}),
   on_attach = custom_attach
 	})
-
---lsp.jdtls.setup({
---cmd = {'launch-jdtls'},
---start_or_attach = {
---root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'}),
---},
---on_attach = custom_attach
---})
---require('jdtls')
---.start_or_attach({
---cmd = {'launch-jdtls'},
---root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'}),
---on_attach = custom_attach
---})
