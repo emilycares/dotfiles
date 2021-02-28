@@ -16,8 +16,11 @@ Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
-Plug 'gruvbox-community/gruvbox'
+"Plug 'gruvbox-community/gruvbox'
 Plug 'pineapplegiant/spaceduck'
+Plug 'ayu-theme/ayu-vim'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
 
 " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
@@ -92,6 +95,7 @@ set tabpagemax=15
 set mouse=a
 set relativenumber
 set scrolloff=8
+set hidden
 
 " truecolor
 if (has("termguicolors"))
@@ -114,6 +118,9 @@ nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 
 " search file names
 noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
+
+" search buffers
+noremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -151,7 +158,7 @@ let g:completion_chain_complete_list = [
 lua require('syntax')
 
 " format
-autocmd BufWritePre *.ts,*.js,*.vue :PrettierAsync
+autocmd BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
 noremap <leader>f :Autoformat<CR>
 
 " preview
