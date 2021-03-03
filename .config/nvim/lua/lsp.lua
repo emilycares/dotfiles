@@ -1,3 +1,5 @@
+vim.lsp.set_log_level("debug")
+
 local lsp = require('lspconfig')
 local completion = require('completion')
 

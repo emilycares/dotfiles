@@ -96,14 +96,13 @@ set mouse=a
 set relativenumber
 set scrolloff=8
 set hidden
+set cursorline
 
 " truecolor
 if (has("termguicolors"))
 	set termguicolors
 endif
 
-" highlight selected line
-set cursorline
 
 " jump to last line
 if has("autocmd")
@@ -114,13 +113,14 @@ endif
 noremap <leader>r :%s//gI<Left><Left><Left>
 
 " fuzzy finder
+lua require('finder')
 nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-
-" search file names
 noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
-
-" search buffers
 noremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+
+" quickfix map
+nnoremap <C-j> :cprevious<CR>
+nnoremap <C-k> :cnext<CR>
 
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -139,15 +139,12 @@ nmap <leader>g :Goyo<CR>
 let g:tex_flavor = 'latex'
 
 " IDE
-noremap <C-_> <plug>NERDCommenterToggle
 " gruvbox lsp error
 if exists('+termguicolors')
 	let &t_8f = "\<Esc>[38;2;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
-lua << EOF
-vim.lsp.set_log_level("debug")
-EOF
+
 lua require('lsp')
 set completeopt=menuone,noinsert
 let g:completion_chain_complete_list = [

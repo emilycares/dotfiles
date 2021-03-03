@@ -41,8 +41,7 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 cp ~/.config/nvim/init.vim .config/nvim/
 cp ~/.config/nvim/lua/lsp.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
-cp ~/.config/nvim/coc-settings.json .config/nvim/
-cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml
+cp ~/.config/nvim/lua/finder.lua .config/nvim/lua/
 cp -r ~/.config/nvim/ftplugin .config/nvim
 
 # tmux
