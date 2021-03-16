@@ -3,8 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 
 " line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " File tree
 Plug 'ryanoasis/vim-devicons'
@@ -76,6 +76,9 @@ Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 
+" clean buffers
+Plug 'Asheq/close-buffers.vim'
+
 call plug#end()
 
 " leader
@@ -119,8 +122,10 @@ noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
 noremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " quickfix map
-nnoremap <C-j> :cprevious<CR>
-nnoremap <C-k> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+nnoremap <C-j> :cnext<CR>
+nnoremap <leader>k :lprevious<CR>
+nnoremap <leader>j :lnext<CR>
 
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -128,12 +133,18 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
 " file switcher
 filetype plugin on
-autocmd BufReadPre,FileReadPre *.ts set ft=typescript
-autocmd BufReadPre,FileReadPre *.html set ft=html
-autocmd BufReadPre,FileReadPre *.scss set ft=scss
+augroup MICMINE_FILE_SWITCHER
+	autocmd!
+	autocmd! BufReadPre,FileReadPre *.ts set ft=typescript
+	autocmd! BufReadPre,FileReadPre *.html set ft=html
+	autocmd! BufReadPre,FileReadPre *.scss set ft=scss
+augroup END
 
 " goyo
 nmap <leader>g :Goyo<CR>
+
+" clean buffers
+nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " latex
 let g:tex_flavor = 'latex'
@@ -146,16 +157,25 @@ if exists('+termguicolors')
 endif
 
 lua require('lsp')
+
+augroup MICMINE_LSP
+	autocmd!
+	autocmd! BufWrite,BufEnter,InsertLeave *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+augroup END
+
 set completeopt=menuone,noinsert
 let g:completion_chain_complete_list = [
-			\{'complete_items': ['path', 'buffers', 'lsp']}
+			\{'complete_items': ['path', 'lsp', 'buffers']}
 			\]
 
 " syntax
 lua require('syntax')
 
 " format
-autocmd BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
+augroup MICMINE_FORMAT
+	autocmd!
+	autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
+augroup END
 noremap <leader>f :Autoformat<CR>
 
 " preview

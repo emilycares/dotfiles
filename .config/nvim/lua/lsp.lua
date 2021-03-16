@@ -3,10 +3,6 @@ vim.lsp.set_log_level("debug")
 local lsp = require('lspconfig')
 local completion = require('completion')
 
-local mapper = function(mode, key, result)
-  vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
-end
-
 local set_lsp_icons = function()
   require'vim.lsp.protocol'.CompletionItemKind = {
     ' Text',
@@ -35,6 +31,10 @@ local set_lsp_icons = function()
     'Ψ Operator',
     ' TypeParameter'
   }
+end
+
+local mapper = function(mode, key, result)
+  vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
 end
 
 local custom_attach = function()

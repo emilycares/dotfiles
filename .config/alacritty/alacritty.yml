@@ -1,7 +1,7 @@
 env:
   TERM: xterm-256color
 
-# Colors (Gruvbox dark)
+  # Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
@@ -42,5 +42,4 @@ font:
   italic:
     family: SauceCodePro Nerd Font
     style: Italic
- 
-  size: 10
+  size: 11
