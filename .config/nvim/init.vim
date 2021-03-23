@@ -160,13 +160,16 @@ lua require('lsp')
 
 augroup MICMINE_LSP
 	autocmd!
-	autocmd! BufWrite,BufEnter,InsertLeave *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+	autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
 augroup END
 
 set completeopt=menuone,noinsert
 let g:completion_chain_complete_list = [
-			\{'complete_items': ['path', 'lsp', 'buffers']}
+			\{'complete_items': ['lsp']},
+			\{'complete_items': ['path', 'buffers']}
 			\]
+imap <c-j> <Plug>(completion_next_source)
+imap <c-k> <Plug>(completion_prev_source)
 
 " syntax
 lua require('syntax')
@@ -178,15 +181,11 @@ augroup MICMINE_FORMAT
 augroup END
 noremap <leader>f :Autoformat<CR>
 
-" preview
-let g:Hexokinase_highlighters = ['sign_column']
-
 " Tag autoclose
 let g:closetag_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
 
 " filetree
-
 let g:nerdtree_is_open = 0
 function! ToggleNerdTree()
 	if g:nerdtree_is_open

@@ -34,12 +34,12 @@ colors:
 
 font:
   normal:
-    family: SauceCodePro Nerd Font
-    style: Regular
+    family: "Victor Mono Nerd Font Mono"
+    style: Medium
   bold:
-    family: SauceCodePro Nerd Font
+    family: "Victor Mono Nerd Font Mono"
     style: Bold
   italic:
-    family: SauceCodePro Nerd Font
+    family: "Victor Mono Nerd Font Mono"
     style: Italic
   size: 11

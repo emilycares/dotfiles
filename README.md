@@ -49,5 +49,5 @@ https://github.com/micmine/puh <br/>
 
 ## Language server
 ``` bash
-npm install -g typescript typescript-language-server vscode-html-languageserver-bin vls vscode-json-languageserver vim-language-server yaml-language-server
+npm install -g typescript typescript-language-server vscode-html-languageserver-bin vls vscode-json-languageserver vim-language-server yaml-language-server vscode-css-languageserver-bin @angular/language-server
 ```

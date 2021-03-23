@@ -40,7 +40,8 @@ end
 local custom_attach = function()
   set_lsp_icons()
   completion.on_attach()
-  -- Move cursor to the next and previous diagnostic
+
+  -- maps
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', 'gd', 'vim.lsp.buf.definition()')
   mapper('n', '<leader>K', 'vim.lsp.buf.hover()')
@@ -84,6 +85,12 @@ lsp.vuels.setup({
   })
 
 lsp.angularls.setup({
+    on_attach = custom_attach
+  })
+
+-- jwm
+
+lsp.kotlin_language_server.setup({
     on_attach = custom_attach
   })
 
