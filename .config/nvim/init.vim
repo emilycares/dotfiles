@@ -2,11 +2,7 @@ call plug#begin('~/.vim/plugged')
 " General
 Plug 'junegunn/goyo.vim'
 
-" line
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-
-" File tree
+" Movment
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -16,11 +12,11 @@ Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
-"Plug 'gruvbox-community/gruvbox'
 Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
+"Plug 'gruvbox-community/gruvbox'
 
 " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
@@ -57,14 +53,10 @@ Plug 'steelsojka/completion-buffers'
 
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'ThePrimeagen/vim-be-good'
-
-" react
-"Plug 'tasn/vim-tsx'
 
 " flutter
 Plug 'hankchiutw/flutter-reload.vim'
@@ -94,23 +86,21 @@ syntax on
 set laststatus=2
 set encoding=UTF-8
 set number
+set relativenumber
 set tabpagemax=15
 set mouse=a
-set relativenumber
 set scrolloff=8
 set hidden
 set cursorline
+set updatetime=20
 
 " truecolor
 if (has("termguicolors"))
 	set termguicolors
 endif
 
-
 " jump to last line
-if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " replace
 noremap <leader>r :%s//gI<Left><Left><Left>
@@ -130,6 +120,9 @@ nnoremap <leader>j :lnext<CR>
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
 noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
+
+" exit terminal
+tnoremap <Esc> <C-\><C-n>
 
 " file switcher
 filetype plugin on
@@ -206,6 +199,3 @@ let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-
-" git
-let g:gitgutter_terminal_reports_focus=0

@@ -45,6 +45,7 @@ local custom_attach = function()
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', 'gd', 'vim.lsp.buf.definition()')
   mapper('n', '<leader>K', 'vim.lsp.buf.hover()')
+  mapper('n', '<leader>k', 'vim.lsp.buf.signature_help()')
   mapper('n', '<leader>q', 'vim.lsp.buf.code_action()')
   mapper('n', 'gi', 'vim.lsp.buf.implementation()')
   mapper('n', 'gr', 'vim.lsp.buf.references()')
@@ -53,6 +54,37 @@ end
 
 lsp.vimls.setup({
     on_attach = custom_attach
+  })
+
+local sumneko_root_path = "/data/home/michael/tools/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+lsp.sumneko_lua.setup({
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    on_attach = custom_attach,
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+          -- Setup your lua path
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          },
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+    },}
   })
 
 lsp.rust_analyzer.setup({
