@@ -39,7 +39,7 @@ Plug 'mxw/vim-jsx'
 " IDE
 Plug 'prettier/vim-prettier'
 Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
 Plug 'luchermitte/vim-refactor'
