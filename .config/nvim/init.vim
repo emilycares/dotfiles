@@ -6,6 +6,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug '~/Documents/lua/jumpwire.nvim'
 
 " startscreen
 Plug 'mhinz/vim-startify'
@@ -25,16 +26,11 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
 Plug 'junegunn/gv.vim'
 Plug 'APZelos/blamer.nvim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-" javascipt
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 
 " IDE
 Plug 'prettier/vim-prettier'
@@ -42,7 +38,6 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
-Plug 'luchermitte/vim-refactor'
 Plug 'vim-syntastic/syntastic'
 
 " LSP
@@ -92,7 +87,11 @@ set mouse=a
 set scrolloff=8
 set hidden
 set cursorline
-set updatetime=20
+set updatetime=50
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 " truecolor
 if (has("termguicolors"))
@@ -124,14 +123,13 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 " exit terminal
 tnoremap <Esc> <C-\><C-n>
 
-" file switcher
-filetype plugin on
-augroup MICMINE_FILE_SWITCHER
-	autocmd!
-	autocmd! BufReadPre,FileReadPre *.ts set ft=typescript
-	autocmd! BufReadPre,FileReadPre *.html set ft=html
-	autocmd! BufReadPre,FileReadPre *.scss set ft=scss
-augroup END
+" jumpwire
+lua require('jumper')
+
+noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
+noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
+noremap <leader>mm :lua require('jumpwire').jump('markup')<CR>
+noremap <leader>ms :lua require('jumpwire').jump('style')<CR>
 
 " goyo
 nmap <leader>g :Goyo<CR>
