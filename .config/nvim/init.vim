@@ -1,12 +1,20 @@
 call plug#begin('~/.vim/plugged')
+" lib
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+
 " General
 Plug 'junegunn/goyo.vim'
+Plug 'hoob3rt/lualine.nvim'
 
 " Movment
-Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'nvim-telescope/telescope.nvim'
 Plug '~/Documents/lua/jumpwire.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 " startscreen
 Plug 'mhinz/vim-startify'
@@ -16,26 +24,19 @@ Plug 'joshdick/onedark.vim'
 Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
-"Plug 'gruvbox-community/gruvbox'
-
-" fuzzy finder
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'gruvbox-community/gruvbox'
 
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'APZelos/blamer.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " preview
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " IDE
 Plug 'prettier/vim-prettier'
-Plug 'jiangmiao/auto-pairs'
-"Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
@@ -51,8 +52,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'ThePrimeagen/vim-be-good'
-
 " flutter
 Plug 'hankchiutw/flutter-reload.vim'
 
@@ -60,7 +59,7 @@ Plug 'hankchiutw/flutter-reload.vim'
 Plug 'lervag/vimtex'
 
 " Tag autoclose
-Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
 " clean buffers
@@ -93,10 +92,17 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+" theme
 " truecolor
 if (has("termguicolors"))
 	set termguicolors
 endif
+" gruvbox lsp error
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lum"
+endif
+lua require('statusline')
 
 " jump to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -104,11 +110,25 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " replace
 noremap <leader>r :%s//gI<Left><Left><Left>
 
+" movement
+lua require('movement')
 " fuzzy finder
-lua require('finder')
 nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
 noremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+noremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+" jumpwire
+noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
+noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
+noremap <leader>mm :lua require('jumpwire').jump('markup')<CR>
+noremap <leader>ms :lua require('jumpwire').jump('style')<CR>
+" harpoon
+nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <C-n> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <C-m> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <C-t> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <C-i> :lua require("harpoon.ui").nav_file(4)<CR>
 
 " quickfix map
 nnoremap <C-k> :cprevious<CR>
@@ -123,13 +143,6 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 " exit terminal
 tnoremap <Esc> <C-\><C-n>
 
-" jumpwire
-lua require('jumper')
-
-noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
-noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
-noremap <leader>mm :lua require('jumpwire').jump('markup')<CR>
-noremap <leader>ms :lua require('jumpwire').jump('style')<CR>
 
 " goyo
 nmap <leader>g :Goyo<CR>
@@ -141,12 +154,6 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 let g:tex_flavor = 'latex'
 
 " IDE
-" gruvbox lsp error
-if exists('+termguicolors')
-	let &t_8f = "\<Esc>[38;2;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lum"
-endif
-
 lua require('lsp')
 
 augroup MICMINE_LSP
@@ -172,10 +179,6 @@ augroup MICMINE_FORMAT
 augroup END
 noremap <leader>f :Autoformat<CR>
 
-" Tag autoclose
-let g:closetag_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
-let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.php,*.blade.php,*.js,*.vue'
-
 " filetree
 let g:nerdtree_is_open = 0
 function! ToggleNerdTree()
@@ -197,3 +200,7 @@ let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
+let g:netrw_browse_split = 0
+let g:netrw_banner = 0
+let g:netrw_winsize = 40

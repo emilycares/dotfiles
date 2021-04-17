@@ -41,8 +41,8 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 cp ~/.config/nvim/init.vim .config/nvim/
 cp ~/.config/nvim/lua/lsp.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/finder.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/jumper.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/movement.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/statusline.lua .config/nvim/lua/
 
 # tmux
 cp ~/.tmux.conf .tmux.conf

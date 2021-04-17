@@ -116,9 +116,9 @@ lsp.vuels.setup({
     on_attach = custom_attach
   })
 
-lsp.angularls.setup({
-    on_attach = custom_attach
-  })
+--lsp.angularls.setup({
+    --on_attach = custom_attach
+  --})
 
 -- jwm
 
