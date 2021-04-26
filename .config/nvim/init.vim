@@ -25,6 +25,7 @@ Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rktjmp/lush.nvim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'tiagovla/tokyodark.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -128,7 +129,7 @@ nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <C-n> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <C-m> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-t> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-i> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <C-g> :lua require("harpoon.ui").nav_file(4)<CR>
 
 " quickfix map
 nnoremap <C-k> :cprevious<CR>
