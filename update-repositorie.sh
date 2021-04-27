@@ -9,7 +9,7 @@ mkdir -p .config/alacritty
 mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
-mkdir -p .config/nvim
+mkdir -p .config/nvim/lua
 mkdir -p .config/zathura
 mkdir -p .config/coc/extensions/node_modules/redhat.java
 
@@ -39,9 +39,10 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 
 # nvim
 cp ~/.config/nvim/init.vim .config/nvim/
-cp ~/.config/nvim/coc-settings.json .config/nvim/
-cp ~/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml .config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml
-cp -r ~/.config/nvim/ftplugin .config/nvim
+cp ~/.config/nvim/lua/lsp.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/movement.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/statusline.lua .config/nvim/lua/
 
 # tmux
 cp ~/.tmux.conf .tmux.conf
