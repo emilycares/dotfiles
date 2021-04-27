@@ -13,6 +13,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug '~/Documents/lua/jumpwire.nvim'
 Plug 'ThePrimeagen/harpoon'
 
@@ -25,7 +26,6 @@ Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rktjmp/lush.nvim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'tiagovla/tokyodark.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
