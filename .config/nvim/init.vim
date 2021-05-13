@@ -14,7 +14,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug '~/Documents/lua/jumpwire.nvim'
+Plug 'micmine/jumpwire.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 " startscreen
@@ -34,30 +34,23 @@ Plug 'APZelos/blamer.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
 " preview
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 " IDE
 Plug 'prettier/vim-prettier'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
-Plug 'vim-syntastic/syntastic'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'mfussenegger/nvim-jdtls'
 Plug 'steelsojka/completion-buffers'
+Plug 'mfussenegger/nvim-jdtls'
 
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
-
-" flutter
-Plug 'hankchiutw/flutter-reload.vim'
-
-" LaTeX
-Plug 'lervag/vimtex'
 
 " Tag autoclose
 Plug 'jiangmiao/auto-pairs'
@@ -98,6 +91,8 @@ set undofile
 if (has("termguicolors"))
 	set termguicolors
 endif
+" color preview
+lua require('colorizer').setup()
 " gruvbox lsp error
 if exists('+termguicolors')
 	let &t_8f = "\<Esc>[38;2;%lu;%lum"
