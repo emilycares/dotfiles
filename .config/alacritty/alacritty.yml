@@ -34,12 +34,12 @@ colors:
 
 font:
   normal:
-    family: "Victor Mono Nerd Font Mono"
+    family: "VictorMono Nerd Font Mono"
     style: Medium
   bold:
-    family: "Victor Mono Nerd Font Mono"
+    family: "VictorMono Nerd Font Mono"
     style: Bold
   italic:
-    family: "Victor Mono Nerd Font Mono"
+    family: "VictorMono Nerd Font Mono"
     style: Italic
-  size: 11
+  size: 12

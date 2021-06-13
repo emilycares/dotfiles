@@ -1,7 +1,7 @@
 configuration {
 	show-icons: true;
 	theme: "~/.cache/wal/colors-rofi-dark.rasi";
-	font: "SauceCodePro Nerd Font Medium 11";
+	font: "VictorMono Nerd Font Mono Medium 11";
 	display-run: " ";
   	display-drun: " ";
   	display-window: " ";

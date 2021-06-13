@@ -1,8 +1,31 @@
 local M = {}
-vim.lsp.set_log_level("debug")
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+  };
+}
 
 local lsp = require('lspconfig')
-local completion = require('completion')
+--local completion = require('completion')
 
 local set_lsp_icons = function()
   require'vim.lsp.protocol'.CompletionItemKind = {
@@ -40,7 +63,7 @@ end
 
 local custom_attach = function(overlap)
   set_lsp_icons()
-  completion.on_attach()
+  --completion.on_attach()
 
   -- maps
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
@@ -92,6 +115,11 @@ lsp.sumneko_lua.setup({
   })
 
 lsp.rust_analyzer.setup({
+    on_attach = custom_attach
+  })
+
+-- shell
+lsp.bashls.setup({
     on_attach = custom_attach
   })
 

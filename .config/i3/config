@@ -26,7 +26,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -204,7 +204,7 @@ mode "$mode_system" {
 }
 
 # application keybindings
-bindsym $mod+ctrl+g exec brave-browser
+bindsym $mod+ctrl+g exec firefox
 bindsym $mod+ctrl+k exec keepassxc
 bindsym $mod+ctrl+p exec pavucontrol
 bindsym $mod+ctrl+n exec nautilus
@@ -218,9 +218,9 @@ bindsym $mod+m exec sleep 1 && xset dpms force off
 bindsym $mod+ctrl+e exec emoji
 
 # system applications
-#exec --no-startup-id xrandr --auto --output HDMI-1 --right-of HDMI-0
+exec --no-startup-id xrandr --auto --output HDMI-1 --right-of HDMI-0
 exec --no-startup-id compton --config ~/.config/compton.conf
-exec --no-startup-id bash ~/.config/polybar/launch.sh
+#exec --no-startup-id bash ~/.config/polybar/launch.sh
 exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/saturn.jpg
 #exec --no-startup-id nm-applet
 exec --no-startup-id pacmd load-module module-loopback latency_msec=1

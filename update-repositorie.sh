@@ -6,6 +6,7 @@ mkdir -p .config/i3
 mkdir -p .config/polybar
 mkdir -p .config/termite
 mkdir -p .config/alacritty
+mkdir -p .config/kitty
 mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
@@ -32,6 +33,9 @@ cp ~/.config/termite/config .config/termite/config
 
 # alacritty
 cp ~/.config/alacritty/alacritty.yml .config/alacritty/alacritty.yml
+
+# kitty
+cp ~/.config/kitty/kitty.conf .config/kitty/kitty.conf
 
 # compton
 cp ~/.config/compton.conf .config/

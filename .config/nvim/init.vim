@@ -30,7 +30,6 @@ Plug 'gruvbox-community/gruvbox'
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-Plug 'APZelos/blamer.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
 " preview
@@ -43,8 +42,7 @@ Plug 'chiel92/vim-autoformat'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'steelsojka/completion-buffers'
+Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-jdtls'
 
 " syntax
@@ -53,7 +51,7 @@ Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
 
 " Tag autoclose
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 
 " clean buffers
@@ -110,9 +108,10 @@ noremap <leader>r :%s//gI<Left><Left><Left>
 lua require('movement')
 " fuzzy finder
 nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-noremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
-noremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
-noremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <leader><c-d> <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+nnoremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 " jumpwire
 noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
 noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
@@ -152,24 +151,30 @@ let g:tex_flavor = 'latex'
 " IDE
 lua require('lsp')
 
-augroup MICMINE_LSP
+augroup LSP
 	autocmd!
 	autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
 augroup END
 
-set completeopt=menuone,noinsert
-let g:completion_chain_complete_list = [
-			\{'complete_items': ['lsp']},
-			\{'complete_items': ['path', 'buffers']}
-			\]
-imap <c-j> <Plug>(completion_next_source)
-imap <c-k> <Plug>(completion_prev_source)
+" Wrire
+set completeopt=menuone,noselect
+lua << EOF
+require('nvim-autopairs').setup({
+check_ts = true
+})
+EOF
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
 
 " syntax
 lua require('syntax')
 
 " format
-augroup MICMINE_FORMAT
+augroup FORMAT
 	autocmd!
 	autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
 augroup END
