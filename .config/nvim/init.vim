@@ -4,6 +4,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 
 " General
 Plug 'junegunn/goyo.vim'
@@ -14,6 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'micmine/jumpwire.nvim'
 Plug 'ThePrimeagen/harpoon'
 
@@ -111,6 +113,7 @@ nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader><c-d> <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>o <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
 nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 " jumpwire
 noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
