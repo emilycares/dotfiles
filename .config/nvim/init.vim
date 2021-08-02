@@ -7,7 +7,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 
 " General
-Plug 'junegunn/goyo.vim'
 Plug 'hoob3rt/lualine.nvim'
 
 " Movment
@@ -128,11 +127,11 @@ nnoremap <C-m> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-t> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <C-g> :lua require("harpoon.ui").nav_file(4)<CR>
 
-" quickfix map
-nnoremap <C-k> :cprevious<CR>
-nnoremap <C-j> :cnext<CR>
-nnoremap <leader>k :lprevious<CR>
-nnoremap <leader>j :lnext<CR>
+" quickfix map - and center
+nnoremap <C-k> :cprevious<CR>zzzv
+nnoremap <C-j> :cnext<CR>zzzv
+nnoremap <leader>k :lprevious<CR>zzzv
+nnoremap <leader>j :lnext<CR>zzzv
 
 " spellcheck
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
@@ -141,9 +140,14 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 " exit terminal
 tnoremap <Esc> <C-\><C-n>
 
-
-" goyo
-nmap <leader>g :Goyo<CR>
+" remaps
+" center search
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+" Add undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
 
 " clean buffers
 nnoremap <leader>dcb :Bdelete hidden<CR>
@@ -171,7 +175,6 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
 
 " syntax
 lua require('syntax')

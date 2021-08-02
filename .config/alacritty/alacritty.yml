@@ -34,12 +34,12 @@ colors:
 
 font:
   normal:
-    family: "VictorMono Nerd Font Mono"
+    family: "Victor Mono Medium Nerd Font Complete Mono Windows Compatible"
     style: Medium
   bold:
-    family: "VictorMono Nerd Font Mono"
+    family: "Victor Mono Bold Nerd Font Complete Mono Windows Compatible"
     style: Bold
   italic:
-    family: "VictorMono Nerd Font Mono"
+    family: "Victor Mono Italic Nerd Font Complete Mono Windows Compatible"
     style: Italic
   size: 12
