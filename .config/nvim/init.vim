@@ -10,8 +10,9 @@ Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 Plug 'hoob3rt/lualine.nvim'
 
 " Movment
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-frecency.nvim'
@@ -40,6 +41,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
+Plug 'wellle/context.vim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -187,21 +189,7 @@ augroup END
 noremap <leader>f :Autoformat<CR>
 
 " filetree
-let g:nerdtree_is_open = 0
-function! ToggleNerdTree()
-	if g:nerdtree_is_open
-		NERDTreeClose
-		let g:nerdtree_is_open = 0
-	else
-		if @% == ""
-			NERDTreeToggle
-		else
-			NERDTreeFind
-		endif
-		let g:nerdtree_is_open = 1
-	endif
-endfunction
-noremap <C-b> :call ToggleNerdTree()<CR>
+noremap <C-b> :NvimTreeToggle<CR>
 
 let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1

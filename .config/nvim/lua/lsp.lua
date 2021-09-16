@@ -68,8 +68,7 @@ local custom_attach = function(overlap)
   -- maps
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', 'gd', 'vim.lsp.buf.definition()')
-  mapper('n', '<leader>K', 'vim.lsp.buf.hover()')
-  mapper('n', '<leader>k', 'vim.lsp.buf.signature_help()')
+  mapper('n', '<leader>K', 'vim.lsp.buf.signature_help()')
   mapper('n', 'gi', 'vim.lsp.buf.implementation()')
   mapper('n', 'gr', 'vim.lsp.buf.references()')
   mapper('n', '<F2>', 'vim.lsp.buf.rename()')
@@ -128,12 +127,18 @@ lsp.tsserver.setup({
     on_attach = custom_attach
   })
 
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lsp.html.setup({
-    on_attach = custom_attach
+    on_attach = custom_attach,
+    capabilities = capabilities
   })
 
 lsp.cssls.setup({
-    on_attach = custom_attach
+    on_attach = custom_attach,
+    capabilities = capabilities
   })
 
 lsp.jsonls.setup({
@@ -156,6 +161,12 @@ lsp.vuels.setup({
 
 lsp.kotlin_language_server.setup({
     on_attach = custom_attach
+  })
+
+lsp.groovyls.setup({
+    on_attach = custom_attach,
+    cmd = { "java", "-jar", "/home/michael/tools/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+    filetypes = { "groovy", "gradle" }
   })
 
 M.jdtls = function ()

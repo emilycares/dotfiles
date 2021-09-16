@@ -1,3 +1,4 @@
+local M = {}
 -- telescope
 local actions = require('telescope.actions')
 require('telescope').setup {
@@ -42,7 +43,17 @@ require('jumpwire').setup({ language = {
 		markup = { type = 'fileExtension', data = 'html'},
 		style = { type = 'fileExtension', data = 'scss'},
 	},
+	['java'] = {
+		implementation = { type = 'jvm', data = 'implementation'},
+		test = { type = 'jvm', data = 'test'},
+	},
 }})
 
 -- harpoon
 require("harpoon").setup()
+
+M.switch_branch = function ()
+
+end
+
+return M
