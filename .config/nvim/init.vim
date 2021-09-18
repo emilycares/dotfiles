@@ -11,8 +11,6 @@ Plug 'hoob3rt/lualine.nvim'
 
 " Movment
 Plug 'kyazdani42/nvim-tree.lua'
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-frecency.nvim'
@@ -41,7 +39,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
-Plug 'wellle/context.vim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
