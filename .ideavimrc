@@ -1,0 +1,28 @@
+let mapleader=" "
+set clipboard+=unnamed
+
+set scrolloff=8
+
+" jump to last line
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+noremap gd :action GotoDeclaration<cr>
+noremap <leader>q :action ShowIntentionActions<cr>
+noremap <leader>f :action ReformatCode<cr>
+noremap <leader>cc :action CommentByBlockComment<cr>
+noremap <leader>cu :action CommentByBlockComment<cr>
+
+" replace
+noremap <leader>r :%s//gI<Left><Left><Left>
+
+" quickfix map - and center
+nnoremap <C-k> :cprevious<CR>zzzv
+nnoremap <C-j> :cnext<CR>zzzv
+nnoremap <leader>k :lprevious<CR>zzzv
+nnoremap <leader>j :lnext<CR>zzzv
+
+" center search
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+

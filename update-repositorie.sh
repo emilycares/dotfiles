@@ -48,8 +48,11 @@ cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/movement.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/statusline.lua .config/nvim/lua/
 
+# zathura
+cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
+
 # tmux
 cp ~/.tmux.conf .tmux.conf
 
-# zathura
-cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
+# ideavim
+cp ~/.ideavimrc .ideavimrc
