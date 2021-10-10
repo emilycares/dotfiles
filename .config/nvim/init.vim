@@ -106,25 +106,29 @@ noremap <leader>r :%s//gI<Left><Left><Left>
 
 " movement
 lua require('movement')
+
 " fuzzy finder
 nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>tq <cmd>lua require('telescope.builtin').quickfix()<cr>
+nnoremap <leader>tb <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader><c-d> <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>o <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
 nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+
 " jumpwire
 noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
 noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
 noremap <leader>mm :lua require('jumpwire').jump('markup')<CR>
 noremap <leader>ms :lua require('jumpwire').jump('style')<CR>
+
 " harpoon
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <C-n> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <C-m> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <C-t> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-g> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap è :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap é :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap à :lua require("harpoon.ui").nav_file(3)<CR>
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
@@ -151,15 +155,12 @@ inoremap . .<c-g>u
 " clean buffers
 nnoremap <leader>dcb :Bdelete hidden<CR>
 
-" latex
-let g:tex_flavor = 'latex'
-
 " IDE
 lua require('lsp')
 
 augroup LSP
 	autocmd!
-	autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+	autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.diagnostic.setloclist({open = false})
 augroup END
 
 " Wrire
@@ -167,6 +168,14 @@ set completeopt=menuone,noselect
 lua << EOF
 require('nvim-autopairs').setup({
 check_ts = true
+})
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+  auto_select = false,  -- auto select first item
+  map_char = { -- modifies the function or method delimiter by filetypes
+    all = '(',
+  }
 })
 EOF
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -186,7 +195,21 @@ augroup END
 noremap <leader>f :Autoformat<CR>
 
 " filetree
-noremap <C-b> :NvimTreeToggle<CR>
+let g:tree_is_open = 0
+function! ToggleTree()
+	if g:tree_is_open
+		NvimTreeClose
+		let g:tree_is_open = 0
+	else
+		if @% == ""
+			NvimTreeToggle
+		else
+			NvimTreeFind
+		endif
+		let g:tree_is_open = 1
+	endif
+endfunction
+noremap <C-b> :call ToggleTree()<CR>
 
 let NERDTreeWinSize = 40
 let NERDTreeAutoDeleteBuffer = 1
