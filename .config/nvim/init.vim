@@ -5,6 +5,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
+Plug 'hrsh7th/cmp-nvim-lsp' " cmp
+Plug 'hrsh7th/cmp-buffer' " cmp
 
 " General
 Plug 'hoob3rt/lualine.nvim'
@@ -16,9 +18,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'micmine/jumpwire.nvim'
 Plug 'ThePrimeagen/harpoon'
-
-" startscreen
-Plug 'mhinz/vim-startify'
 
 " theme
 Plug 'joshdick/onedark.vim'
@@ -42,7 +41,7 @@ Plug 'chiel92/vim-autoformat'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'mfussenegger/nvim-jdtls'
 
 " syntax
@@ -157,6 +156,7 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " IDE
 lua require('lsp')
+lua require('completion')
 
 augroup LSP
 	autocmd!
@@ -169,20 +169,7 @@ lua << EOF
 require('nvim-autopairs').setup({
 check_ts = true
 })
-require("nvim-autopairs.completion.compe").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-  auto_select = false,  -- auto select first item
-  map_char = { -- modifies the function or method delimiter by filetypes
-    all = '(',
-  }
-})
 EOF
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " syntax
 lua require('syntax')
