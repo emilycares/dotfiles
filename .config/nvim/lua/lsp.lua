@@ -3,36 +3,6 @@ local M = {}
 local lsp = require('lspconfig')
 --local completion = require('completion')
 
-local set_lsp_icons = function()
-  require'vim.lsp.protocol'.CompletionItemKind = {
-    ' Text',
-    ' Method',
-    'ƒ Function',
-    ' Constructor',
-    '識 Field',
-    ' Variable',
-    ' Class',
-    'ﰮ Interface',
-    ' Module',
-    ' Property',
-    ' Unit',
-    ' Value',
-    '了 Enum',
-    ' Keyword',
-    '﬌ Snippet',
-    ' Color',
-    ' File',
-    '渚 Reference',
-    ' Folder',
-    ' EnumMember',
-    ' Constant',
-    ' Struct',
-    '鬒 Event',
-    'Ψ Operator',
-    ' TypeParameter'
-  }
-end
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -46,9 +16,6 @@ local flags = {
 }
 
 local custom_attach = function(overlap)
-  set_lsp_icons()
-  --completion.on_attach()
-
   -- maps
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', 'gd', 'vim.lsp.buf.definition()')
@@ -187,6 +154,13 @@ lsp.sumneko_lua.setup({
       capabilities,
     })
   end
+
+  require ("lsp_signature").setup({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = "single"
+    }
+  })
 
   local autocmds = {
     lsp = {

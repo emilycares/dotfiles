@@ -47,6 +47,9 @@ cp ~/.config/nvim/lua/lsp.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/movement.lua .config/nvim/lua/
 cp ~/.config/nvim/lua/statusline.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/completion.lua .config/nvim/lua/
+cp ~/.config/nvim/lua/debugging.lua .config/nvim/lua/
+
 
 # zathura
 cp ~/.config/zathura/zathurarc .config/zathura/zathurarc

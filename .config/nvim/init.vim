@@ -7,6 +7,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 Plug 'hrsh7th/cmp-nvim-lsp' " cmp
 Plug 'hrsh7th/cmp-buffer' " cmp
+Plug 'hrsh7th/cmp-path' " cmp
 
 " General
 Plug 'hoob3rt/lualine.nvim'
@@ -41,8 +42,17 @@ Plug 'chiel92/vim-autoformat'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'mfussenegger/nvim-jdtls'
+
+" DAP
+Plug 'mfussenegger/nvim-dap'
+
+" snipet
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -86,14 +96,14 @@ set undofile
 " theme
 " truecolor
 if (has("termguicolors"))
-	set termguicolors
+  set termguicolors
 endif
 " color preview
 lua require('colorizer').setup()
 " gruvbox lsp error
 if exists('+termguicolors')
-	let &t_8f = "\<Esc>[38;2;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lum"
+  let &t_8f = "\<Esc>[38;2;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
 lua require('statusline')
 
@@ -139,6 +149,27 @@ nnoremap <leader>j :lnext<CR>zzzv
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
 noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
+" debugging
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>dB :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>dlp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
+
+" snipet
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+
 " exit terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -157,10 +188,11 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 " IDE
 lua require('lsp')
 lua require('completion')
+lua require('debugging')
 
 augroup LSP
-	autocmd!
-	autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.diagnostic.setloclist({open = false})
+  autocmd!
+  autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.diagnostic.setloclist({open = false, severity = vim.diagnostic.severity.ERROR})
 augroup END
 
 " Wrire
@@ -176,32 +208,28 @@ lua require('syntax')
 
 " format
 augroup FORMAT
-	autocmd!
-	autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
+  autocmd!
+  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
 augroup END
 noremap <leader>f :Autoformat<CR>
 
 " filetree
+lua require('nvim-tree').setup()
 let g:tree_is_open = 0
 function! ToggleTree()
-	if g:tree_is_open
-		NvimTreeClose
-		let g:tree_is_open = 0
-	else
-		if @% == ""
-			NvimTreeToggle
-		else
-			NvimTreeFind
-		endif
-		let g:tree_is_open = 1
-	endif
+  if g:tree_is_open
+    NvimTreeClose
+    let g:tree_is_open = 0
+  else
+    if @% == ""
+      NvimTreeToggle
+    else
+      NvimTreeFind
+    endif
+    let g:tree_is_open = 1
+  endif
 endfunction
 noremap <C-b> :call ToggleTree()<CR>
-
-let NERDTreeWinSize = 40
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
 
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
