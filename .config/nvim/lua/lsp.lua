@@ -1,6 +1,7 @@
 local M = {}
 
 local lsp = require('lspconfig')
+local home = os.getenv('HOME')
 --local completion = require('completion')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -34,7 +35,7 @@ lsp.vimls.setup({
   flags = flags,
 })
 
-local sumneko_root_path = "/home/michael/tools/lua-language-server"
+local sumneko_root_path = home .. "/tools/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 lsp.sumneko_lua.setup({
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
@@ -87,7 +88,6 @@ lsp.sumneko_lua.setup({
     capabilities,
   })
 
-
   lsp.html.setup({
     on_attach = custom_attach,
     flags = flags,
@@ -135,11 +135,14 @@ lsp.sumneko_lua.setup({
     on_attach = custom_attach,
     flags = flags,
     capabilities,
-    cmd = { "java", "-jar", "/home/michael/tools/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+    cmd = { "java", "-jar", home .. "/tools/groovy-language-server/build/libs/groovy-language-server-all.jar" },
     filetypes = { "groovy", "gradle" }
   })
 
   M.jdtls = function ()
+    local root_markers = {'gradlew', 'pom.xml'}
+    local root_dir = require('jdtls.setup').find_root(root_markers)
+    local workspace_folder = home .. "/.workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
     local on_attach_java = function()
       custom_attach(true)
 
@@ -148,8 +151,8 @@ lsp.sumneko_lua.setup({
     end
 
     require('jdtls').start_or_attach({
-      cmd = {'launch-jdtls'},
-      root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'}),
+      cmd = {'launch-jdtls', workspace_folder},
+      root_dir,
       on_attach = on_attach_java,
       capabilities,
     })

@@ -117,14 +117,14 @@ noremap <leader>r :%s//gI<Left><Left><Left>
 lua require('movement')
 
 " fuzzy finder
-nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>tq <cmd>lua require('telescope.builtin').quickfix()<cr>
-nnoremap <leader>tb <cmd>lua require('telescope.builtin').git_branches()<cr>
-nnoremap <leader><c-d> <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
-nnoremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>o <cmd>lua require('telescope').extensions.frecency.frecency()<cr>
-nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>tq <cmd>lua require('telescope.builtin').quickfix(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>tb <cmd>lua require('telescope.builtin').git_branches(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader><c-d> <cmd>lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader><C-f> <cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>o <cmd>lua require('telescope').extensions.frecency.frecency(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_ivy())<cr>
 
 " jumpwire
 noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
@@ -215,22 +215,8 @@ noremap <leader>f :Autoformat<CR>
 
 " filetree
 lua require('nvim-tree').setup()
-let g:tree_is_open = 0
-function! ToggleTree()
-  if g:tree_is_open
-    NvimTreeClose
-    let g:tree_is_open = 0
-  else
-    if @% == ""
-      NvimTreeToggle
-    else
-      NvimTreeFind
-    endif
-    let g:tree_is_open = 1
-  endif
-endfunction
-noremap <C-b> :call ToggleTree()<CR>
+noremap <C-b> :NvimTreeFindFileToggle<CR>
 
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
-let g:netrw_winsize = 40
+let g:netrw_winsize = 60
