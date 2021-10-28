@@ -8,6 +8,7 @@ Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 Plug 'hrsh7th/cmp-nvim-lsp' " cmp
 Plug 'hrsh7th/cmp-buffer' " cmp
 Plug 'hrsh7th/cmp-path' " cmp
+Plug 'rktjmp/lush.nvim' " gruvbox
 
 " General
 Plug 'hoob3rt/lualine.nvim'
@@ -24,8 +25,8 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'joshdick/onedark.vim'
 Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
-Plug 'rktjmp/lush.nvim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -75,7 +76,7 @@ let mapleader=" "
 set clipboard+=unnamedplus
 
 " simple
-colorscheme gruvbox
+colorscheme tokyonight
 set background=dark
 syntax on
 set laststatus=2
