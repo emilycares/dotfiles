@@ -1,6 +1,8 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
+require("luasnip/loaders/from_vscode").load({ paths = { "/home/michael/.vim/plugged/friendly-snippets" }});
+
 cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -18,6 +20,7 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
   },

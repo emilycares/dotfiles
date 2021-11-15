@@ -8,6 +8,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+ vim.lsp.diagnostic.on_publish_diagnostics, {
+   underline = true,
+   virtual_text = true
+ }
+)
+
 local mapper = function(mode, key, result)
   vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
 end
@@ -124,6 +131,21 @@ lsp.sumneko_lua.setup({
     capabilities,
   })
 
+  -- php
+  lsp.intelephense.setup({
+    on_attach = custom_attach,
+    flags = flags,
+    capabilities,
+  })
+
+  -- python
+  lsp.pyright.setup({
+    on_attach = custom_attach,
+    flags = flags,
+    capabilities,
+  })
+
+
   -- jwm
   lsp.kotlin_language_server.setup({
     on_attach = custom_attach,
@@ -157,13 +179,6 @@ lsp.sumneko_lua.setup({
       capabilities,
     })
   end
-
-  require ("lsp_signature").setup({
-    bind = true, -- This is mandatory, otherwise border config won't get registered.
-    handler_opts = {
-      border = "single"
-    }
-  })
 
   local autocmds = {
     lsp = {

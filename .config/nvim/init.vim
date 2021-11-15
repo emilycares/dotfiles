@@ -44,7 +44,6 @@ Plug 'chiel92/vim-autoformat'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'mfussenegger/nvim-jdtls'
 
@@ -53,6 +52,7 @@ Plug 'mfussenegger/nvim-dap'
 
 " snipet
 Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " syntax
@@ -128,17 +128,18 @@ nnoremap <leader>o <cmd>lua require('telescope').extensions.frecency.frecency(re
 nnoremap <leader><C-b> <cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_ivy())<cr>
 
 " jumpwire
-noremap <leader>mt :lua require('jumpwire').jump('test')<CR>
-noremap <leader>mi :lua require('jumpwire').jump('implementation')<CR>
-noremap <leader>mm :lua require('jumpwire').jump('markup')<CR>
-noremap <leader>ms :lua require('jumpwire').jump('style')<CR>
+noremap <silent><M-t> :lua require('jumpwire').jump('test')<CR>
+noremap <silent><M-i> :lua require('jumpwire').jump('implementation')<CR>
+noremap <silent><M-m> :lua require('jumpwire').jump('markup')<CR>
+noremap <silent><M-s> :lua require('jumpwire').jump('style')<CR>
 
 " harpoon
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap è :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap é :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap à :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent><M-h> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent><M-j> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent><M-k> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent><M-l> :lua require("harpoon.ui").nav_file(4)<CR>
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv

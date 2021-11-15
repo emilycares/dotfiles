@@ -47,6 +47,10 @@ require('jumpwire').setup({ language = {
     implementation = { type = 'jvm', data = 'implementation'},
     test = { type = 'jvm', data = 'test'},
   },
+  ['rs'] = {
+    test = { type = 'fileExtension', delimiter = '_', data = '_test.rs'},
+    implementation = { type = 'fileExtension', delimiter = '_', data = 'rs'},
+  },
 }})
 
 -- harpoon

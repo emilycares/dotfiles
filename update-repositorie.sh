@@ -3,6 +3,7 @@
 echo Updating the configuration
 rm -rf .config/*
 mkdir -p .config/i3
+mkdir -p .config/awesome
 mkdir -p .config/polybar
 mkdir -p .config/termite
 mkdir -p .config/alacritty
@@ -17,6 +18,7 @@ mkdir -p .config/coc/extensions/node_modules/redhat.java
 
 # desktop
 cp ~/.config/i3/config .config/i3/config
+cp ~/.config/awesome/rc.lua .config/awesome
 cp ~/.config/polybar/launch.sh .config/polybar/launch.sh
 cp ~/.config/polybar/config.ini .config/polybar/config.ini
 cp ~/.config/polybar/module.ini .config/polybar/module.ini
