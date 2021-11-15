@@ -2,19 +2,6 @@ font pango:monospace 8
 
 set $mod Mod4
 
-set_from_resource $fg i3wm.color7
-set_from_resource $bg i3wm.color2
-set_from_resource $fo i3wm.color1
-
-# class                 border  backgr. text indicator child_border
-client.focused          $fo     $fo     $fo  $fo       #fff
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $bg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-
-client.background       $bg
-
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -35,8 +22,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
 # Monitors
-set $m1 HDMI-0
-set $m2 HDMI-1
+set $m2 HDMI-0
+set $m1 HDMI-1
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -218,11 +205,12 @@ bindsym $mod+m exec sleep 1 && xset dpms force off
 bindsym $mod+ctrl+e exec emoji
 
 # system applications
-exec --no-startup-id xrandr --auto --output HDMI-1 --right-of HDMI-0
+exec --no-startup-id xrandr --auto --output HDMI-0 --right-of HDMI-1
 exec --no-startup-id compton --config ~/.config/compton.conf
 #exec --no-startup-id bash ~/.config/polybar/launch.sh
 exec --no-startup-id ~/Documents/bash/background/background.sh ~/Wallpapers/saturn.jpg
 #exec --no-startup-id nm-applet
 exec --no-startup-id pacmd load-module module-loopback latency_msec=1
 
-exec_always ~/Documents/python/i3scripts/autoname_workspaces.py --norenumber_workspaces
+#exec_always ~/Documents/python/i3scripts/autoname_workspaces.py --norenumber_workspaces
+exec_always ~/Documents/bash/scripts/setMouseSpeed.sh
