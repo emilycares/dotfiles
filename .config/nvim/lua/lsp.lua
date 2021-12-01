@@ -11,7 +11,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
  vim.lsp.diagnostic.on_publish_diagnostics, {
    underline = true,
-   virtual_text = true
+   virtual_text = false
  }
 )
 
@@ -31,6 +31,8 @@ local custom_attach = function(overlap)
   mapper('n', 'gi', 'vim.lsp.buf.implementation()')
   mapper('n', 'gr', 'vim.lsp.buf.references()')
   mapper('n', '<F2>', 'vim.lsp.buf.rename()')
+  mapper('n', 'ü', 'vim.lsp.diagnostic.show_line_diagnostics()')
+  mapper('n', 'ö', 'vim.lsp.diagnostic.goto_next()')
 
   if overlap ~= nil  then
     mapper('n', '<leader>q', 'vim.lsp.buf.code_action()')
