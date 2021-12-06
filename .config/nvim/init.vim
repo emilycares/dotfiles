@@ -211,7 +211,7 @@ lua require('syntax')
 " format
 augroup FORMAT
   autocmd!
-  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue :PrettierAsync
+  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
 augroup END
 noremap <leader>f :Autoformat<CR>
 

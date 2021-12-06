@@ -121,6 +121,12 @@ lsp.sumneko_lua.setup({
     capabilities,
   })
 
+  lsp.svelte.setup({
+    on_attach = custom_attach,
+    flags = flags,
+    capabilities,
+  })
+
   lsp.vuels.setup({
     on_attach = custom_attach,
     flags = flags,
