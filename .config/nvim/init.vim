@@ -37,7 +37,9 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " IDE
-Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production'
+  \ }
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiel92/vim-autoformat'
 
@@ -188,13 +190,14 @@ inoremap . .<c-g>u
 nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " IDE
-lua require('lsp')
+lua require('lsp').setup()
 lua require('completion')
 lua require('debugging')
 
 augroup LSP
   autocmd!
   autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.diagnostic.setloclist({open = false, severity = vim.diagnostic.severity.ERROR})
+  autocmd! BufEnter *.java :lua require('lsp').jdtls()
 augroup END
 
 " Wrire
@@ -211,7 +214,7 @@ lua require('syntax')
 " format
 augroup FORMAT
   autocmd!
-  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
+  "autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
 augroup END
 noremap <leader>f :Autoformat<CR>
 
