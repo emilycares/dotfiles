@@ -1,7 +1,8 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+local home = os.getenv('HOME');
 
-require("luasnip/loaders/from_vscode").load({ paths = { "/home/michael/.vim/plugged/friendly-snippets" }});
+require("luasnip/loaders/from_vscode").load({ paths = { home .. "/.vim/plugged/friendly-snippets" }});
 
 cmp.setup({
   mapping = {

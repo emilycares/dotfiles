@@ -1,4 +1,5 @@
 local M = {}
+local home = os.getenv('HOME')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 --Enable (broadcasting) snippet capability for completion
@@ -35,9 +36,6 @@ end
 M.setup = function()
 
   local lsp = require('lspconfig')
-  local home = os.getenv('HOME')
-
-
 
   local servers = {
     'vimls',
@@ -106,7 +104,7 @@ end
 M.jdtls = function ()
   local config = {
     cmd = {
-      '/home/michael/devtools/jdk-17.0.1+12/bin/java',
+      home .. '/devtools/jdk-17.0.1+12/bin/java',
 
       '-Declipse.application=org.eclipse.jdt.ls.core.id1',
       '-Dosgi.bundles.defaultStartLevel=4',
@@ -118,8 +116,8 @@ M.jdtls = function ()
       '--add-opens', 'java.base/java.util=ALL-UNNAMED',
       '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-      '-jar', '/home/michael/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
-      '-configuration', '/home/michael/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux/',
+      '-jar', home .. '/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+      '-configuration', home .. '/home/michael/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux/',
       '-data', '/tmp/workspace/folder'
     },
 
