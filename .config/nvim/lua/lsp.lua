@@ -18,7 +18,9 @@ local flags = {
   debounce_text_changes = 150,
 }
 
-local custom_attach = function(java)
+local java = false;
+
+local custom_attach = function()
   mapper('n', 'gD', 'vim.lsp.buf.declaration()')
   mapper('n', '<leader>K', 'vim.lsp.buf.signature_help()')
   mapper('n', 'gr', 'vim.lsp.buf.references()')
@@ -58,7 +60,7 @@ M.setup = function()
 
   for _, server in ipairs(servers) do
     lsp[server].setup({
-      on_attach = custom_attach(false),
+      on_attach = custom_attach,
       flags,
       capabilities,
     });
@@ -102,6 +104,7 @@ end
 
 -- java
 M.jdtls = function ()
+  java = true;
   local config = {
     cmd = {
       home .. '/devtools/jdk-17.0.1+12/bin/java',
@@ -117,7 +120,7 @@ M.jdtls = function ()
       '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
       '-jar', home .. '/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
-      '-configuration', home .. '/home/michael/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux/',
+      '-configuration', home .. '/tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux/',
       '-data', '/tmp/workspace/folder'
     },
 
@@ -131,7 +134,7 @@ M.jdtls = function ()
     init_options = {
       bundles = {}
     },
-    on_attach = custom_attach(true),
+    on_attach = custom_attach,
     capabilities,
     flags
   }
