@@ -1,11 +1,15 @@
+local function fileLocation()
+  return vim.fn.expand("%");
+end
+
 require("lualine").setup(
     {
-        theme = "gruvbox",
+        theme = "tokyonight",
         options = {section_separators = "", component_separators = ""},
         sections = {
             lualine_a = {},
             lualine_b = {"branch"},
-            lualine_c = {"filename"},
+            lualine_c = {fileLocation},
             lualine_x = {},
             lualine_y = {},
             lualine_z = {}
@@ -13,8 +17,8 @@ require("lualine").setup(
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = {"filename"},
-            lualine_x = {"location"},
+            lualine_c = {fileLocation},
+            lualine_x = {},
             lualine_y = {},
             lualine_z = {}
         }

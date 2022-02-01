@@ -4,7 +4,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tami5/sql.nvim' " nvim-telescope/telescope-frecency.nvim
 Plug 'hrsh7th/cmp-nvim-lsp' " cmp
 Plug 'hrsh7th/cmp-buffer' " cmp
 Plug 'hrsh7th/cmp-path' " cmp
@@ -18,7 +17,6 @@ Plug 'mbbill/undotree'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'micmine/jumpwire.nvim'
 Plug 'ThePrimeagen/harpoon'
 
@@ -28,6 +26,7 @@ Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'shaunsingh/nord.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -178,7 +177,7 @@ lua require('syntax')
 " format
 augroup FORMAT
   autocmd!
-  "autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
+  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
 augroup END
 noremap <leader>f :Autoformat<CR>
 

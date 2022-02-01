@@ -37,12 +37,7 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 
 # nvim
 cp ~/.config/nvim/init.vim .config/nvim/
-cp ~/.config/nvim/lua/lsp.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/syntax.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/movement.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/statusline.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/completion.lua .config/nvim/lua/
-cp ~/.config/nvim/lua/debugging.lua .config/nvim/lua/
+cp -r ~/.config/nvim/lua .config/nvim/
 
 # other apps
 cp ~/.config/zathura/zathurarc .config/zathura/zathurarc

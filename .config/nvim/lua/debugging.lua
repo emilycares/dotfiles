@@ -1,4 +1,5 @@
 local M = {}
+local common = require("util.common")
 local dap = require("dap")
 local dap_ui = require("dapui")
 
@@ -22,16 +23,26 @@ dap.configurations.typescript = {
     }
 }
 
-vim.keymap.set("n", "<F5>", dap.continue)
-vim.keymap.set("n", "<F10>", dap.step_over)
-vim.keymap.set("n", "<F11>", dap.step_into)
-vim.keymap.set("n", "<F12>", dap.step_out)
-vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
-vim.keymap.set("n", "<leader>dlp", function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set("n", "<leader>dr", dap.repl.open)
-vim.keymap.set("n", "<leader>dl", dap.run_last)
-vim.keymap.set("n", "<leader>du", dap_ui.toggle)
-
+common.map("<F5>", dap.continue)
+common.map("<F10>", dap.step_over)
+common.map("<F11>", dap.step_into)
+common.map("<F12>", dap.step_out)
+common.map("<leader>db", dap.toggle_breakpoint)
+common.map(
+    "<leader>dB",
+    function()
+        dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+    end
+)
+common.map(
+    "<leader>dlp",
+    function()
+        dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+    end
+)
+common.map("<leader>dr", dap.repl.open)
+common.map("<leader>dl", dap.run_last)
+common.map("<leader>de", dap_ui.eval)
+common.map("<leader>du", dap_ui.toggle)
 
 return M

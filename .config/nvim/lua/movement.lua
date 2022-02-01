@@ -1,6 +1,9 @@
 local M = {}
 -- telescope
 local actions = require("telescope.actions")
+local theme = require("telescope.themes").get_ivy()
+local common = require("util.common")
+
 require("telescope").setup(
     {
         defaults = {
@@ -12,6 +15,7 @@ require("telescope").setup(
         },
         extensions = {
             fzf = {
+                fuzzy = true,
                 override_generic_sorter = false, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case" -- or "ignore_case" or "respect_case"
@@ -21,18 +25,57 @@ require("telescope").setup(
 )
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("frecency")
 local builtin = require("telescope.builtin")
-local theme = require("telescope.themes").get_ivy()
+require("util.telescope")
 
-vim.keymap.set("n", "<C-p>", function() builtin.find_files(theme) end)
-vim.keymap.set("n", "<leader>tq", function() builtin.quickfix(theme) end)
-vim.keymap.set("n", "<leader>tb", function() builtin.git_branches(theme) end)
-vim.keymap.set("n", "<leader><c-d>", function() builtin.lsp_document_symbols(theme) end)
-vim.keymap.set("n", "<leader><c-f>", function() builtin.live_grep(theme) end)
-vim.keymap.set("n", "<leader>b", function() builtin.buffers(theme) end)
-vim.keymap.set("n", "<leader>o", function() require("telescope").extensions.frecency.frecency(theme) end)
-vim.keymap.set("n", "<leader><c-b>", function() require("telescope").extensions.git_worktree.git_worktrees(theme) end)
+common.map(
+    "<C-p>",
+    function()
+        builtin.find_files(theme)
+    end
+)
+common.map(
+    "<leader>tq",
+    function()
+        builtin.quickfix(theme)
+    end
+)
+common.map(
+    "<leader>tb",
+    function()
+        builtin.git_branches(theme)
+    end
+)
+common.map(
+    "<leader><c-d>",
+    function()
+        builtin.lsp_document_symbols(theme)
+    end
+)
+common.map(
+    "<leader><c-f>",
+    function()
+        builtin.live_grep(theme)
+    end
+)
+common.map(
+    "<leader>b",
+    function()
+        builtin.buffers(theme)
+    end
+)
+common.map(
+    "<leader>o",
+    function()
+        require("telescope").extensions.frecency.frecency(theme)
+    end
+)
+common.map(
+    "<leader><c-b>",
+    function()
+        require("telescope").extensions.git_worktree.git_worktrees(theme)
+    end
+)
 
 -- jumpwire
 require("jumpwire").setup(
@@ -70,21 +113,61 @@ require("jumpwire").setup(
     }
 )
 local jumpwire = require("jumpwire")
-vim.keymap.set("n", "<M-t>", function() jumpwire.jump("test") end)
-vim.keymap.set("n", "<M-i>", function() jumpwire.jump("implementation") end)
-vim.keymap.set("n", "<M-m>", function() jumpwire.jump("markup") end)
-vim.keymap.set("n", "<M-s>", function() jumpwire.jump("style") end)
+common.map(
+    "<M-t>",
+    function()
+        jumpwire.jump("test")
+    end
+)
+common.map(
+    "<M-i>",
+    function()
+        jumpwire.jump("implementation")
+    end
+)
+common.map(
+    "<M-m>",
+    function()
+        jumpwire.jump("markup")
+    end
+)
+common.map(
+    "<M-s>",
+    function()
+        jumpwire.jump("style")
+    end
+)
 
 -- harpoon
 require("harpoon").setup()
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>a", harpoon_mark.add_file)
-vim.keymap.set("n", "<C-e>", harpoon_ui.toggle_quick_menu)
-vim.keymap.set("n", "<M-h>", function() harpoon_ui.nav_file(1) end)
-vim.keymap.set("n", "<M-j>", function() harpoon_ui.nav_file(2) end)
-vim.keymap.set("n", "<M-k>", function() harpoon_ui.nav_file(3) end)
-vim.keymap.set("n", "<M-l>", function() harpoon_ui.nav_file(4) end)
+common.map("<leader>a", harpoon_mark.add_file)
+common.map("<C-e>", harpoon_ui.toggle_quick_menu)
+common.map(
+    "<M-h>",
+    function()
+        harpoon_ui.nav_file(1)
+    end
+)
+common.map(
+    "<M-j>",
+    function()
+        harpoon_ui.nav_file(2)
+    end
+)
+common.map(
+    "<M-k>",
+    function()
+        harpoon_ui.nav_file(3)
+    end
+)
+common.map(
+    "<M-l>",
+    function()
+        harpoon_ui.nav_file(4)
+    end
+)
 
 M.switch_branch = function()
 end
