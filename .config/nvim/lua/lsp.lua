@@ -40,8 +40,8 @@ local custom_attach = function()
     common.mapb("<F2>", vim.lsp.buf.rename)
 
     -- diagnostic
-    common.mapb("ü", vim.lsp.diagnostic.show_line_diagnostics)
-    common.mapb("ö", vim.lsp.diagnostic.goto_next)
+    common.map("ü", vim.diagnostic.open_float)
+    common.map("ö", vim.diagnostic.goto_next)
     common.mapb("<leader>q", vim.lsp.buf.code_action)
 
     -- codelense

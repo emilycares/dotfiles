@@ -1,8 +1,5 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local home = os.getenv("HOME")
-
-require("luasnip/loaders/from_vscode").load({paths = {home .. "/.vim/plugged/friendly-snippets"}})
 
 cmp.setup(
     {
@@ -27,8 +24,9 @@ cmp.setup(
         sources = {
             {name = "nvim_lsp"},
             {name = "luasnip"},
-            {name = "buffer"},
-            {name = "path"}
+            {name = "rg"},
+            {name = "path"},
+            {name = "calc"}
         },
         snippet = {
             expand = function(args)
@@ -40,10 +38,10 @@ cmp.setup(
             format = lspkind.cmp_format {
                 with_text = true,
                 menu = {
-                    buffer = "[buf]",
-                    nvim_lsp = "[LSP]",
-                    path = "[path]",
-                    luasnip = "[snip]"
+                    rg = "",
+                    nvim_lsp = "",
+                    path = "",
+                    luasnip = ""
                 }
             }
         },

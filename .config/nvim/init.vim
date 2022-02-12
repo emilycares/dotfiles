@@ -4,9 +4,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'hrsh7th/cmp-nvim-lsp' " cmp
-Plug 'hrsh7th/cmp-buffer' " cmp
-Plug 'hrsh7th/cmp-path' " cmp
 Plug 'rktjmp/lush.nvim' " gruvbox
 
 " General
@@ -47,14 +44,20 @@ Plug 'chiel92/vim-autoformat'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim'
-Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim' " lsp status indecator
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp' " cmp
+Plug 'hrsh7th/cmp-path' " cmp
+Plug 'lukas-reineke/cmp-rg' " cmp
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'ericpubu/lsp_codelens_extensions.nvim' " plenary, nvim-dap
 
 " DAP
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+
+" Language specific
+Plug 'saecki/crates.nvim', { 'tag': 'v0.1.0' }
 
 " snipet
 Plug 'L3MON4D3/LuaSnip'
@@ -132,16 +135,6 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 " undotree
 nnoremap <F8> :UndotreeToggle<CR>
 
-" snipet
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-
-imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-
 " exit terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -161,10 +154,13 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 lua require('lsp').setup()
 lua require('completion')
 lua require('debugging')
+lua require('snippet')
+
+" specific
+lua require('specific.rust')
 
 augroup LSP
   autocmd!
-  autocmd! BufWrite,BufEnter *.ts,*.js,*.json,*.html,*.vue,*.java :lua vim.diagnostic.setloclist({open = false, severity = vim.diagnostic.severity.ERROR})
   autocmd! BufEnter *.java :lua require('lsp').jdtls()
 augroup END
 
@@ -177,7 +173,7 @@ lua require('syntax')
 " format
 augroup FORMAT
   autocmd!
-  autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
+  "autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
 augroup END
 noremap <leader>f :Autoformat<CR>
 

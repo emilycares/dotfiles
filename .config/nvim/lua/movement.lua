@@ -65,12 +65,6 @@ common.map(
     end
 )
 common.map(
-    "<leader>o",
-    function()
-        require("telescope").extensions.frecency.frecency(theme)
-    end
-)
-common.map(
     "<leader><c-b>",
     function()
         require("telescope").extensions.git_worktree.git_worktrees(theme)

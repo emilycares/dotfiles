@@ -23,7 +23,17 @@ dap.configurations.typescript = {
     }
 }
 
-common.map("<F5>", dap.continue)
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dap_ui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dap_ui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dap_ui.close()
+end
+
+common.map("<leader>dc", dap.continue)
 common.map("<F10>", dap.step_over)
 common.map("<F11>", dap.step_into)
 common.map("<F12>", dap.step_out)
