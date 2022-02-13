@@ -33,6 +33,7 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 
 " preview
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'smithbm2316/centerpad.nvim'
 
 " IDE
 Plug 'prettier/vim-prettier', {
@@ -180,6 +181,8 @@ noremap <leader>f :Autoformat<CR>
 " filetree
 lua require('nvim-tree').setup()
 noremap <C-b> :NvimTreeFindFileToggle<CR>
+
+lua vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 30 }<cr>", { silent = true, noremap = true })
 
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
