@@ -56,7 +56,8 @@ vim.keymap.set(
 )
 
 -- reload snippets
-vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/snippet.lua<CR>")
+vim.keymap.set("n", "<leader>se", "<cmd>edit ~/.config/nvim/lua/snippet.lua<CR>")
+vim.keymap.set("n", "<leader>sr", "<cmd>source ~/.config/nvim/lua/snippet.lua<CR>")
 
 require("luasnip/loaders/from_vscode").load({paths = {home .. "/.vim/plugged/friendly-snippets"}})
 
