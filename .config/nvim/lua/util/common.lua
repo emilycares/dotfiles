@@ -5,6 +5,7 @@ P = function (v)
   return v
 end
 
+-- reload current file
 vim.keymap.set("n", "<leader><leader>x", function ()
   vim.api.nvim_command("write")
   vim.api.nvim_command("source %")
