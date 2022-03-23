@@ -66,6 +66,7 @@ M.setup = function()
         "tsserver",
         "html",
         "cssls",
+        "cssmodules_ls",
         "svelte",
         "vuels",
         "angularls"

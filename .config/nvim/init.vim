@@ -85,7 +85,7 @@ set clipboard+=unnamedplus
 colorscheme tokyonight
 set background=dark
 syntax on
-set laststatus=2
+set laststatus=3
 set encoding=UTF-8
 set number
 set relativenumber
@@ -112,7 +112,7 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
-lua require('statusline')
+"lua require('statusline')
 
 " jump to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
