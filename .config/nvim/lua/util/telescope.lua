@@ -18,9 +18,9 @@ local colors = function(opts)
     ):find()
 end
 
-common.map(
-    "<leader>fn",
-    function()
-        colors()
-    end
-)
+--common.map(<leader>f
+    --"<leader>fn",
+    --function()
+        --colors()
+    --end
+--)

@@ -11,7 +11,8 @@ require("telescope").setup(
                 i = {
                     ["<C-q>"] = actions.send_to_qflist
                 }
-            }
+            },
+            file_ignore_patterns = { "package-lock.json", "Cargo.lock" }
         },
         extensions = {
             fzf = {
@@ -20,11 +21,15 @@ require("telescope").setup(
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case" -- or "ignore_case" or "respect_case"
             }
+            --["ui-select"] = {
+                --require("telescope.themes").get_dropdown {}
+            --}
         }
     }
 )
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("fzf")
+--require("telescope").load_extension("ui-select")
 local builtin = require("telescope.builtin")
 require("util.telescope")
 

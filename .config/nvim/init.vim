@@ -6,7 +6,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rktjmp/lush.nvim' " gruvbox
 
-" General
+" Ui
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mbbill/undotree'
 
@@ -20,15 +20,13 @@ Plug 'ThePrimeagen/harpoon'
 " theme
 Plug 'joshdick/onedark.vim'
 Plug 'pineapplegiant/spaceduck'
-Plug 'ayu-theme/ayu-vim'
+Plug 'Shatur/neovim-ayu'
 Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'shaunsingh/nord.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'sindrets/diffview.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
 " preview
@@ -44,26 +42,31 @@ Plug 'chiel92/vim-autoformat'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'onsails/lspkind-nvim'
-Plug 'j-hui/fidget.nvim' " lsp status indecator
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp' " cmp
-Plug 'hrsh7th/cmp-path' " cmp
-Plug 'lukas-reineke/cmp-rg' " cmp
+Plug 'j-hui/fidget.nvim'
+" lsp status indecator
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'hrsh7th/cmp-nvim-lsp' " cmp
+"Plug 'hrsh7th/cmp-path' " cmp
+"Plug 'lukas-reineke/cmp-rg' " cmp
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'ericpubu/lsp_codelens_extensions.nvim' " plenary, nvim-dap
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 " DAP
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
 " Language specific
-Plug 'saecki/crates.nvim', { 'tag': 'v0.1.0' }
+Plug 'saecki/crates.nvim'
+Plug 'simrat39/rust-tools.nvim'
 
 " snipet
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'saadparwaiz1/cmp_luasnip'
+"Plug 'saadparwaiz1/cmp_luasnip'
 
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -82,7 +85,8 @@ let mapleader=" "
 set clipboard+=unnamedplus
 
 " simple
-colorscheme tokyonight
+colorscheme ayu
+lua require('ayu').setup({ mirage = false, overrides = {}})
 set background=dark
 syntax on
 set laststatus=3
@@ -112,7 +116,7 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
-"lua require('statusline')
+lua require('statusline')
 
 " jump to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -153,30 +157,15 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " IDE
 lua require('lsp').setup()
-lua require('completion')
+au BufEnter *.* :COQnow -s
 lua require('debugging')
 lua require('snippet')
 
 " specific
 lua require('specific.rust')
 
-augroup LSP
-  autocmd!
-  autocmd! BufEnter *.java :lua require('lsp').jdtls()
-augroup END
-
-" Wrire
-set completeopt=menuone,noselect
-
 " syntax
 lua require('syntax')
-
-" format
-augroup FORMAT
-  autocmd!
-  "autocmd! BufWritePre *.ts,*.js,*.json,*.html,*.vue,*.svelte :PrettierAsync
-augroup END
-noremap <leader>f :Autoformat<CR>
 
 " filetree
 lua require('nvim-tree').setup()

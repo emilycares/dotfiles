@@ -23,6 +23,24 @@ dap.configurations.typescript = {
     }
 }
 
+dap.adapters.java = function(callback)
+  callback({
+    type = 'server';
+    host = '127.0.0.1';
+    port = 5005;
+  })
+end
+
+dap.configurations.java = {
+  {
+    type = 'java';
+    request = 'attach';
+    name = "Debug (Attach) - Remote";
+    hostName = "127.0.0.1";
+    port = 5005;
+  },
+}
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dap_ui.open()
 end

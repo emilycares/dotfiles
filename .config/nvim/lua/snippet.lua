@@ -55,6 +55,14 @@ vim.keymap.set(
     {silent = true}
 )
 
+vim.keymap.set(
+    "n",
+    "<leader>ec",
+    function()
+      ls.unlink_current();
+    end,
+    {silent = true}
+)
 -- reload snippets
 vim.keymap.set("n", "<leader>se", "<cmd>edit ~/.config/nvim/lua/snippet.lua<CR>")
 vim.keymap.set("n", "<leader>sr", "<cmd>source ~/.config/nvim/lua/snippet.lua<CR>")
@@ -82,9 +90,7 @@ local function firstToLowerCase(args)
     return firstChar .. rest
 end
 
-ls.snippets = {
-    rust = {
-        -- #[wasm_bindgen] pub fn greet(name: &str) { alert(&format!("Hello, {}!", name)); }
+ls.add_snippets("rust", {-- #[wasm_bindgen] pub fn greet(name: &str) { alert(&format!("Hello, {}!", name)); }
         s(
             "wfn",
             fmt(
@@ -132,6 +138,27 @@ ls.snippets = {
             )
         ),
         s(
+            "yewfn",
+            fmt(
+                [[
+                   #[function_component({})]
+                   pub fn {}() -> Html {{
+
+                     html! {{
+                       <>
+                         <p>The component {} works!</p>
+                       </>
+                     }}
+                   }}
+                ]],
+                {
+                  i(1),
+                  f(firstToLowerCase, 1),
+                  rep(1)
+                }
+            )
+        ),
+        s(
             "yewcom",
             fmt(
                 [[
@@ -168,6 +195,10 @@ ls.snippets = {
                 }
             )
         ),
+        s(
+            "str",
+            fmt([[String::from("{}")]], {i(1)})
+        ),
         -- #[tokio:test] async fn name() { unimplemented!(); }
         s(
             "atest",
@@ -182,7 +213,9 @@ ls.snippets = {
                 t(" }")
             }
         )
-    },
+      });
+
+ls.snippets = {
     java = {
         -- @Test public void should_Test() { assertEquals(true, true); }
         s(
