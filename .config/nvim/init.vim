@@ -45,19 +45,16 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'j-hui/fidget.nvim'
-" lsp status indecator
-"Plug 'hrsh7th/nvim-cmp'
-"Plug 'hrsh7th/cmp-nvim-lsp' " cmp
-"Plug 'hrsh7th/cmp-path' " cmp
-"Plug 'lukas-reineke/cmp-rg' " cmp
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'ericpubu/lsp_codelens_extensions.nvim' " plenary, nvim-dap
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'simrat39/rust-tools.nvim'
 
 " DAP
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
 
 " Language specific
 Plug 'saecki/crates.nvim'
@@ -67,6 +64,8 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 "Plug 'saadparwaiz1/cmp_luasnip'
+
+Plug 'aklt/plantuml-syntax'
 
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -160,9 +159,6 @@ lua require('lsp').setup()
 au BufEnter *.* :COQnow -s
 lua require('debugging')
 lua require('snippet')
-
-" specific
-lua require('specific.rust')
 
 " syntax
 lua require('syntax')

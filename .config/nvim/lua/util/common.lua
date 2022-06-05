@@ -11,12 +11,12 @@ vim.keymap.set("n", "<leader><leader>x", function ()
 end)
 
 M.map = function(map, fln)
-    local args = {silent = true}
+    local args = {noremap = true, silent = true}
     vim.keymap.set("n", map, fln, args)
 end
 
-M.mapb = function(map, fln)
-    local args = {buffer = 0, silent = true}
+M.mapb = function(map, fln, bufnr)
+    local args = {buffer = bufnr, noremap = true, silent = true}
     vim.keymap.set("n", map, fln, args)
 end
 

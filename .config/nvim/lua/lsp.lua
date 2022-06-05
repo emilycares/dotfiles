@@ -1,8 +1,10 @@
 local M = {}
 local common = require("util.common")
 local home = os.getenv("HOME")
-local coq = require "coq"
+local lsp = require("lspconfig")
+local coq = require("coq")
 
+require("specific.rust")
 require("fidget").setup(
 {
   text = {
@@ -13,16 +15,6 @@ require("fidget").setup(
 require("codelens_extensions").setup()
 
 local auto_group = vim.api.nvim_create_augroup("LSP", {clear = true})
-vim.api.nvim_create_autocmd(
-  "BufEnter",
-  {
-    callback = function()
-      jdtls()
-    end,
-    pattern = "*.java",
-    group = auto_group
-  }
-)
 
 --local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local capabilities = vim.lsp.protocol.make_client_capabilities();
@@ -42,30 +34,28 @@ local flags = {
   allow_incremental_sync = true
 }
 
-local custom_attach = function()
-  common.mapb("gD", vim.lsp.buf.declaration)
-  common.mapb("gd", vim.lsp.buf.definition)
-  common.mapb("gi", vim.lsp.buf.implementation)
-  common.mapb("<leader>K", vim.lsp.buf.signature_help)
-  common.mapb("gr", vim.lsp.buf.references)
+local on_attach = function(client, bufnr)
+  common.mapb("gD", vim.lsp.buf.declaration, bufnr)
+  common.mapb("gd", vim.lsp.buf.definition, bufnr)
+  common.mapb("gi", vim.lsp.buf.implementation, bufnr)
+  common.mapb("<leader>K", vim.lsp.buf.hover, bufnr)
+  common.mapb("gr", vim.lsp.buf.references, bufnr)
 
   -- modify
-  common.mapb("<leader>q", vim.lsp.buf.code_action)
-  common.mapb("<F2>", vim.lsp.buf.rename)
+  common.mapb("<leader>q", vim.lsp.buf.code_action, bufnr)
+  common.mapb("<F2>", vim.lsp.buf.rename, bufnr)
 
   -- diagnostic
-  common.map("ü", vim.diagnostic.open_float)
-  common.map("ö", vim.diagnostic.goto_next)
-  common.mapb("<leader>q", vim.lsp.buf.code_action)
+  common.map("ü", vim.diagnostic.open_float, bufnr)
+  common.map("ö", vim.diagnostic.goto_next, bufnr)
+  common.mapb("<leader>q", vim.lsp.buf.code_action, bufnr)
 
   -- codelense
-  common.mapb("<leader>xl", vim.lsp.codelens.refresh)
-  common.mapb("<leader>xr", vim.lsp.codelens.run)
+  common.mapb("<leader>xl", vim.lsp.codelens.refresh, bufnr)
+  common.mapb("<leader>xr", vim.lsp.codelens.run, bufnr)
 end
 
 M.setup = function()
-  local lsp = require("lspconfig")
-
   local servers = {
     "vimls",
     "rust_analyzer",
@@ -73,6 +63,7 @@ M.setup = function()
     "bashls",
     "intelephense",
     "pyright",
+    "gopls",
     -- configuration
     "jsonls",
     "yamlls",
@@ -90,12 +81,12 @@ M.setup = function()
   for _, server in ipairs(servers) do
     lsp[server].setup(
       {
-        on_attach = custom_attach,
+        on_attach = on_attach,
         flags,
         capabilities
       }
     );
-    lsp[server].setup(coq.lsp_ensure_capabilities());
+    --lsp[server].setup(coq.lsp_ensure_capabilities());
   end
 
   -- lua
@@ -104,8 +95,8 @@ M.setup = function()
   lsp.sumneko_lua.setup(
   {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    custom_attach = custom_attach,
-    flags = flags,
+    on_attach = on_attach,
+    flags,
     capabilities,
     settings = {
       Lua = {
@@ -221,7 +212,7 @@ function jdtls()
         contentProvider = {preferred = "fernflower"}
       }
     },
-    on_attach = custom_attach,
+    on_attach = on_attach,
     capabilities,
     flags,
     init_options = {

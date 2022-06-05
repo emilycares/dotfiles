@@ -3,7 +3,8 @@ local common = require("util.common")
 local dap = require("dap")
 local dap_ui = require("dapui")
 
-dap_ui.setup({})
+dap_ui.setup()
+require("nvim-dap-virtual-text").setup()
 
 dap.adapters.firefox = {
     type = "executable",
@@ -41,6 +42,43 @@ dap.configurations.java = {
   },
 }
 
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+  name = 'lldb'
+}
+dap.configurations.cpp = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    --cwd = '${workspaceFolder}',
+    cwd = '/home/michael/tmp/mockit/',
+    stopOnEntry = false,
+    args = {},
+
+    -- 💀
+    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+    --
+    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    --
+    -- Otherwise you might get the following error:
+    --
+    --    Error on launch: Failed to attach to the target process
+    --
+    -- But you should be aware of the implications:
+    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+    -- runInTerminal = false,
+  },
+}
+
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dap_ui.open()
 end
@@ -51,10 +89,10 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dap_ui.close()
 end
 
-common.map("<leader>dc", dap.continue)
-common.map("<F10>", dap.step_over)
-common.map("<F11>", dap.step_into)
-common.map("<F12>", dap.step_out)
+common.map("<F5>", dap.continue)
+common.map("<F4>", dap.step_over)
+common.map("<F3>", dap.step_into)
+common.map("<F2>", dap.step_out)
 common.map("<leader>db", dap.toggle_breakpoint)
 common.map(
     "<leader>dB",
