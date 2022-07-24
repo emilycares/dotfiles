@@ -492,6 +492,8 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
     },
+     { rule = { class = "gtk-test" },
+       properties = { screen = 2, tag = "1" } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },

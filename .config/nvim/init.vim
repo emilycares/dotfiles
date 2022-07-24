@@ -1,107 +1,11 @@
-call plug#begin('~/.vim/plugged')
-" lib
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
-Plug 'rktjmp/lush.nvim' " gruvbox
-
-" Ui
-Plug 'hoob3rt/lualine.nvim'
-Plug 'mbbill/undotree'
-
-" Movment
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'micmine/jumpwire.nvim'
-Plug 'ThePrimeagen/harpoon'
-
-" theme
-Plug 'joshdick/onedark.vim'
-Plug 'pineapplegiant/spaceduck'
-Plug 'Shatur/neovim-ayu'
-Plug 'gruvbox-community/gruvbox'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'shaunsingh/nord.nvim'
-
-" git
-Plug 'tpope/vim-fugitive'
-Plug 'ThePrimeagen/git-worktree.nvim'
-
-" preview
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'smithbm2316/centerpad.nvim'
-
-" IDE
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install --frozen-lockfile --production'
-      \ }
-Plug 'scrooloose/nerdcommenter'
-Plug 'chiel92/vim-autoformat'
-
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'onsails/lspkind-nvim'
-Plug 'j-hui/fidget.nvim'
-Plug 'mfussenegger/nvim-jdtls'
-Plug 'ericpubu/lsp_codelens_extensions.nvim' " plenary, nvim-dap
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'simrat39/rust-tools.nvim'
-
-" DAP
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'theHamsta/nvim-dap-virtual-text'
-
-" Language specific
-Plug 'saecki/crates.nvim'
-Plug 'simrat39/rust-tools.nvim'
-
-" snipet
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-"Plug 'saadparwaiz1/cmp_luasnip'
-
-Plug 'aklt/plantuml-syntax'
-
-" syntax
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'godlygeek/tabular'
-Plug 'editorconfig/editorconfig-vim'
-
-" clean buffers
-Plug 'Asheq/close-buffers.vim'
-
-call plug#end()
-
-" leader
-let mapleader=" "
+lua require('micmine.plugins')
 
 " system clipboard
 set clipboard+=unnamedplus
 
 " simple
-colorscheme ayu
-lua require('ayu').setup({ mirage = false, overrides = {}})
-set background=dark
-syntax on
-set laststatus=3
-set encoding=UTF-8
-set number
-set relativenumber
-set tabpagemax=15
-set mouse=a
-set scrolloff=8
-set hidden
-set cursorline
-set updatetime=50
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
+lua require('micmine.color')
+lua require('micmine.set')
 
 " theme
 " truecolor
@@ -109,13 +13,12 @@ if (has("termguicolors"))
   set termguicolors
 endif
 " color preview
-lua require('colorizer').setup()
 " gruvbox lsp error
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
-lua require('statusline')
+lua require('micmine.statusline')
 
 " jump to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -124,7 +27,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 noremap <leader>r :%s//gI<Left><Left><Left>
 
 " movement
-lua require('movement')
+lua require('micmine.movement')
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
@@ -155,20 +58,16 @@ inoremap . .<c-g>u
 nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " IDE
-lua require('lsp').setup()
+lua require('micmine.lsp').setup()
 au BufEnter *.* :COQnow -s
-lua require('debugging')
-lua require('snippet')
+lua require('micmine.debugging')
+lua require('micmine.snippet')
 
 " syntax
-lua require('syntax')
+lua require('micmine.syntax')
 
 " filetree
 lua require('nvim-tree').setup()
 noremap <C-b> :NvimTreeFindFileToggle<CR>
 
 lua vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 30 }<cr>", { silent = true, noremap = true })
-
-let g:netrw_browse_split = 0
-let g:netrw_banner = 0
-let g:netrw_winsize = 60

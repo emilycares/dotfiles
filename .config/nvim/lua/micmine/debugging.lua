@@ -1,5 +1,5 @@
 local M = {}
-local common = require("util.common")
+local common = require("micmine.util.common")
 local dap = require("dap")
 local dap_ui = require("dapui")
 

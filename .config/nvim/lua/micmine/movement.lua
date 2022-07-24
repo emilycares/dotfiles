@@ -2,7 +2,7 @@ local M = {}
 -- telescope
 local actions = require("telescope.actions")
 local theme = require("telescope.themes").get_ivy()
-local common = require("util.common")
+local common = require("micmine.util.common")
 
 require("telescope").setup(
     {
@@ -31,7 +31,7 @@ require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("fzf")
 --require("telescope").load_extension("ui-select")
 local builtin = require("telescope.builtin")
-require("util.telescope")
+require("micmine.util.telescope")
 
 common.map(
     "<C-p>",

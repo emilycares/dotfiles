@@ -1,10 +1,10 @@
 local M = {}
-local common = require("util.common")
+local common = require("micmine.util.common")
 local home = os.getenv("HOME")
 local lsp = require("lspconfig")
 local coq = require("coq")
 
-require("specific.rust")
+require("micmine.specific.rust")
 require("fidget").setup(
 {
   text = {
