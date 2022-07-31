@@ -10,7 +10,7 @@ vim.opt.cursorline = true
 vim.opt.updatetime = 50
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = '~/.vim/undodir'
+vim.opt.undodir = vim.fs.normalize('~/.vim/undodir')
 vim.opt.undofile = true
 
 vim.g.mapleader = ' '

@@ -29,6 +29,8 @@ noremap <leader>r :%s//gI<Left><Left><Left>
 " movement
 lua require('micmine.movement')
 
+lua require('micmine.keymaps')
+
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
 nnoremap <C-j> :cnext<CR>zzzv

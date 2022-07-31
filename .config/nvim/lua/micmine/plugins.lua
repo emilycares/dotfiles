@@ -1,7 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-
   -- lib
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -12,6 +11,7 @@ return require('packer').startup(function()
   -- Ui
   use 'hoob3rt/lualine.nvim'
   use 'mbbill/undotree'
+  use 'kdheepak/lazygit.nvim'
 
   -- Movment
   use 'kyazdani42/nvim-tree.lua'
