@@ -1,9 +1,9 @@
 local common = require("micmine.util.common")
-local bacon = require("micmine.util.bacon")
+local error_handeling = require("micmine.util.error_handeling")
 
 common.map(
   "ä",
   function()
-    bacon.set_bacon_qfl()
+    error_handeling.set_qfl()
   end
 )
