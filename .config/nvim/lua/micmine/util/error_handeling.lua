@@ -1,4 +1,3 @@
-local common = require("micmine.util.common")
 local M = {}
 local get_file_content = function (path)
   local f = io.open(path, "rb")
@@ -108,8 +107,6 @@ end
 local set_logana_qfl = function (data)
   local items = get_logana_items(data)
 
-  P(items)
-
   vim.fn.setqflist({}, ' ', {items = items})
 
   toggle_list(items)
@@ -126,6 +123,8 @@ end
 M.set_qfl = function ()
   if file_exists(".bacon-locations") then
     set_bacon_qfl()
+
+    return
   end
 
   if file_exists(".logana-report") then
@@ -145,12 +144,6 @@ M.set_qfl = function ()
           local buf = vim.api.nvim_create_buf(true, true)
           vim.api.nvim_win_set_buf(win, buf)
           vim.api.nvim_buf_set_lines(buf, -1, -1, false, data);
-          -- convert data to string
-          local string_data = "";
-          for _, v in pairs(data) do
-            string_data = string_data .. v .. "\n";
-          end
-          -- call logana
         end
       end
     })
@@ -158,22 +151,22 @@ M.set_qfl = function ()
 end
 end
 
-common.map(
-"<leader>im",
-function ()
-  local file_data = vim.api.nvim_buf_get_lines(0, 0, -1, false);
-          local string_data = "";
-          for _, v in pairs(file_data) do
-            string_data = string_data .. v .. "\n";
-          end
-  vim.fn.jobstart({vim.fs.normalize("~/Documents/rust/logana/target/debug/logana")},
-  { stdout_buffered = true, stdin = string_data,
-  on_stdout = function (_, logana_data)
-    if logana_data then
-      set_logana_qfl(logana_data:gmatch("([^\r\n]*)[\r\n]?"))
-    end
-  end
-})
-end)
+--common.map(
+--"<leader>im",
+--function ()
+  --local file_data = vim.api.nvim_buf_get_lines(0, 0, -1, false);
+  --local string_data = "";
+  --for _, v in pairs(file_data) do
+    --string_data = string_data .. v .. "\n";
+  --end
+  --vim.fn.jobstart({vim.fs.normalize("~/Documents/rust/logana/target/debug/logana")},
+  --{ stdout_buffered = true, stdin = string_data,
+  --on_stdout = function (_, logana_data)
+    --if logana_data then
+      --set_logana_qfl(logana_data:gmatch("([^\r\n]*)[\r\n]?"))
+    --end
+  --end
+--})
+--end)
 
 return M

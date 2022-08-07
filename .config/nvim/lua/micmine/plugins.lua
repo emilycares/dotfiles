@@ -27,6 +27,7 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
   use 'folke/tokyonight.nvim'
   use 'shaunsingh/nord.nvim'
+  use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
 
   -- git
   use 'tpope/vim-fugitive'
