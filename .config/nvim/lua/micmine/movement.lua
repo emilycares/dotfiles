@@ -12,7 +12,7 @@ require("telescope").setup(
                     ["<C-q>"] = actions.send_to_qflist
                 }
             },
-            file_ignore_patterns = { "package-lock.json", "Cargo.lock" }
+            file_ignore_patterns = { "package-lock.json", "Cargo.lock", "vendor" }
         },
         extensions = {
             fzf = {

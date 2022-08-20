@@ -1,6 +1,8 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+
   -- lib
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
