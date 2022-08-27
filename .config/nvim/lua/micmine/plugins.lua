@@ -72,6 +72,7 @@ return require('packer').startup(function()
 
   -- syntax
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/playground'
   use 'godlygeek/tabular'
   use 'editorconfig/editorconfig-vim'
 

@@ -38,6 +38,7 @@ cp ~/.config/glava/change_glava.sh .config/glava/
 # nvim
 cp ~/.config/nvim/init.vim .config/nvim/
 cp -r ~/.config/nvim/lua .config/nvim/
+cp -r ~/.config/nvim/queries .config/nvim/
 
 # other apps
 cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
