@@ -18,9 +18,8 @@ require("codelens_extensions").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities();
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-vim.lsp.with(
-vim.lsp.handlers["textDocument/publishDiagnostics"],
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.handlers["textDocument/publishDiagnostics"],
   {
     underline = true,
     virtual_text = false
@@ -78,11 +77,11 @@ M.setup = function()
 
   for _, server in ipairs(servers) do
     lsp[server].setup(
-      {
-        on_attach = on_attach,
-        flags,
-        capabilities
-      }
+    {
+      on_attach = on_attach,
+      flags,
+      capabilities
+    }
     );
     --lsp[server].setup(coq.lsp_ensure_capabilities());
   end
@@ -125,7 +124,7 @@ M.setup = function()
   )
 end
 
-require("micmine.specific.java")
+require("micmine.specific.java").setup(on_attach, capabilities, flags, home)
 
 
 return M
