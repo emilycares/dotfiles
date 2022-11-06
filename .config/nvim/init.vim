@@ -76,6 +76,9 @@ lua require('micmine.syntax')
 " cooperation
 lua require('micmine.cooperation')
 
+" split color
+"lua require('colorful-winsep').setup({})
+
 " filetree
 lua require('nvim-tree').setup()
 noremap <C-b> :NvimTreeFindFileToggle<CR>

@@ -85,10 +85,31 @@ M.setup = function(on_attach, capabilities, flags, home)
       settings = {
         java = {
           signatureHelp = {enabled = true},
-          contentProvider = {preferred = "fernflower"}
+          contentProvider = {preferred = "fernflower"},
+          completion = {
+            favoriteStaticMembers = {
+              "org.hamcrest.MatcherAssert.assertThat",
+              "org.hamcrest.Matchers.*",
+              "org.hamcrest.CoreMatchers.*",
+              "org.junit.jupiter.api.Assertions.*",
+              "java.util.Objects.requireNonNull",
+              "java.util.Objects.requireNonNullElse",
+              "org.mockito.Mockito.*"
+            },
+            filteredTypes = {
+              "com.sun.*",
+              "io.micrometer.shaded.*",
+              "java.awt.*",
+              "jdk.*",
+              "sun.*",
+            },
+          }
         }
       },
       on_attach = on_attach,
+      handlers = {
+        ['language/status'] = function() end
+      },
       capabilities,
       flags,
       init_options = {

@@ -1,4 +1,4 @@
-vim.opt.laststatus =3
+vim.opt.laststatus = 3
 vim.opt.encoding = 'UTF-8'
 vim.opt.number = true
 vim.opt.relativenumber = true

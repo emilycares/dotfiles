@@ -1,4 +1,16 @@
-vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
@@ -8,12 +20,12 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'ryanoasis/vim-devicons'
-  use 'rktjmp/lush.nvim' -- gruvbox
 
   -- Ui
   use 'hoob3rt/lualine.nvim'
   use 'mbbill/undotree'
   use 'kdheepak/lazygit.nvim'
+  use 'nvim-zh/colorful-winsep.nvim'
 
   -- Movment
   use 'kyazdani42/nvim-tree.lua'
@@ -26,12 +38,16 @@ return require('packer').startup(function()
   use 'joshdick/onedark.vim'
   use 'pineapplegiant/spaceduck'
   use 'Shatur/neovim-ayu'
-  use 'gruvbox-community/gruvbox'
+  use {
+    'gruvbox-community/gruvbox',
+    requires = {'rktjmp/lush.nvim'}
+  }
   use 'folke/tokyonight.nvim'
   use 'shaunsingh/nord.nvim'
   use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
   --use {'shaunsingh/oxocarbon.nvim', branch = 'fennel'}
   use 'rebelot/kanagawa.nvim'
+  use 'bratpeki/truedark-vim'
 
   -- git
   use 'tpope/vim-fugitive'
@@ -85,4 +101,9 @@ return require('packer').startup(function()
 
   -- cooperation
   use {'krivahtoo/silicon.nvim', run = './install.sh'}
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

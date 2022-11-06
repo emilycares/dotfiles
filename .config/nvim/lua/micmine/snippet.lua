@@ -64,8 +64,8 @@ vim.keymap.set(
     {silent = true}
 )
 -- reload snippets
-vim.keymap.set("n", "<leader>se", "<cmd>edit ~/.config/nvim/lua/snippet.lua<CR>")
-vim.keymap.set("n", "<leader>sr", "<cmd>source ~/.config/nvim/lua/snippet.lua<CR>")
+vim.keymap.set("n", "<leader>se", "<cmd>edit ~/.config/nvim/lua/micmine/snippet.lua<CR>")
+vim.keymap.set("n", "<leader>sr", "<cmd>source ~/.config/nvim/lua/micmine/snippet.lua<CR>")
 
 require("luasnip.loaders.from_vscode").lazy_load({paths = {home .. "/.vim/plugged/friendly-snippets"}})
 
@@ -126,7 +126,7 @@ ls.add_snippets("rust", {-- #[wasm_bindgen] pub fn greet(name: &str) { alert(&fo
             "test",
             fmt(
                 [[
-                  #[tokio::test]
+                  #[test]
                   async fn {}() {{
                     {}
                   }}
@@ -134,6 +134,20 @@ ls.add_snippets("rust", {-- #[wasm_bindgen] pub fn greet(name: &str) { alert(&fo
                 {
                     i(1),
                     i(2, "unimplemented!();")
+                }
+            )
+        ),
+        s(
+            "testmod",
+            fmt(
+                [[
+                  #[cfg(test)]
+                  mod tests {{
+                    {}
+                  }}
+                ]],
+                {
+                    i(1),
                 }
             )
         ),
@@ -146,7 +160,7 @@ ls.add_snippets("rust", {-- #[wasm_bindgen] pub fn greet(name: &str) { alert(&fo
 
                      html! {{
                        <>
-                         <p>The component {} works!</p>
+                         <p>{{ "The component {} works!" }}</p>
                        </>
                      }}
                    }}
