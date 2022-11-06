@@ -41,6 +41,11 @@ nnoremap <leader>j :lnext<CR>zzzv
 noremap <leader><F6>g :setlocal spell spelllang=de_ch<CR>
 noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 
+" paste but keep same thing copyed
+lua << END
+vim.keymap.set("x", "<M-p>", "\"_dP", { noremap = true })
+END
+
 " undotree
 nnoremap <F8> :UndotreeToggle<CR>
 
@@ -61,12 +66,15 @@ nnoremap <leader>dcb :Bdelete hidden<CR>
 
 " IDE
 lua require('micmine.lsp').setup()
-au BufEnter *.* :COQnow -s
+lua require('micmine.completion')
 lua require('micmine.debugging')
 lua require('micmine.snippet')
 
 " syntax
 lua require('micmine.syntax')
+
+" cooperation
+lua require('micmine.cooperation')
 
 " filetree
 lua require('nvim-tree').setup()

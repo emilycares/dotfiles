@@ -30,6 +30,8 @@ return require('packer').startup(function()
   use 'folke/tokyonight.nvim'
   use 'shaunsingh/nord.nvim'
   use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
+  --use {'shaunsingh/oxocarbon.nvim', branch = 'fennel'}
+  use 'rebelot/kanagawa.nvim'
 
   -- git
   use 'tpope/vim-fugitive'
@@ -51,8 +53,10 @@ return require('packer').startup(function()
   use 'j-hui/fidget.nvim'
   use 'mfussenegger/nvim-jdtls'
   use 'ericpubu/lsp_codelens_extensions.nvim' -- plenary, nvim-dap
-  use {'ms-jpq/coq_nvim', branch =  'coq'}
-  use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-path'
+  use 'lukas-reineke/cmp-rg'
 
   -- DAP
   use 'mfussenegger/nvim-dap'
@@ -66,7 +70,7 @@ return require('packer').startup(function()
   -- snipet
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
-  --use 'saadparwaiz1/cmp_luasnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   use 'aklt/plantuml-syntax'
 
@@ -78,4 +82,7 @@ return require('packer').startup(function()
 
   -- clean buffers
   use 'Asheq/close-buffers.vim'
+
+  -- cooperation
+  use {'krivahtoo/silicon.nvim', run = './install.sh'}
 end)

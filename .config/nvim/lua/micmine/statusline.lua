@@ -4,7 +4,7 @@ end
 
 require("lualine").setup(
     {
-        theme = "ayu",
+        theme = "oxocarbon",
         options = {section_separators = "", component_separators = ""},
         sections = {
             lualine_a = {},

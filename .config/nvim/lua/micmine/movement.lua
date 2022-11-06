@@ -3,6 +3,7 @@ local M = {}
 local actions = require("telescope.actions")
 local theme = require("telescope.themes").get_ivy()
 local common = require("micmine.util.common")
+local error_handeling = require("micmine.util.error_handeling")
 
 require("telescope").setup(
     {
@@ -41,6 +42,13 @@ common.map(
 )
 common.map(
     "<leader>tq",
+    function()
+        error_handeling.set_qfl()
+        builtin.quickfix(theme)
+    end
+)
+common.map(
+    "<leader>tl",
     function()
         builtin.quickfix(theme)
     end

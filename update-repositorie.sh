@@ -14,7 +14,6 @@ mkdir -p .config/dunst
 mkdir -p .config/glava
 mkdir -p .config/nvim/lua
 mkdir -p .config/zathura
-mkdir -p .config/coc/extensions/node_modules/redhat.java
 
 # desktop
 cp ~/.config/i3/config .config/i3/config
@@ -44,3 +43,4 @@ cp -r ~/.config/nvim/queries .config/nvim/
 cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
 cp ~/.ideavimrc .ideavimrc
 cp ~/.tmux.conf .tmux.conf
+cp ~/.Xresources .Xresources

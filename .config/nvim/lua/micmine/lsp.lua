@@ -2,7 +2,6 @@ local M = {}
 local common = require("micmine.util.common")
 local home = os.getenv("HOME")
 local lsp = require("lspconfig")
-local coq = require("coq")
 
 require("micmine.specific.rust")
 require("fidget").setup(
@@ -19,11 +18,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities();
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.handlers["textDocument/publishDiagnostics"],
-  {
-    underline = true,
-    virtual_text = false
-  }
+vim.lsp.handlers["textDocument/publishDiagnostics"],
+{
+  underline = false,
+  virtual_text = false
+}
 )
 
 local flags = {
@@ -61,9 +60,11 @@ M.setup = function()
     "intelephense",
     "pyright",
     "gopls",
+    "dartls",
     -- configuration
     "jsonls",
     "yamlls",
+    "rnix",
     -- web
     "tsserver",
     "html",
@@ -80,7 +81,13 @@ M.setup = function()
     {
       on_attach = on_attach,
       flags,
-      capabilities
+      capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = { command = "clippy" },
+          procMacro = { enable = true },
+        }
+      }
     }
     );
     --lsp[server].setup(coq.lsp_ensure_capabilities());
