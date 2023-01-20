@@ -1,12 +1,11 @@
-vim.opt.background = 'dark'
+vim.opt.background = "dark"
 
-local term = os.getenv("TERM");
+local term = os.getenv("TERM")
 
-if term == 'linux' then
+if term == "linux" then
   vim.cmd("colorscheme truedark")
-
 else
-  vim.cmd("colorscheme oxocarbon")
+  vim.opt.termguicolors = true
 
-  require('colorizer').setup()
+  require("colorizer").setup()
 end

@@ -15,6 +15,9 @@ noremap <leader>cu :action CommentByBlockComment<cr>
 " replace
 noremap <leader>r :%s//gI<Left><Left><Left>
 
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
 nnoremap <C-j> :cnext<CR>zzzv

@@ -1,11 +1,12 @@
 lua require('micmine.plugins')
 
+lua require('micmine.set')
+
 " system clipboard
 set clipboard+=unnamedplus
 
 " simple
-lua require('micmine.color')
-lua require('micmine.set')
+"lua require('micmine.color')
 
 " theme
 " truecolor
@@ -18,7 +19,6 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
-lua require('micmine.statusline')
 
 " jump to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -27,9 +27,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 noremap <leader>r :%s//gI<Left><Left><Left>
 
 " movement
-lua require('micmine.movement')
-
-lua require('micmine.keymaps')
+"lua require('micmine.movement')
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
@@ -50,7 +48,7 @@ END
 nnoremap <F8> :UndotreeToggle<CR>
 
 " exit terminal
-tnoremap <Esc> <C-\><C-n>
+tnoremap <F1> <C-\><C-n>
 
 " remaps
 " center search
@@ -63,24 +61,5 @@ inoremap . .<c-g>u
 
 " clean buffers
 nnoremap <leader>dcb :Bdelete hidden<CR>
-
-" IDE
-lua require('micmine.lsp').setup()
-lua require('micmine.completion')
-lua require('micmine.debugging')
-lua require('micmine.snippet')
-
-" syntax
-lua require('micmine.syntax')
-
-" cooperation
-lua require('micmine.cooperation')
-
-" split color
-"lua require('colorful-winsep').setup({})
-
-" filetree
-lua require('nvim-tree').setup()
-noremap <C-b> :NvimTreeFindFileToggle<CR>
 
 lua vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 30 }<cr>", { silent = true, noremap = true })
