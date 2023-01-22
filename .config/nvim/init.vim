@@ -1,12 +1,8 @@
 lua require('micmine.plugins')
-
 lua require('micmine.set')
 
 " system clipboard
 set clipboard+=unnamedplus
-
-" simple
-"lua require('micmine.color')
 
 " theme
 " truecolor
@@ -25,9 +21,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " replace
 noremap <leader>r :%s//gI<Left><Left><Left>
-
-" movement
-"lua require('micmine.movement')
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv

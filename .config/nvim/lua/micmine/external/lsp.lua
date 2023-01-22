@@ -41,11 +41,10 @@ return {
       lsp.preset("recommended")
 
       lsp.ensure_installed({
-        "tsserver",
         "eslint",
         "sumneko_lua",
         "rust_analyzer",
-	"jdtls"
+        "jdtls",
       })
 
       local cmp = require("cmp")

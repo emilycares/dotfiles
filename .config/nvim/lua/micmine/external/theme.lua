@@ -3,8 +3,8 @@ return {
   --"pineapplegiant/spaceduck",
   --"Shatur/neovim-ayu",
   --{
-    --"gruvbox-community/gruvbox",
-    --dependencies = { "rktjmp/lush.nvim" },
+  --"gruvbox-community/gruvbox",
+  --dependencies = { "rktjmp/lush.nvim" },
   --},
   --"folke/tokyonight.nvim",
   --"shaunsingh/nord.nvim",

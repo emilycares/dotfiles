@@ -19,7 +19,6 @@ require("lazy").setup({
   defaults = { lazy = true },
   -- lib
   "nvim-lua/popup.nvim",
-  "nvim-lua/plenary.nvim",
   "jose-elias-alvarez/null-ls.nvim",
 
   -- Ui
@@ -28,7 +27,6 @@ require("lazy").setup({
   "nvim-zh/colorful-winsep.nvim",
 
   -- git
-  "tpope/vim-fugitive",
   "ThePrimeagen/git-worktree.nvim",
 
   -- preview
@@ -88,5 +86,5 @@ require("lazy").setup({
   { "krivahtoo/silicon.nvim", event = "VeryLazy", build = "./install.sh" },
   { "shortcuts/no-neck-pain.nvim", event = "VeryLazy", tag = "*" },
 
-  { "mbbill/undotree", lazy = false }
+  { "mbbill/undotree", lazy = false },
 })

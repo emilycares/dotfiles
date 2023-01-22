@@ -5,31 +5,31 @@ return {
     {
       "<C-e>",
       function()
-	require("harpoon.ui").toggle_quick_menu()
+        require("harpoon.ui").toggle_quick_menu()
       end,
     },
     {
       "<M-h>",
       function()
-	  require("harpoon.ui").nav_file(1)
+        require("harpoon.ui").nav_file(1)
       end,
     },
     {
       "<M-j>",
       function()
-	  require("harpoon.ui").nav_file(2)
+        require("harpoon.ui").nav_file(2)
       end,
     },
     {
       "<M-k>",
       function()
-	  require("harpoon.ui").nav_file(3)
+        require("harpoon.ui").nav_file(3)
       end,
     },
     {
       "<M-l>",
       function()
-	  require("harpoon.ui").nav_file(4)
+        require("harpoon.ui").nav_file(4)
       end,
     },
   },

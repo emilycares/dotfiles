@@ -7,7 +7,7 @@ return {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
-    { "mbbill/undotree", lazy = false }
+    { "mbbill/undotree", lazy = false },
   },
   keys = {
     {
