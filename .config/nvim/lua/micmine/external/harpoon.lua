@@ -9,6 +9,12 @@ return {
       end,
     },
     {
+      "<leader>a",
+      function()
+        require("harpoon.mark").add_file()
+      end,
+    },
+    {
       "<M-h>",
       function()
         require("harpoon.ui").nav_file(1)
