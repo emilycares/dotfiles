@@ -17,7 +17,7 @@ if exists('+termguicolors')
 endif
 
 " jump to last line
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " replace
 noremap <leader>r :%s//gI<Left><Left><Left>
