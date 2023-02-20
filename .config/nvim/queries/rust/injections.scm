@@ -1,4 +1,5 @@
-; Format sql in sqlx::query! (
+; Format sql in sqlx::query!
+(
  (macro_invocation
   (scoped_identifier
      path: (identifier) @_path

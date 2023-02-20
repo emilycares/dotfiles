@@ -58,7 +58,7 @@ ls.add_snippets("rust", { -- #[wasm_bindgen] pub fn greet(name: &str) { alert(&f
     fmt(
       [[
                   #[test]
-                  async fn {}() {{
+                  fn {}() {{
                     {}
                   }}
                 ]],

@@ -2,7 +2,6 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
@@ -48,7 +47,6 @@ return {
     },
   },
   config = function()
-    require("nvim-treesitter.install").compilers = { "zig" }
     require("telescope").load_extension("fzf")
     require("telescope").setup({
       defaults = {
