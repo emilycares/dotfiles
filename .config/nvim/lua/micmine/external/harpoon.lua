@@ -15,25 +15,25 @@ return {
       end,
     },
     {
-      "<M-h>",
+      "<M-1>",
       function()
         require("harpoon.ui").nav_file(1)
       end,
     },
     {
-      "<M-j>",
+      "<M-2>",
       function()
         require("harpoon.ui").nav_file(2)
       end,
     },
     {
-      "<M-k>",
+      "<M-3>",
       function()
         require("harpoon.ui").nav_file(3)
       end,
     },
     {
-      "<M-l>",
+      "<M-4>",
       function()
         require("harpoon.ui").nav_file(4)
       end,

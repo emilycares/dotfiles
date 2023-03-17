@@ -123,4 +123,11 @@ return {
       require("rust-tools").inlay_hints.enable()
     end,
   },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+    config = function()
+      require("trouble").setup({})
+    end
+  }
 }

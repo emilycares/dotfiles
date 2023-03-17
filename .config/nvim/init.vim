@@ -17,10 +17,7 @@ if exists('+termguicolors')
 endif
 
 " jump to last line
-"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" replace
-noremap <leader>r :%s//gI<Left><Left><Left>
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " quickfix map - and center
 nnoremap <C-k> :cprevious<CR>zzzv
@@ -35,6 +32,10 @@ noremap <leader><F6>e :setlocal spell spelllang=en_us<CR>
 " paste but keep same thing copyed
 lua << END
 vim.keymap.set("x", "<M-p>", "\"_dP", { noremap = true })
+
+-- replace
+vim.keymap.set("n", "<leader>r", ":%s//gI<Left><Left><Left>", { noremap = true })
+vim.keymap.set("v", "<leader>r", ":s//g<Left><Left>", { noremap = true })
 END
 
 " undotree
