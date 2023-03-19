@@ -14,6 +14,7 @@ mkdir -p .config/dunst
 mkdir -p .config/glava
 mkdir -p .config/nvim/lua
 mkdir -p .config/zathura
+mkdir -p .cargo
 
 # desktop
 cp ~/.config/i3/config .config/i3/config
@@ -44,3 +45,4 @@ cp ~/.config/zathura/zathurarc .config/zathura/zathurarc
 cp ~/.ideavimrc .ideavimrc
 cp ~/.tmux.conf .tmux.conf
 cp ~/.Xresources .Xresources
+cp ~/.cargo/config.toml .cargo/
