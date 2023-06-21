@@ -17,29 +17,7 @@ return {
   { "tpope/vim-fugitive", cmd = { "Git", "Gvdiffsplit" } },
 
   -- syntax
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.install").compilers = { "zig" }
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of language_version
-        highlight = {
-          enable = true,
-        },
-      })
-    end,
-  },
-  --{
-    --"nvim-treesitter/playground",
-    --cmd = "TSPlaygroundToggle",
-    --dependencies = {
-      --"nvim-treesitter/nvim-treesitter",
-    --},
-  --},
   { "godlygeek/tabular", cmd = "Tabularize" },
-  { "editorconfig/editorconfig-vim", event = "InsertEnter" },
   { "scrooloose/nerdcommenter", event = "InsertEnter" },
 
   -- clean buffers

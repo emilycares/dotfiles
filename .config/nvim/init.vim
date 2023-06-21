@@ -38,10 +38,7 @@ vim.keymap.set("n", "<leader>r", ":%s//gI<Left><Left><Left>", { noremap = true }
 vim.keymap.set("v", "<leader>r", ":s//g<Left><Left>", { noremap = true })
 END
 
-" undotree
-nnoremap <F8> :UndotreeToggle<CR>
-
-" exit terminal
+" terminal
 tnoremap <F1> <C-\><C-n>
 
 " remaps

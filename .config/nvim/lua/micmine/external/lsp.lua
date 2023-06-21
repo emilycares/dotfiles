@@ -14,6 +14,29 @@ return {
             "nvim-lua/plenary.nvim",
           },
         },
+        {
+          "jose-elias-alvarez/null-ls.nvim",
+          dependencies = {
+            {
+              "ThePrimeagen/refactoring.nvim",
+              config = function()
+                require("refactoring").setup({})
+              end,
+            },
+          },
+          config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+              sources = {
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.diagnostics.eslint_d,
+                null_ls.builtins.code_actions.eslint_d,
+                null_ls.builtins.code_actions.refactoring,
+                null_ls.builtins.completion.luasnip,
+              },
+            })
+          end,
+        },
         -- Language specific
         {
           "hrsh7th/nvim-cmp",
@@ -26,22 +49,17 @@ return {
           },
         },
       },
-      opts = {
-        ensure_installed = {
-          "prettierd",
-          "eslint_d",
-          "shellcheck",
-        },
-      },
       config = function()
         local lsp = require("lsp-zero")
 
         lsp.preset("recommended")
 
         lsp.ensure_installed({
-          "sumneko_lua",
-          "codeqlls",
           "tsserver",
+          "angularls",
+          "rust_analyzer",
+          "jdtls",
+          "stylua",
         })
 
         local cmp = require("cmp")
@@ -93,6 +111,24 @@ return {
           -- codelense
           vim.keymap.set("n", "<leader>xl", vim.lsp.codelens.refresh, ops)
           vim.keymap.set("n", "<leader>xr", vim.lsp.codelens.run, ops)
+
+          -- inlay_hints
+          vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
+          vim.api.nvim_create_autocmd("InsertEnter", {
+            buffer = bufnr,
+            callback = function()
+              vim.api.nvim_set_hl(bufnr, "LspInlayHint", { bg = "#000000", fg = "#00ff55" })
+              vim.lsp.buf.inlay_hint(bufnr, true)
+            end,
+            group = "lsp_augroup",
+          })
+          vim.api.nvim_create_autocmd("InsertLeave", {
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.inlay_hint(bufnr, false)
+            end,
+            group = "lsp_augroup",
+          })
         end)
 
         lsp.setup()
@@ -128,6 +164,6 @@ return {
     cmd = "TroubleToggle",
     config = function()
       require("trouble").setup({})
-    end
-  }
+    end,
+  },
 }

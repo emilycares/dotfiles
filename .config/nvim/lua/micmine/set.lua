@@ -12,6 +12,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = "/home/michael/.vim/undodir"
 vim.opt.undofile = true
+vim.opt.cmdheight = 0
 
 vim.g.mapleader = " "
 
