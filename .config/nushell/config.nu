@@ -4,7 +4,10 @@ def-env "c" [] {
   cd $path
 }
 
-def "a" [action] {
+def local-actions [] {
+   ari --print-actions | lines | split column -r '\t' | rename value description
+}
+export def a [ action: string@local-actions ] {
   let command = (ari -a $action)
   nu -c $command
 }
