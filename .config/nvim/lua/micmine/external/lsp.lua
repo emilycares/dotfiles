@@ -87,6 +87,7 @@ return {
         })
 
         lsp.on_attach(function(client, bufnr)
+          vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
           local opts = { buffer = bufnr, remap = false }
 
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, ops)
@@ -109,23 +110,30 @@ return {
           vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, ops)
 
           -- codelense
+          vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+            pattern = {"*.rs", "*.java"},
+            callback = function ()
+              vim.lsp.codelens.refresh()
+            end
+          })
           vim.keymap.set("n", "<leader>xl", vim.lsp.codelens.refresh, ops)
           vim.keymap.set("n", "<leader>xr", vim.lsp.codelens.run, ops)
 
           -- inlay_hints
-          vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
           vim.api.nvim_create_autocmd("InsertEnter", {
             buffer = bufnr,
+            pattern = {"*.rs", "*.java"},
             callback = function()
               vim.api.nvim_set_hl(bufnr, "LspInlayHint", { bg = "#000000", fg = "#00ff55" })
-              vim.lsp.buf.inlay_hint(bufnr, true)
+              vim.lsp.inlay_hint(bufnr, true)
             end,
             group = "lsp_augroup",
           })
           vim.api.nvim_create_autocmd("InsertLeave", {
             buffer = bufnr,
+            pattern = {"*.rs", "*.java"},
             callback = function()
-              vim.lsp.buf.inlay_hint(bufnr, false)
+              vim.lsp.inlay_hint(bufnr, false)
             end,
             group = "lsp_augroup",
           })

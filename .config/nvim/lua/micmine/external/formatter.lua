@@ -18,6 +18,21 @@ return {
         rust = {
           require("formatter.filetypes.rust").rustfmt(),
         },
+        go = {
+          require("formatter.filetypes.go").gofmt(),
+        },
+        typescript = {
+          require("formatter.filetypes.typescript").prettierd(),
+        },
+        html = {
+          require("formatter.filetypes.html").prettierd(),
+        },
+        css = {
+          require("formatter.filetypes.css").prettierd(),
+        },
+        json = {
+          require("formatter.filetypes.json").jq(),
+        },
       },
     })
   end,

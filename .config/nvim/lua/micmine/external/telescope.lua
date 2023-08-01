@@ -29,7 +29,7 @@ return {
     {
       "<leader><c-d>",
       function()
-        require("telescope.builtin").lsp_document_symbols()
+        require("telescope.builtin").lsp_dynamic_workspace_symbols()
       end,
     },
     {

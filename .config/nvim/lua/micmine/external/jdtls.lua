@@ -46,6 +46,46 @@ return {
                 "sun.*",
               },
             },
+            eclipse = {
+              downloadSources = true,
+            },
+            implementationsCodeLens = {
+              enabled = true,
+            },
+            referenceCodeLens = {
+              enabled = true,
+            },
+            references = {
+              includeAccessors = true,
+              includeDecompiledSources = true,
+            },
+            rename = {
+              enabled = true,
+            },
+            signatureHelp = {
+              enabled = true,
+              description = {
+                enabled = true,
+              },
+            },
+            inlayhints = {
+              parameterNames = {
+                enabled = true,
+              },
+            },
+            jdt = {
+              ls = {
+                lombokSupport = {
+                  enabled = true,
+                },
+              },
+            },
+            gradle = {
+              enabled = true,
+            },
+            maven = {
+              downloadSources = true,
+            },
             -- Specify any options for organizing imports
             sources = {
               organizeImports = {
@@ -62,6 +102,9 @@ return {
                 useJava7Objects = true,
               },
               useBlocks = true,
+            },
+            bundles = {
+              
             },
             -- If you are developing in projects with different Java versions, you need
             -- to tell eclipse.jdt.ls to use the location of the JDK for your Java version
