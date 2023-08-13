@@ -42,6 +42,7 @@ return {
   --font = wezterm.font("SauceCodePro NF", {style="Normal"}),
   --default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" },
   font_size = 9,
+  hide_tab_bar_if_only_one_tab = true,
   leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
   keys = keys,
 }

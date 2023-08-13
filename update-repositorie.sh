@@ -19,6 +19,7 @@ mkdir -p .cargo
 # desktop
 cp ~/.config/i3/config .config/i3/config
 cp ~/.config/awesome/rc.lua .config/awesome
+cp ~/.config/awesome/README.md .config/awesome
 cp ~/.config/polybar/launch.sh .config/polybar/launch.sh
 cp ~/.config/polybar/config.ini .config/polybar/config.ini
 cp ~/.config/polybar/module.ini .config/polybar/module.ini

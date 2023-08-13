@@ -14,6 +14,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local layout_indicator = require("keyboard-layout-indicator")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -120,7 +121,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+kbdcfg = layout_indicator({layouts = {
+  {name="ch", layout="ch", variant=nil},
+  {name="us", layout="us", variant=nil}
+}})
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -241,7 +245,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
-      mykeyboardlayout,
+      kbdcfg.widget,
       wibox.widget.systray(),
       mytextclock,
       s.mylayoutbox,
@@ -323,9 +327,9 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Control" }, "l", function()
     awful.tag.incncol(-1, nil, true)
   end, { description = "decrease the number of columns", group = "layout" }),
-  awful.key({ modkey }, "space", function()
-    awful.layout.inc(1)
-  end, { description = "select next", group = "layout" }),
+  --awful.key({ modkey }, "space", function()
+    --awful.layout.inc(1)
+  --end, { description = "select next", group = "layout" }),
   awful.key({ modkey, "Shift" }, "space", function()
     awful.layout.inc(-1)
   end, { description = "select previous", group = "layout" }),
@@ -354,7 +358,9 @@ globalkeys = gears.table.join(
   -- Menubar
   awful.key({ modkey }, "p", function()
     menubar.show()
-  end, { description = "show the menubar", group = "launcher" })
+  end, { description = "show the menubar", group = "launcher" }),
+  -- Layout switcher
+  awful.key({ modkey }, "space", function() kbdcfg:next() end )
 )
 
 clientkeys = gears.table.join(
