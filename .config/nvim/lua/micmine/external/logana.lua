@@ -7,5 +7,11 @@ return {
         require("logana").set_qfl()
       end,
     },
+    {
+      "{",
+      function()
+        require("logana").set_qfl()
+      end,
+    },
   },
 }

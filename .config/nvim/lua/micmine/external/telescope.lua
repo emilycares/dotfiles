@@ -9,21 +9,15 @@ return {
   },
   keys = {
     {
-      "<C-p>",
+      "<leader>ff",
       function()
         require("telescope.builtin").find_files()
       end,
     },
     {
-      "<leader>tl",
+      "<leader>fl",
       function()
         require("telescope.builtin").quickfix()
-      end,
-    },
-    {
-      "<leader>tb",
-      function()
-        require("telescope.builtin").git_branches()
       end,
     },
     {
@@ -33,13 +27,13 @@ return {
       end,
     },
     {
-      "<leader><c-f>",
+      "<leader>fg",
       function()
         require("telescope.builtin").live_grep()
       end,
     },
     {
-      "<leader>b",
+      "<leader>fb",
       function()
         require("telescope.builtin").buffers()
       end,

@@ -106,7 +106,11 @@ return {
           vim.keymap.set("n", "ü", function()
             vim.diagnostic.open_float()
           end, ops)
+          vim.keymap.set("n", "[", function()
+            vim.diagnostic.open_float()
+          end, ops)
           vim.keymap.set("n", "ö", vim.diagnostic.goto_next, ops)
+          vim.keymap.set("n", "]", vim.diagnostic.goto_next, ops)
           vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, ops)
 
           -- codelense
