@@ -16,7 +16,7 @@ local keys = {
   { key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
   { key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
-  { key = "a", mods = "LEADER", action = wezterm.action({ SendString = "\x02" }) },
+  { key = "b", mods = "LEADER", action = wezterm.action({ SendString = "\x02" }) },
 }
 
 for i = 1, 9 do
@@ -43,6 +43,6 @@ return {
   --default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" },
   font_size = 9,
   hide_tab_bar_if_only_one_tab = true,
-  leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
+  leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 },
   keys = keys,
 }

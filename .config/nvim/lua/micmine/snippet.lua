@@ -268,3 +268,24 @@ ls.add_snippets("typescript", {
     )
   ),
 })
+
+ls.add_snippets("html", {
+  -- class=""
+  s("cls", fmt([[class="{}"]], { i(1) })),
+})
+ls.add_snippets("markdown", {
+  -- ``` ts
+  -- code
+  -- ```
+  s(
+    "code",
+    fmt(
+      [[
+ ``` {}
+ {}
+ ```
+  ]],
+      { i(1, "command"), i(2) }
+    )
+  ),
+})

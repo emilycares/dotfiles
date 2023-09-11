@@ -12,12 +12,13 @@ return {
   --"bratpeki/truedark-vim",
   {
     --"shaunsingh/oxocarbon.nvim",
-    "dasupradyumna/midnight.nvim",
+    --"dasupradyumna/midnight.nvim",
+    "blazkowolf/gruber-darker.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       --vim.cmd("colorscheme oxocarbon")
-      vim.cmd.colorscheme('midnight')
+      vim.cmd.colorscheme('gruber-darker')
     end,
   },
 }
