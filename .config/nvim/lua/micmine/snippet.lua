@@ -267,11 +267,40 @@ ls.add_snippets("typescript", {
       }
     )
   ),
+  -- private readonly someService: SomeService,
+  s(
+    "inj",
+    fmt([[private readonly {}: {},]], {
+      f(firstToLowerCase, 1),
+      i(1),
+    })
+  ),
+  -- /** * @description Here is the description */
+  s(
+    "doc",
+    fmt(
+      [[
+        /**
+         * @description {}
+         */
+      ]], 
+      {
+        i(1),
+      }
+    )
+  ),
+  -- tap((TAP_LOG) => console.log("{}:", TAP_LOG)),
+  s(
+    "rlog",
+    fmt([[tap((TAP_LOG) => console.log("{}:", TAP_LOG)),]], {
+      i(1),
+    })
+  ),
 })
 
 ls.add_snippets("html", {
   -- class=""
-  s("cls", fmt([[class="{}"]], { i(1) })),
+  s("class", fmt([[class="{}"]], { i(1) })),
 })
 ls.add_snippets("markdown", {
   -- ``` ts
