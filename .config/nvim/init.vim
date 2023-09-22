@@ -1,5 +1,6 @@
 lua require('micmine.plugins')
 lua require('micmine.set')
+"lua require('micmine.dev')
 
 " system clipboard
 set clipboard+=unnamedplus
@@ -8,12 +9,6 @@ set clipboard+=unnamedplus
 " truecolor
 if (has("termguicolors"))
   set termguicolors
-endif
-" color preview
-" gruvbox lsp error
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lum"
 endif
 
 " jump to last line
@@ -36,6 +31,9 @@ vim.keymap.set("x", "<M-p>", "\"_dP", { noremap = true })
 -- replace
 vim.keymap.set("n", "<leader>r", ":%s//gI<Left><Left><Left>", { noremap = true })
 vim.keymap.set("v", "<leader>r", ":s//g<Left><Left>", { noremap = true })
+
+-- disable zig autoformat
+vim.g.zig_fmt_autosave = 0
 END
 
 " terminal

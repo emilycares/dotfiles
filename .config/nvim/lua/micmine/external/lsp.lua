@@ -124,24 +124,54 @@ return {
           vim.keymap.set("n", "<leader>xr", vim.lsp.codelens.run, ops)
 
           -- inlay_hints
-          vim.api.nvim_create_autocmd("InsertEnter", {
-            buffer = bufnr,
-            pattern = {"*.rs", "*.java"},
-            callback = function()
+          vim.keymap.set("n", "<leader>i", function()
               vim.api.nvim_set_hl(bufnr, "LspInlayHint", { bg = "#000000", fg = "#00ff55" })
-              vim.lsp.inlay_hint(bufnr, true)
-            end,
-            group = "lsp_augroup",
-          })
-          vim.api.nvim_create_autocmd("InsertLeave", {
-            buffer = bufnr,
-            pattern = {"*.rs", "*.java"},
-            callback = function()
-              vim.lsp.inlay_hint(bufnr, false)
-            end,
-            group = "lsp_augroup",
-          })
+              vim.lsp.inlay_hint(bufnr, nil)
+          end)
         end)
+        
+
+        lsp.configure('tsserver', {
+          settings = {
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+          }
+        })
+        lsp.configure('gopls', {
+          settings = {
+            gopls = {
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+            },
+          }
+        })
 
         lsp.setup()
       end,
