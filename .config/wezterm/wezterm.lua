@@ -1,5 +1,29 @@
 local wezterm = require("wezterm")
 
+local os = require("os")
+
+wezterm.on("trigger-vim-with-scrollback", function(window, pane)
+  -- Retrieve the current viewport's text.
+  -- Pass an optional number of lines (eg: 2000) to retrieve
+  -- that number of lines starting from the bottom of the viewport
+  local scrollback = pane:get_lines_as_text()
+
+  -- Create a temporary file to pass to vim
+  local name = os.tmpname()
+  local f = io.open(name, "w+")
+  f:write(scrollback)
+  f:flush()
+  f:close()
+
+  -- Open a new window running vim and tell it to open the file
+  window:perform_action(
+    wezterm.action({ SpawnCommandInNewTab = {
+      args = { "nvim", name },
+    } }),
+    pane
+  )
+end)
+
 local keys = {
   {
     key = "%",
@@ -17,6 +41,7 @@ local keys = {
   { key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
   { key = "b", mods = "LEADER", action = wezterm.action({ SendString = "\x02" }) },
+  { key = "e", mods = "LEADER", action = wezterm.action({ EmitEvent = "trigger-vim-with-scrollback" }) },
 }
 
 for i = 1, 9 do

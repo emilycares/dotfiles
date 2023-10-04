@@ -51,8 +51,7 @@ return {
     config = function()
       require("mason").setup()
       local servers = {
-        -- clangd = {},
-        -- pyright = {},
+        clangd = {},
         rust_analyzer = {},
         html = { filetypes = { "html", "twig", "hbs" } },
         tsserver = {
@@ -226,6 +225,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     event = "BufEnter",
     config = function()
       require("fidget").setup({})
