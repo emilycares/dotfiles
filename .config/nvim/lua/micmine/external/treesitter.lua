@@ -18,14 +18,14 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
     cmd = "TSPlaygroundToggle",
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPre",
-    config = function()
-      require("treesitter-context").setup({
-        enable = true
-      })
-    end,
-  }
+  --{
+    --"nvim-treesitter/nvim-treesitter-context",
+    --dependencies = "nvim-treesitter/nvim-treesitter",
+    --event = "BufReadPre",
+    --config = function()
+      --require("treesitter-context").setup({
+        --enable = true,
+      --})
+    --end,
+  --},
 }

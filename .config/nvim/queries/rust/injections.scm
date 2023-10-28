@@ -12,6 +12,20 @@
  (#offset! @sql 1 0 0 0)
 )
 
+; css! stylist
+(
+ (macro_invocation
+  (scoped_identifier
+     path: (identifier) @_path
+     name: (identifier) @_identifier)
+
+  (token_tree (string_literal) @css))
+
+ (#eq? @_path "stylist")
+ (#eq? @_identifier "css")
+ (#offset! @css 1 0 0 0)
+)
+
 ;(
  ;(macro_invocation
   ;(scoped_identifier

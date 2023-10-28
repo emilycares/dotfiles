@@ -300,7 +300,10 @@ ls.add_snippets("typescript", {
 
 ls.add_snippets("html", {
   -- class=""
-  s("class", fmt([[class="{}"]], { i(1) })),
+  -- arl
+  s("cls", fmt([[class="{}"]], { i(1) })),
+  -- {% %}
+  s("ask", fmt([[{{%{}%}}]], { i(1) })),
 })
 ls.add_snippets("markdown", {
   -- ``` ts

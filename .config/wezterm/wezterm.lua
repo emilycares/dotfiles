@@ -50,6 +50,7 @@ for i = 1, 9 do
 end
 
 return {
+  color_scheme = "Catppuccin Mocha",
   font = wezterm.font_with_fallback({
     --"Liveoverfont",
     --"VictorMono NF",
@@ -70,4 +71,6 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 },
   keys = keys,
+  check_for_updates = false,
+  show_update_window = false
 }

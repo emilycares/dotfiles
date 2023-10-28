@@ -193,6 +193,7 @@ return {
               end,
             },
           },
+          { name = "crates"}
         },
         mapping = {
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -220,7 +221,13 @@ return {
     event = "BufReadPre Cargo.toml",
     ependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("crates").setup()
+      require("crates").setup({
+        src = {
+          cmp = {
+            enabled = true
+          }
+        }
+      })
     end,
   },
   {

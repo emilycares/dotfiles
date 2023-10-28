@@ -1,10 +1,52 @@
 return {
-  -- Ui
+  {
+    "folke/neodev.nvim",
+    ft = { "lua" },
+    config = function()
+      require("neodev").setup()
+      local lspconfig = require("lspconfig")
+
+      -- example to setup lua_ls and enable call snippets
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  -- git
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "Gvdiffsplit" },
+    keys = {
+      {
+        "<leader>gd",
+        function()
+          vim.cmd("Gvdiffsplit")
+        end,
+      },
+      {
+        "<leader>gb",
+        function()
+          vim.cmd("Git blame")
+        end,
+      },
+    },
+  },
   {
     "kdheepak/lazygit.nvim",
     keys = {
       {
         "<leader>g",
+        function() end,
+      },
+      {
+        "<leader>gu",
         function()
           vim.cmd("LazyGit")
         end,
@@ -12,9 +54,6 @@ return {
     },
     cmd = "LazyGit",
   },
-
-  -- git
-  { "tpope/vim-fugitive", cmd = { "Git", "Gvdiffsplit" } },
 
   -- syntax
   { "godlygeek/tabular", cmd = "Tabularize" },

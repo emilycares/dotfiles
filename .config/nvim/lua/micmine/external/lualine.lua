@@ -12,12 +12,20 @@ return {
       sections = {
         lualine_a = {},
         lualine_b = { "branch" },
-        lualine_c = { fileLocation },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
       },
       inactive_sections = {
+        lualine_a = {},
+        lualine_b = { "branch" },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      winbar = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { fileLocation },
@@ -25,6 +33,14 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
+      inactive_winbar = {
+        lualine_a = {},
+        lualine_b = { },
+        lualine_c = { fileLocation },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      }
     })
   end,
 }

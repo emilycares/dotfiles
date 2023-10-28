@@ -1,7 +1,7 @@
 vim.opt.laststatus = 3
 vim.opt.encoding = "UTF-8"
-vim.opt.number = true
-vim.opt.relativenumber = true
+--vim.opt.number = true
+--vim.opt.relativenumber = true
 vim.opt.tabpagemax = 15
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
@@ -13,6 +13,7 @@ vim.opt.backup = false
 vim.opt.undodir = "/home/michael/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
 
 vim.g.mapleader = " "
 
