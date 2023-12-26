@@ -302,8 +302,32 @@ ls.add_snippets("html", {
   -- class=""
   -- arl
   s("cls", fmt([[class="{}"]], { i(1) })),
-  -- {% %}
-  s("ask", fmt([[{{%{}%}}]], { i(1) })),
+  -- {#include select$select target=target /}
+  s("qinclude", fmt([[{{#include {}${} {}={} /}}]], { i(1), rep(1), i(2), rep(2) })),
+  --{#fragment id=title }
+    --<p>Content</p>
+  --{/fragment}
+  s("qfragment", fmt([[
+  {{#fragment id={} }}
+    {}
+  {{/fragment}}
+  ]], { i(1), i(2) })),
+  --{#for item in list} 
+  --  {item.name} 
+  --{/for}
+  s("qfor", fmt([[
+  {{#for {} in {}}}
+    {{{}}}
+  {{/for}}
+  ]], { i(1, "item"), i(2, "list"), i(3, "item.name") })),
+  --{#if condition}
+  -- <p>Content</p>
+  --{/if}
+  s("qif", fmt([[
+  {{#if {}}}
+   {}
+  {{/if}}
+  ]], { i(1, "condition"), i(2, "<p>Here</p>") })),
 })
 ls.add_snippets("markdown", {
   -- ``` ts

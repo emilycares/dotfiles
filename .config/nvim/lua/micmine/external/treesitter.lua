@@ -6,7 +6,8 @@ return {
     config = function()
       require("nvim-treesitter.install").compilers = { "zig" }
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of language_version
+	ensure_installed = { "typescript", "html", "css", "rust", "c", "cpp", "ocaml", "go", "java", "zig", "v"},
+	sync_install = true,
         highlight = {
           enable = true,
         },

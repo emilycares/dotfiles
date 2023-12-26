@@ -1,7 +1,9 @@
+local home = os.getenv("HOME")
 return {
   {
     "williamboman/mason.nvim",
     event = "InsertEnter",
+    cmd = "LspStart",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
@@ -13,29 +15,29 @@ return {
           "nvim-lua/plenary.nvim",
         },
       },
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = {
-          {
-            "ThePrimeagen/refactoring.nvim",
-            config = function()
-              require("refactoring").setup({})
-            end,
-          },
-        },
-        config = function()
-          local null_ls = require("null-ls")
-          null_ls.setup({
-            sources = {
-              null_ls.builtins.formatting.stylua,
-              null_ls.builtins.diagnostics.eslint_d,
-              null_ls.builtins.code_actions.eslint_d,
-              null_ls.builtins.code_actions.refactoring,
-              null_ls.builtins.completion.luasnip,
-            },
-          })
-        end,
-      },
+      --{
+        --"jose-elias-alvarez/null-ls.nvim",
+        --dependencies = {
+          --{
+            --"ThePrimeagen/refactoring.nvim",
+            --config = function()
+              --require("refactoring").setup({})
+            --end,
+          --},
+        --},
+        --config = function()
+          --local null_ls = require("null-ls")
+          --null_ls.setup({
+            --sources = {
+              --null_ls.builtins.formatting.stylua,
+              --null_ls.builtins.diagnostics.eslint_d,
+              --null_ls.builtins.code_actions.eslint_d,
+              --null_ls.builtins.code_actions.refactoring,
+              --null_ls.builtins.completion.luasnip,
+            --},
+          --})
+        --end,
+      --},
       -- Language specific
       {
         "hrsh7th/nvim-cmp",
@@ -50,10 +52,13 @@ return {
     },
     config = function()
       require("mason").setup()
+      -- vim.lsp.set_log_level('TRACE')
       local servers = {
         clangd = {},
         rust_analyzer = {},
-        html = { filetypes = { "html", "twig", "hbs" } },
+        html = { filetypes = { "html" } },
+	tailwindcss = {},
+	qute_lsp = { filetypes = { "html" } },
         tsserver = {
           javascript = {
             inlayHints = {
@@ -97,6 +102,23 @@ return {
           },
         },
       }
+      -- qute lsp server
+      local configs = require('lspconfig.configs')
+
+      -- Check if the config is already defined (useful when reloading this file)
+      if not configs.qute_lsp then
+        configs.qute_lsp = {
+          default_config = {
+            cmd = { home .. "/Documents/rust/qute-lsp/target/debug/qute-lsp" },
+            filetypes = {'html'},
+            root_dir = function(fname)
+              return require("lspconfig").util.find_git_ancestor(fname)
+            end,
+	    autostart = true,
+            settings = {},
+          },
+        }
+      end
 
       -- Setup neovim lua configuration
       require("neodev").setup()
@@ -109,7 +131,7 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
 
       mason_lspconfig.setup({
-        ensure_installed = vim.tbl_keys(servers),
+        --ensure_installed = vim.tbl_keys(servers),
       })
       local function on_attach(client, bufnr)
         vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
@@ -165,11 +187,25 @@ return {
           })
         end,
       })
+          require("lspconfig").rust_analyzer.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+          })
+          require("lspconfig").qute_lsp.setup({
+            capabilities = capabilities,
+	    autostart = true,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+          })
 
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
       luasnip.config.setup({})
+
 
       cmp.setup({
         snippet = {

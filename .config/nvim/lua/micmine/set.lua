@@ -1,3 +1,5 @@
+local home = os.getenv("HOME")
+
 vim.opt.laststatus = 3
 vim.opt.encoding = "UTF-8"
 --vim.opt.number = true
@@ -10,7 +12,7 @@ vim.opt.cursorline = true
 vim.opt.updatetime = 50
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = "/home/michael/.vim/undodir"
+vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 0

@@ -64,7 +64,7 @@ return {
     "Noto Color Emoji",
     "Symbols Nerd Font Mono",
   }),
-  default_prog = { "/usr/bin/nu" },
+  --default_prog = { "/usr/bin/nu" },
   --font = wezterm.font("SauceCodePro NF", {style="Normal"}),
   --default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" },
   font_size = 9,

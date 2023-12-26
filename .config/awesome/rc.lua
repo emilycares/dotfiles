@@ -2,6 +2,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+local home = os.getenv("HOME")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -55,7 +57,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "/home/michael/tools/wezterm/target/release/wezterm"
+terminal = "wezterm"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -76,10 +78,10 @@ awful.layout.layouts = {
   --awful.layout.suit.fair.horizontal,
   --awful.layout.suit.spiral,
   --awful.layout.suit.spiral.dwindle,
-  awful.layout.suit.floating,
+  --awful.layout.suit.floating,
   --awful.layout.suit.max,
   --awful.layout.suit.max.fullscreen,
-  awful.layout.suit.magnifier,
+  --awful.layout.suit.magnifier,
   --awful.layout.suit.corner.nw,
   -- awful.layout.suit.corner.ne,
   -- awful.layout.suit.corner.sw,
@@ -173,7 +175,7 @@ local tasklist_buttons = gears.table.join(
   end)
 )
 
-beautiful.wallpaper = "/home/michael/Documents/background.png"
+beautiful.wallpaper = home .. "/Documents/background.png"
 
 local function set_wallpaper(s)
   -- Wallpaper
