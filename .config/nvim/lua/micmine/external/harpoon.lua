@@ -3,37 +3,37 @@ return {
   keys = {
     -- asd
     {
-      "<C-e>",
+      "<M-u>",
       function()
         require("harpoon.ui").toggle_quick_menu()
       end,
     },
     {
-      "<leader>a",
+      "<M-y>",
       function()
         require("harpoon.mark").add_file()
       end,
     },
     {
-      "<M-1>",
+      "<M-w>",
       function()
         require("harpoon.ui").nav_file(1)
       end,
     },
     {
-      "<M-2>",
+      "<M-e>",
       function()
         require("harpoon.ui").nav_file(2)
       end,
     },
     {
-      "<M-3>",
+      "<M-r>",
       function()
         require("harpoon.ui").nav_file(3)
       end,
     },
     {
-      "<M-4>",
+      "<M-t>",
       function()
         require("harpoon.ui").nav_file(4)
       end,

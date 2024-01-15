@@ -21,32 +21,20 @@ local function firstToLowerCase(args)
   return firstChar .. rest
 end
 
-ls.add_snippets("rust", { -- #[wasm_bindgen] pub fn greet(name: &str) { alert(&format!("Hello, {}!", name)); }
-  s(
-    "wfn",
-    fmt(
-      [[
-                    #[wasm_bindgen]
-                    pub fn {}({}) {{
-                      {}
-                    }}
-                ]],
-      {
-        i(1),
-        i(2),
-        i(3),
-      }
-    )
-  ),
+ls.add_snippets("rust", {
+  -- || 
+  s("in", fmt([[|{}| {}]], {i(1), in(2)})),
+  -- || {}
+  s("inb", fmt([[|{}| {{}}]], {i(1), in(2)})),
   s(
     "atest",
     fmt(
       [[
-                  #[tokio::test]
-                  async fn {}() {{
-                    {}
-                  }}
-                ]],
+        #[tokio::test]
+        async fn {}() {{
+          {}
+        }}
+      ]],
       {
         i(1),
         i(2, "unimplemented!();"),
@@ -57,11 +45,11 @@ ls.add_snippets("rust", { -- #[wasm_bindgen] pub fn greet(name: &str) { alert(&f
     "test",
     fmt(
       [[
-                  #[test]
-                  fn {}() {{
-                    {}
-                  }}
-                ]],
+        #[test]
+        fn {}() {{
+          {}
+        }}
+      ]],
       {
         i(1),
         i(2, "unimplemented!();"),
@@ -72,89 +60,24 @@ ls.add_snippets("rust", { -- #[wasm_bindgen] pub fn greet(name: &str) { alert(&f
     "testmod",
     fmt(
       [[
-                  #[cfg(test)]
-                  mod tests {{
-                    {}
-                  }}
-                ]],
+        #[cfg(test)]
+        mod tests {{
+          {}
+        }}
+      ]],
       {
         i(1),
-      }
-    )
-  ),
-  s(
-    "yewfn",
-    fmt(
-      [[
-                   #[function_component({})]
-                   pub fn {}() -> Html {{
-
-                     html! {{
-                       <>
-                         <p>{{ "The component {} works!" }}</p>
-                       </>
-                     }}
-                   }}
-                ]],
-      {
-        i(1),
-        f(firstToLowerCase, 1),
-        rep(1),
-      }
-    )
-  ),
-  s(
-    "yewcom",
-    fmt(
-      [[
-                  use yew::prelude::*;
-
-                  #[derive(Debug)]
-                  pub struct {};
-
-                  #[derive(Debug)]
-                  pub enum Msg {{
-                  }}
-
-                  impl Component for {} {{
-                      type Message = Msg;
-                      type Properties = ();
-
-                      fn create(_ctx: &Context<Self>) -> Self {{
-                          Self
-                      }}
-
-                      fn view(&self, _ctx: &Context<Self>) -> Html {{
-                          html! {{
-                            <>
-                              <p>{{ "The component {} works!" }}</p>
-                            </>
-                          }}
-                      }}
-                  }}
-                ]],
-      {
-        i(1),
-        rep(1),
-        rep(1),
       }
     )
   ),
   s("str", fmt([[String::from("{}")]], { i(1) })),
-  -- #[tokio:test] async fn name() { unimplemented!(); }
-  s("atest", {
-    t("#[tokio:test] async fn "),
-    i(1),
-    t("_should_"),
-    i(2),
-    t("() { "),
-    i(3, "unimplemented!();"),
-    t(" }"),
-    t(" }"),
-  }),
 })
 
 ls.add_snippets("java", {
+  -- () ->
+  s("in", fmt([[({}) -> {}]], {i(1), in(2)})),
+  -- () -> {}
+  s("inb", fmt([[({}) -> {{}}]], {i(1), in(2)})),
   -- @Test public void should_Test() { assertEquals(true, true); }
   s("test", {
     t("@Test public void "),
@@ -168,11 +91,11 @@ ls.add_snippets("java", {
     "beforeEach",
     fmt(
       [[
-                  @BeforeEach
-                  public void beforeEach() {{
-                    {}
-                  }}
-                ]],
+        @BeforeEach
+        public void beforeEach() {{
+          {}
+        }}
+      ]],
       {
         i(1),
       }
@@ -194,6 +117,10 @@ ls.add_snippets("java", {
 })
 
 ls.add_snippets("typescript", {
+  -- () ->
+  s("in", fmt([[({}) => {}]], {i(1), in(2)})),
+  -- () -> {}
+  s("inb", fmt([[({}) => {{}}]], {i(1), in(2)})),
   -- let otherService: jasmine.SpyObj<OtherService>;
   s(
     "psd",
@@ -207,11 +134,11 @@ ls.add_snippets("typescript", {
     "psc",
     fmt(
       [[
-                  {{
-                    provide: {},
-                    useValue: jasmine.createSpyObj<{}>('{}', ["{}"])
-                  }},
-                ]],
+        {{
+          provide: {},
+          useValue: jasmine.createSpyObj<{}>('{}', ["{}"])
+        }},
+      ]],
       {
         i(1),
         rep(1),
@@ -253,10 +180,10 @@ ls.add_snippets("typescript", {
     "test",
     fmt(
       [[
-                  {}('{}', () => {{
-                    {}
-                  }});
-                ]],
+        {}('{}', () => {{
+          {}
+        }});
+      ]],
       {
         c(1, {
           t("it"),

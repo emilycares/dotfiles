@@ -15,29 +15,6 @@ return {
           "nvim-lua/plenary.nvim",
         },
       },
-      --{
-        --"jose-elias-alvarez/null-ls.nvim",
-        --dependencies = {
-          --{
-            --"ThePrimeagen/refactoring.nvim",
-            --config = function()
-              --require("refactoring").setup({})
-            --end,
-          --},
-        --},
-        --config = function()
-          --local null_ls = require("null-ls")
-          --null_ls.setup({
-            --sources = {
-              --null_ls.builtins.formatting.stylua,
-              --null_ls.builtins.diagnostics.eslint_d,
-              --null_ls.builtins.code_actions.eslint_d,
-              --null_ls.builtins.code_actions.refactoring,
-              --null_ls.builtins.completion.luasnip,
-            --},
-          --})
-        --end,
-      --},
       -- Language specific
       {
         "hrsh7th/nvim-cmp",
@@ -268,7 +245,6 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     event = "BufEnter",
     config = function()
       require("fidget").setup({})
