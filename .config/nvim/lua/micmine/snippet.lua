@@ -25,7 +25,7 @@ ls.add_snippets("rust", {
   -- ||
   s("in", fmt([[|{}| {}]], { i(1), i(2) })),
   -- || {}
-  s("inb", fmt([[|{}| {{}}]], { i(1), i(2) })),
+  s("inb", fmt([[|{}| {{{}}}]], { i(1), i(2) })),
   s(
     "atest",
     fmt(
@@ -77,7 +77,7 @@ ls.add_snippets("java", {
   -- () ->
   s("in", fmt([[({}) -> {}]], { i(1), i(2) })),
   -- () -> {}
-  s("inb", fmt([[({}) -> {{}}]], { i(1), i(2) })),
+  s("inb", fmt([[({}) -> {{{}}}]], { i(1), i(2) })),
   -- @Test public void should_Test() { assertEquals(true, true); }
   s("test", {
     t("@Test public void "),
@@ -120,7 +120,7 @@ ls.add_snippets("typescript", {
   -- () =>
   s("in", fmt([[({}) => {}]], { i(1), i(2) })),
   -- () => {}
-  s("inb", fmt([[({}) => {{}}]], { i(1), i(2) })),
+  s("inb", fmt([[({}) => {{{}}}]], { i(1), i(2) })),
   -- let otherService: jasmine.SpyObj<OtherService>;
   s(
     "psd",
