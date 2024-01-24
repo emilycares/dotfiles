@@ -6,8 +6,20 @@ return {
     config = function()
       require("nvim-treesitter.install").compilers = { "zig" }
       require("nvim-treesitter.configs").setup({
-	ensure_installed = { "typescript", "html", "css", "rust", "c", "cpp", "ocaml", "go", "java", "zig", "v"},
-	sync_install = true,
+        ensure_installed = {
+          "typescript",
+          "html",
+          "css",
+          "rust",
+          "c",
+          "cpp",
+          "ocaml",
+          "go",
+          "java",
+          "zig",
+          "v",
+        },
+        sync_install = true,
         highlight = {
           enable = true,
         },
@@ -20,13 +32,13 @@ return {
     cmd = "TSPlaygroundToggle",
   },
   --{
-    --"nvim-treesitter/nvim-treesitter-context",
-    --dependencies = "nvim-treesitter/nvim-treesitter",
-    --event = "BufReadPre",
-    --config = function()
-      --require("treesitter-context").setup({
-        --enable = true,
-      --})
-    --end,
+  --"nvim-treesitter/nvim-treesitter-context",
+  --dependencies = "nvim-treesitter/nvim-treesitter",
+  --event = "BufReadPre",
+  --config = function()
+  --require("treesitter-context").setup({
+  --enable = true,
+  --})
+  --end,
   --},
 }

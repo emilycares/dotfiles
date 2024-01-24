@@ -5,7 +5,6 @@ P = function(v)
   return v
 end
 
-
 M.map = function(map, fln)
   local args = { noremap = true, silent = true }
   vim.keymap.set("n", map, fln, args)

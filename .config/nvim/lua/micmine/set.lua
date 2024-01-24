@@ -1,6 +1,6 @@
 local home = os.getenv("HOME")
 
-vim.opt.laststatus = 3
+--vim.opt.laststatus = 3
 vim.opt.encoding = "UTF-8"
 --vim.opt.number = true
 --vim.opt.relativenumber = true
@@ -15,7 +15,7 @@ vim.opt.backup = false
 vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.cmdheight = 0
-vim.opt.laststatus = 0
+--vim.opt.laststatus = 0
 
 vim.g.mapleader = " "
 

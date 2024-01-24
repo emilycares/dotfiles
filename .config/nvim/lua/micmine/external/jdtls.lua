@@ -4,7 +4,7 @@ return {
     ft = "java",
     config = function()
       local home = os.getenv("HOME")
-      local jdtls = require('jdtls')
+      local jdtls = require("jdtls")
       local config = {
         flags = {
           debounce_text_changes = 80,
@@ -103,9 +103,7 @@ return {
               },
               useBlocks = true,
             },
-            bundles = {
-              
-            },
+            bundles = {},
             -- If you are developing in projects with different Java versions, you need
             -- to tell eclipse.jdt.ls to use the location of the JDK for your Java version
             -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request

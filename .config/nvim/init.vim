@@ -50,3 +50,8 @@ inoremap . .<c-g>u
 
 " clean buffers
 nnoremap <leader>dcb :Bdelete hidden<CR>
+
+au FileType qf call AdjustWindowHeight(0, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction

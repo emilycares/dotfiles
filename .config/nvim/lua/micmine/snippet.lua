@@ -22,10 +22,10 @@ local function firstToLowerCase(args)
 end
 
 ls.add_snippets("rust", {
-  -- || 
-  s("in", fmt([[|{}| {}]], {i(1), in(2)})),
+  -- ||
+  s("in", fmt([[|{}| {}]], { i(1), i(2) })),
   -- || {}
-  s("inb", fmt([[|{}| {{}}]], {i(1), in(2)})),
+  s("inb", fmt([[|{}| {{}}]], { i(1), i(2) })),
   s(
     "atest",
     fmt(
@@ -75,9 +75,9 @@ ls.add_snippets("rust", {
 
 ls.add_snippets("java", {
   -- () ->
-  s("in", fmt([[({}) -> {}]], {i(1), in(2)})),
+  s("in", fmt([[({}) -> {}]], { i(1), i(2) })),
   -- () -> {}
-  s("inb", fmt([[({}) -> {{}}]], {i(1), in(2)})),
+  s("inb", fmt([[({}) -> {{}}]], { i(1), i(2) })),
   -- @Test public void should_Test() { assertEquals(true, true); }
   s("test", {
     t("@Test public void "),
@@ -117,10 +117,10 @@ ls.add_snippets("java", {
 })
 
 ls.add_snippets("typescript", {
-  -- () ->
-  s("in", fmt([[({}) => {}]], {i(1), in(2)})),
-  -- () -> {}
-  s("inb", fmt([[({}) => {{}}]], {i(1), in(2)})),
+  -- () =>
+  s("in", fmt([[({}) => {}]], { i(1), i(2) })),
+  -- () => {}
+  s("inb", fmt([[({}) => {{}}]], { i(1), i(2) })),
   -- let otherService: jasmine.SpyObj<OtherService>;
   s(
     "psd",
@@ -202,6 +202,15 @@ ls.add_snippets("typescript", {
       i(1),
     })
   ),
+  -- private readonly someService: SomeService<Generic>,
+  s(
+    "injg",
+    fmt([[private readonly {}: {}<{}>,]], {
+      f(firstToLowerCase, 1),
+      i(1),
+      i(2),
+    })
+  ),
   -- /** * @description Here is the description */
   s(
     "doc",
@@ -210,7 +219,7 @@ ls.add_snippets("typescript", {
         /**
          * @description {}
          */
-      ]], 
+      ]],
       {
         i(1),
       }
@@ -227,34 +236,53 @@ ls.add_snippets("typescript", {
 
 ls.add_snippets("html", {
   -- class=""
+  s("class", fmt([[class="{}"]], { i(1) })),
   -- arl
   s("cls", fmt([[class="{}"]], { i(1) })),
   -- {#include select$select target=target /}
   s("qinclude", fmt([[{{#include {}${} {}={} /}}]], { i(1), rep(1), i(2), rep(2) })),
   --{#fragment id=title }
-    --<p>Content</p>
+  --<p>Content</p>
   --{/fragment}
-  s("qfragment", fmt([[
+  s(
+    "qfragment",
+    fmt(
+      [[
   {{#fragment id={} }}
     {}
   {{/fragment}}
-  ]], { i(1), i(2) })),
-  --{#for item in list} 
-  --  {item.name} 
+  ]],
+      { i(1), i(2) }
+    )
+  ),
+  --{#for item in list}
+  --  {item.name}
   --{/for}
-  s("qfor", fmt([[
+  s(
+    "qfor",
+    fmt(
+      [[
   {{#for {} in {}}}
     {{{}}}
   {{/for}}
-  ]], { i(1, "item"), i(2, "list"), i(3, "item.name") })),
+  ]],
+      { i(1, "item"), i(2, "list"), i(3, "item.name") }
+    )
+  ),
   --{#if condition}
   -- <p>Content</p>
   --{/if}
-  s("qif", fmt([[
+  s(
+    "qif",
+    fmt(
+      [[
   {{#if {}}}
    {}
   {{/if}}
-  ]], { i(1, "condition"), i(2, "<p>Here</p>") })),
+  ]],
+      { i(1, "condition"), i(2, "<p>Here</p>") }
+    )
+  ),
 })
 ls.add_snippets("markdown", {
   -- ``` ts

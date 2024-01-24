@@ -34,8 +34,8 @@ return {
         clangd = {},
         rust_analyzer = {},
         html = { filetypes = { "html" } },
-	tailwindcss = {},
-	qute_lsp = { filetypes = { "html" } },
+        tailwindcss = {},
+        qute_lsp = { filetypes = { "html" } },
         tsserver = {
           javascript = {
             inlayHints = {
@@ -80,18 +80,18 @@ return {
         },
       }
       -- qute lsp server
-      local configs = require('lspconfig.configs')
+      local configs = require("lspconfig.configs")
 
       -- Check if the config is already defined (useful when reloading this file)
       if not configs.qute_lsp then
         configs.qute_lsp = {
           default_config = {
             cmd = { home .. "/Documents/rust/qute-lsp/target/debug/qute-lsp" },
-            filetypes = {'html'},
+            filetypes = { "html" },
             root_dir = function(fname)
               return require("lspconfig").util.find_git_ancestor(fname)
             end,
-	    autostart = true,
+            autostart = true,
             settings = {},
           },
         }
@@ -136,6 +136,7 @@ return {
         vim.keymap.set("n", "ö", vim.diagnostic.goto_next, ops)
         vim.keymap.set("n", "]", vim.diagnostic.goto_next, ops)
         vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, ops)
+        vim.keymap.set("v", "<leader>q", vim.lsp.buf.code_action, ops)
 
         -- codelense
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
@@ -164,25 +165,24 @@ return {
           })
         end,
       })
-          require("lspconfig").rust_analyzer.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          })
-          require("lspconfig").qute_lsp.setup({
-            capabilities = capabilities,
-	    autostart = true,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          })
+      require("lspconfig").rust_analyzer.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      })
+      require("lspconfig").qute_lsp.setup({
+        capabilities = capabilities,
+        autostart = true,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      })
 
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
       luasnip.config.setup({})
-
 
       cmp.setup({
         snippet = {
@@ -206,7 +206,7 @@ return {
               end,
             },
           },
-          { name = "crates"}
+          { name = "crates" },
         },
         mapping = {
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -237,9 +237,9 @@ return {
       require("crates").setup({
         src = {
           cmp = {
-            enabled = true
-          }
-        }
+            enabled = true,
+          },
+        },
       })
     end,
   },
