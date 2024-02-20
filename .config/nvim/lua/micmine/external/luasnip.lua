@@ -64,7 +64,11 @@ return {
         },
       })
 
-      require("micmine.snippet")
+      require("micmine.snippet.typescript")
+      require("micmine.snippet.rust")
+      require("micmine.snippet.java")
+      require("micmine.snippet.html")
+      require("micmine.snippet.markdown")
     end,
   },
 }

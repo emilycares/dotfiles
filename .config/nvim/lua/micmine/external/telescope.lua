@@ -12,6 +12,27 @@ return {
     {
       "<leader>ff",
       function()
+        if vim.fn.filereadable("angular.json") == 1 then
+          require("telescope.builtin").find_files({
+            find_command = {
+              "rg",
+              "--files",
+              "--color",
+              "never",
+              "--glob",
+              "*.ts",
+              "--glob",
+              "!*.spec.ts",
+            },
+          })
+          return
+        end
+        require("telescope.builtin").find_files()
+      end,
+    },
+    {
+      "<leader>fa",
+      function()
         require("telescope.builtin").find_files()
       end,
     },
