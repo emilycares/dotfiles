@@ -13,10 +13,13 @@ return {
       -- https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
       filetype = {
         lua = {
-          require("formatter.filetypes.lua").stylua,
+          require("formatter.filetypes.lua").stylua(),
         },
         rust = {
           require("formatter.filetypes.rust").rustfmt(),
+        },
+        zig = {
+          require("formatter.filetypes.zig").zigfmt(),
         },
         go = {
           require("formatter.filetypes.go").gofmt(),

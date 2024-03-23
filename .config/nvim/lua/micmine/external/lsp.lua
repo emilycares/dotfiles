@@ -1,12 +1,10 @@
 local home = os.getenv("HOME")
 return {
   {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     event = "InsertEnter",
     cmd = "LspStart",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
       "nvim-lua/lsp_extensions.nvim",
       "folke/neodev.nvim",
       {
@@ -28,12 +26,13 @@ return {
       },
     },
     config = function()
-      require("mason").setup()
       -- vim.lsp.set_log_level('TRACE')
       local servers = {
         clangd = {},
         rust_analyzer = {},
+        zls = {},
         html = { filetypes = { "html" } },
+        --nil = {},
         tailwindcss = {},
         qute_lsp = { filetypes = { "html" } },
         tsserver = {
@@ -78,6 +77,22 @@ return {
             telemetry = { enable = false },
           },
         },
+        jsonls = {
+          json = {
+            validate = { enable = true },
+          },
+        },
+        yamlls = {
+          yaml = {
+            schemaStore = {
+              url = "https://www.schemastore.org/api/json/catalog.json",
+              enable = true,
+            },
+            schemas = {
+              ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+            },
+          },
+        },
       }
       -- qute lsp server
       local configs = require("lspconfig.configs")
@@ -86,7 +101,7 @@ return {
       if not configs.qute_lsp then
         configs.qute_lsp = {
           default_config = {
-            cmd = { home .. "/Documents/rust/qute-lsp/target/debug/qute-lsp" },
+            cmd = { "qute-lsp" },
             filetypes = { "html" },
             root_dir = function(fname)
               return require("lspconfig").util.find_git_ancestor(fname)
@@ -104,12 +119,6 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-      -- Ensure the servers above are installed
-      local mason_lspconfig = require("mason-lspconfig")
-
-      mason_lspconfig.setup({
-        --ensure_installed = vim.tbl_keys(servers),
-      })
       local function on_attach(client, bufnr)
         vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
         local ops = { buffer = bufnr, remap = false }
@@ -155,29 +164,14 @@ return {
         end, ops)
       end
 
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          })
-        end,
-      })
-      require("lspconfig").rust_analyzer.setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      })
-      require("lspconfig").qute_lsp.setup({
-        capabilities = capabilities,
-        autostart = true,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      })
+      for _, server_name in ipairs(vim.tbl_keys(servers)) do
+        require("lspconfig")[server_name].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = servers[server_name],
+          filetypes = (servers[server_name] or {}).filetypes,
+        })
+      end
 
       local cmp = require("cmp")
       local luasnip = require("luasnip")

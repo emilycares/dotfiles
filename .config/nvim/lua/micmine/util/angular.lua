@@ -1,4 +1,18 @@
 local M = {};
+-- treesitter for angular
+vim.filetype.add({
+  pattern = {
+    [".*%.component%.html"] = "angular.html", -- Sets the filetype to `angular.html` if it matches the pattern
+  },
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("angular", { clear = true }),
+  pattern = "angular.html",
+  callback = function()
+    vim.treesitter.language.register("angular", "angular.html") -- Register the filetype with treesitter for the `angular` language/parser
+  end,
+})
+
 --- This fuction will return nil if it is not posible to generate there
 ---@param path string
 M.get_angular_path = function(path)

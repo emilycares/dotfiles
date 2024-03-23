@@ -66,4 +66,54 @@ ls.add_snippets("rust", {
     )
   ),
   s("str", fmt([[String::from("{}")]], { i(1) })),
+  -- .filter(|value| )
+  s(
+    "f",
+    fmt([[.filter(|{}| {})]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .filter(|value| {})
+  s(
+    "fb",
+    fmt([[.filter(|{}| {{{}}})]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .map(|value| ))
+  s(
+    "m",
+    fmt([[.map(|{}| {})]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .map((value) {})
+  s(
+    "mb",
+    fmt([[.map(|{}| {{{}}})]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .customOpterator(|value| ))
+  s(
+    "c",
+    fmt([[.{}(|{}| {})]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
+  -- .customOpterator(|value| {}))
+  s(
+    "cb",
+    fmt([[.{}(|{}| {{{}}})]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
 })

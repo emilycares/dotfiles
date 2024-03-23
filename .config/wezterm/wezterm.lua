@@ -25,6 +25,7 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
 end)
 
 local keys = {
+  -- tmux like bindings
   {
     key = "%",
     mods = "LEADER|SHIFT",
@@ -50,16 +51,20 @@ for i = 1, 9 do
 end
 
 return {
-  color_scheme = "Catppuccin Mocha",
+  --color_scheme = "Catppuccin Mocha",
+  adjust_window_size_when_changing_font_size = false,
   font = wezterm.font_with_fallback({
     --"Liveoverfont",
     --"VictorMono NF",
-    --"JetBrains Mono",
+    --"JetBrains Mono Nerd Font",
     --"Operator Mono Medium",
     --"Iosevka Nerd Font",
     --"Comic Mono",
     --"scientifica",
     --"M PLUS Code Latin 60",
+    --{"VictorMono Nerd Font Propo", {style="Regular"} },
+    --"VictorMono Nerd Font Mono",
+    "FiraCode Nerd Font Mono",
     "SauceCodePro Nerd Font",
     "Noto Color Emoji",
     "Symbols Nerd Font Mono",

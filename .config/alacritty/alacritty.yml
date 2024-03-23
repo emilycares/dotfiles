@@ -1,17 +1,14 @@
 env:
   TERM: xterm-256color
 
-shell:
-  program: /usr/bin/fish
-
 font:
   normal:
-    family: "SauceCodePro Nerd Font"
+    family: "FiraCode Nerd Font Mono"
     style: Medium
   bold:
-    family: "SauceCodePro Nerd Font"
+    family: "FiraCode Nerd Font Mono"
     style: Bold
   italic:
-    family: "SauceCodePro Nerd Font"
+    family: "FiraCode Nerd Font Mono"
     style: Italic
   size: 9

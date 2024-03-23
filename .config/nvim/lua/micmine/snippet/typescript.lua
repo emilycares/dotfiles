@@ -16,7 +16,6 @@ local t = ls.text_node
 local f = ls.function_node
 local c = ls.choice_node
 
-print("ASD")
 function firstToLowerCase(args)
   local firstChar = string.lower(string.sub(args[1][1], 0, 1))
   local rest = string.sub(args[1][1], 2)
@@ -141,6 +140,118 @@ ls.add_snippets("typescript", {
       i(1),
     })
   ),
+  -- console.log("variable", variable);
+  s(
+    "logv",
+    fmt([[console.log("{}", {});]], {
+      rep(1),
+      i(1),
+    })
+  ),
+  ----------------
+  -- rxjs operators
+  ----------------
+  -- filter((value) => )),
+  s(
+    "rf",
+    fmt([[filter(({}) => {} )),]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- filter((value) => {} )),
+  s(
+    "rfb",
+    fmt([[filter(({}) => {{{}}} )),]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- map((value) => )),
+  s(
+    "rm",
+    fmt([[map(({}) => {} )),]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- map((value) => {} )),
+  s(
+    "rmb",
+    fmt([[map(({}) => {{{}}} )),]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- customOpterator((value) => )),
+  s(
+    "rc",
+    fmt([[{}(({}) => {} )),]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
+  -- customOpterator((value) => {} )),
+  s(
+    "rcb",
+    fmt([[{}(({}) => {{{}}} )),]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
+  ----------------
+  -- js operators
+  ----------------
+  -- .filter((value) => ))
+  s(
+    "f",
+    fmt([[.filter(({}) => {}))]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .filter((value) => {} )),
+  s(
+    "fb",
+    fmt([[.filter(({}) => {{{}}}))]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .map((value) => ))
+  s(
+    "m",
+    fmt([[.map(({}) => {}))]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .map((value) => {} ))
+  s(
+    "mb",
+    fmt([[.map(({}) => {{{}}}))]], {
+      i(1),
+      i(2),
+    })
+  ),
+  -- .customOpterator((value) => ))
+  s(
+    "c",
+    fmt([[.{}(({}) => {}))]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
+  -- .customOpterator((value) => {}))
+  s(
+    "cb",
+    fmt([[.{}(({}) => {{{}}}))]], {
+      i(1),
+      i(2),
+      i(3),
+    })
+  ),
 })
-
-print("ASD")

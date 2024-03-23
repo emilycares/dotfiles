@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    tag = "v0.9.2",
     lazy = false,
     build = ":TSUpdate",
     config = function()
@@ -26,11 +27,11 @@ return {
       })
     end,
   },
-  {
-    "nvim-treesitter/playground",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    cmd = "TSPlaygroundToggle",
-  },
+  --{
+    --"nvim-treesitter/playground",
+    --dependencies = "nvim-treesitter/nvim-treesitter",
+    --cmd = "TSPlaygroundToggle",
+  --},
   --{
   --"nvim-treesitter/nvim-treesitter-context",
   --dependencies = "nvim-treesitter/nvim-treesitter",
