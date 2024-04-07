@@ -13,7 +13,21 @@ return {
           "nvim-lua/plenary.nvim",
         },
       },
-      -- Language specific
+      {
+        "ray-x/lsp_signature.nvim",
+        opts = {},
+        keys = {
+          {
+            "<leader>gh",
+            function()
+              require("lsp_signature").toggle_float_win()
+            end,
+          },
+        },
+        config = function(_, opts)
+          require("lsp_signature").setup(opts)
+        end,
+      },
       {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -32,11 +46,12 @@ return {
         rust_analyzer = {},
         zls = {},
         html = { filetypes = { "html" } },
-        --nil = {},
+        nil_ls = {},
         tailwindcss = {},
         qute_lsp = { filetypes = { "html" } },
         tsserver = {
           javascript = {
+            suggest = { completeFunctionCalls = true },
             inlayHints = {
               includeInlayEnumMemberValueHints = true,
               includeInlayFunctionLikeReturnTypeHints = true,
@@ -48,6 +63,7 @@ return {
             },
           },
           typescript = {
+            suggest = { completeFunctionCalls = true },
             inlayHints = {
               includeInlayEnumMemberValueHints = true,
               includeInlayFunctionLikeReturnTypeHints = true,
@@ -120,6 +136,14 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       local function on_attach(client, bufnr)
+        require("lsp_signature").on_attach({
+          --bind = true, -- This is mandatory, otherwise border config won't get registered.
+          --handler_opts = {
+          --border = "rounded"
+          --}
+          floating_window = false,
+          hint_prefix = " ",
+        }, bufnr)
         vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
         local ops = { buffer = bufnr, remap = false }
 

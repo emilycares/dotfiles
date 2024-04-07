@@ -151,51 +151,51 @@ ls.add_snippets("typescript", {
   ----------------
   -- rxjs operators
   ----------------
-  -- filter((value) => )),
+  -- filter((value) =>),
   s(
     "rf",
-    fmt([[filter(({}) => {} )),]], {
+    fmt([[filter(({}) => {}),]], {
       i(1),
       i(2),
     })
   ),
-  -- filter((value) => {} )),
+  -- filter((value) => {}),
   s(
     "rfb",
-    fmt([[filter(({}) => {{{}}} )),]], {
+    fmt([[filter(({}) => {{{}}}),]], {
       i(1),
       i(2),
     })
   ),
-  -- map((value) => )),
+  -- map((value) =>),
   s(
     "rm",
-    fmt([[map(({}) => {} )),]], {
+    fmt([[map(({}) => {}),]], {
       i(1),
       i(2),
     })
   ),
-  -- map((value) => {} )),
+  -- map((value) => {}),
   s(
     "rmb",
-    fmt([[map(({}) => {{{}}} )),]], {
+    fmt([[map(({}) => {{{}}}),]], {
       i(1),
       i(2),
     })
   ),
-  -- customOpterator((value) => )),
+  -- customOpterator((value) =>),
   s(
     "rc",
-    fmt([[{}(({}) => {} )),]], {
+    fmt([[{}(({}) => {}),]], {
       i(1),
       i(2),
       i(3),
     })
   ),
-  -- customOpterator((value) => {} )),
+  -- customOpterator((value) => {}),
   s(
     "rcb",
-    fmt([[{}(({}) => {{{}}} )),]], {
+    fmt([[{}(({}) => {{{}}}),]], {
       i(1),
       i(2),
       i(3),
@@ -204,51 +204,51 @@ ls.add_snippets("typescript", {
   ----------------
   -- js operators
   ----------------
-  -- .filter((value) => ))
+  -- .filter((value) =>)
   s(
     "f",
-    fmt([[.filter(({}) => {}))]], {
+    fmt([[.filter(({}) => {})]], {
       i(1),
       i(2),
     })
   ),
-  -- .filter((value) => {} )),
+  -- .filter((value) => {}),
   s(
     "fb",
-    fmt([[.filter(({}) => {{{}}}))]], {
+    fmt([[.filter(({}) => {{{}}})]], {
       i(1),
       i(2),
     })
   ),
-  -- .map((value) => ))
+  -- .map((value) =>)
   s(
     "m",
-    fmt([[.map(({}) => {}))]], {
+    fmt([[.map(({}) => {})]], {
       i(1),
       i(2),
     })
   ),
-  -- .map((value) => {} ))
+  -- .map((value) => {})
   s(
     "mb",
-    fmt([[.map(({}) => {{{}}}))]], {
+    fmt([[.map(({}) => {{{}}})]], {
       i(1),
       i(2),
     })
   ),
-  -- .customOpterator((value) => ))
+  -- .customOpterator((value) =>)
   s(
     "c",
-    fmt([[.{}(({}) => {}))]], {
+    fmt([[.{}(({}) => {})]], {
       i(1),
       i(2),
       i(3),
     })
   ),
-  -- .customOpterator((value) => {}))
+  -- .customOpterator((value) => {})
   s(
     "cb",
-    fmt([[.{}(({}) => {{{}}}))]], {
+    fmt([[.{}(({}) => {{{}}})]], {
       i(1),
       i(2),
       i(3),

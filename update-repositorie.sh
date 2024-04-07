@@ -9,6 +9,7 @@ mkdir -p .config/termite
 mkdir -p .config/alacritty
 mkdir -p .config/kitty
 mkdir -p .config/wezterm
+mkdir -p .config/zellij
 mkdir -p .config/rofi
 mkdir -p .config/dunst
 mkdir -p .config/glava
@@ -31,7 +32,7 @@ cp ~/.config/termite/config .config/termite/config
 cp ~/.config/alacritty/alacritty.yml .config/alacritty/alacritty.yml
 cp ~/.config/kitty/kitty.conf .config/kitty/kitty.conf
 cp ~/.config/wezterm/wezterm.lua .config/wezterm/wezterm.lua
-
+cp ~/.config/zellij/config.kdl .config/zellij/config.kdl
 # compton
 cp ~/.config/compton.conf .config/
 cp ~/.config/glava/change_glava.sh .config/glava/

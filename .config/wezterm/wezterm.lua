@@ -2,6 +2,13 @@ local wezterm = require("wezterm")
 
 local os = require("os")
 
+local config = {}
+
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+
+
 wezterm.on("trigger-vim-with-scrollback", function(window, pane)
   -- Retrieve the current viewport's text.
   -- Pass an optional number of lines (eg: 2000) to retrieve
@@ -50,32 +57,52 @@ for i = 1, 9 do
   table.insert(keys, tabkey)
 end
 
-return {
-  --color_scheme = "Catppuccin Mocha",
-  adjust_window_size_when_changing_font_size = false,
-  font = wezterm.font_with_fallback({
-    --"Liveoverfont",
-    --"VictorMono NF",
-    --"JetBrains Mono Nerd Font",
-    --"Operator Mono Medium",
-    --"Iosevka Nerd Font",
-    --"Comic Mono",
-    --"scientifica",
-    --"M PLUS Code Latin 60",
-    --{"VictorMono Nerd Font Propo", {style="Regular"} },
-    --"VictorMono Nerd Font Mono",
-    "FiraCode Nerd Font Mono",
-    "SauceCodePro Nerd Font",
-    "Noto Color Emoji",
-    "Symbols Nerd Font Mono",
-  }),
-  --default_prog = { "/usr/bin/nu" },
-  --font = wezterm.font("SauceCodePro NF", {style="Normal"}),
-  --default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" },
-  font_size = 9,
-  hide_tab_bar_if_only_one_tab = true,
-  leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 },
-  keys = keys,
-  check_for_updates = false,
-  show_update_window = false
+table.insert(keys, { key = "r", mods = "CTRL|SHIFT", action = wezterm.action.ResetFontSize});
+
+config.use_fancy_tab_bar = false
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0}
+config.freetype_load_target = "HorizontalLcd"
+--color_scheme = "Catppuccin Mocha",
+config.adjust_window_size_when_changing_font_size = false
+config.font = wezterm.font_with_fallback({
+  --"Liveoverfont",
+  --"VictorMono NF",
+  --"JetBrains Mono Nerd Font",
+  --"Operator Mono Medium",
+  --"Iosevka Nerd Font",
+  --"Comic Mono",
+  --"scientifica",
+  --"M PLUS Code Latin 60",
+  --{"VictorMono Nerd Font Propo", {style="Regular"} },
+  --"VictorMono Nerd Font Mono",
+  "FiraCode Nerd Font Mono",
+  "SauceCodePro Nerd Font",
+  "Noto Color Emoji",
+  "Symbols Nerd Font Mono",
+})
+--default_prog = { "/usr/bin/nu" },
+--font = wezterm.font("SauceCodePro NF", {style="Normal"}),
+--default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" },
+config.font_size = 10
+config.hide_tab_bar_if_only_one_tab = true
+config.leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 }
+config.keys = keys
+config.mouse_bindings = {
+  -- Scrolling up while holding CTRL increases the font size
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'CTRL',
+    action = wezterm.action.IncreaseFontSize,
+  },
+  -- Scrolling down while holding CTRL decreases the font size
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'CTRL',
+    action = wezterm.action.DecreaseFontSize,
+  },
 }
+
+config.check_for_updates = false
+config.show_update_window = false
+
+return config;
