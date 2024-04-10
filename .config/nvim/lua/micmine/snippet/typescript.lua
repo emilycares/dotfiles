@@ -23,7 +23,6 @@ function firstToLowerCase(args)
   return firstChar .. rest
 end
 
-print("ASD")
 ls.add_snippets("typescript", {
   -- () =>
   s("in", fmt([[({}) => {}]], { i(1), i(2) })),

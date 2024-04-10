@@ -97,5 +97,7 @@ return {
         --}
       },
     })
+    -- setup quarkus find routes with https://github.com/micmine/qute-lsp
+    require("micmine.util.quarkus");
   end,
 }
