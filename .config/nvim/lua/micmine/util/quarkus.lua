@@ -6,10 +6,6 @@ local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
 local utils = require("telescope.previewers.utils")
 local plenary = require("plenary")
-local log = require("plenary.log").new({
-  plugin = "telescope_docker",
-  level = "info",
-})
 
 local M = {}
 
@@ -29,6 +25,7 @@ M._run_command = function(command, args)
   return {}
 end
 
+-- setup quarkus find routes with https://github.com/micmine/qute-lsp
 M.routes = function(opts)
   pickers
     .new(opts, {
@@ -38,11 +35,10 @@ M.routes = function(opts)
         end,
 
         entry_maker = function(entry)
-          log.debug("Calling entry maker", entry)
           return {
             value = entry,
-            display = entry.path,
-            ordinal = entry.path,
+            display = entry.path .. " " .. entry.method,
+            ordinal = entry.path .. " " .. entry.method,
           }
         end,
       }),
@@ -50,7 +46,7 @@ M.routes = function(opts)
       sorter = conf.generic_sorter(opts),
 
       previewer = previewers.new_buffer_previewer({
-        title = "Image Details",
+        title = "Quarkus Route",
         define_preview = function(self, entry)
           local formatted = {
             "# " .. entry.value.path,
@@ -81,7 +77,7 @@ M.routes = function(opts)
           }
           local pos = selection.value.implementation.range.start
           vim.cmd(vim.fn.join(command, " "))
-          vim.api.nvim_win_set_cursor(0, { pos.line, pos.character })
+          vim.api.nvim_win_set_cursor(0, { pos.line + 1, pos.character + 1 })
         end)
         return true
       end,

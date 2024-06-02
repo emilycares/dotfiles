@@ -15,8 +15,12 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
-vim.opt.cmdheight = 0
+--vim.opt.cmdheight = 0
 --vim.opt.laststatus = 0
+
+vim.opt.inccommand = "split"
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
 
 vim.g.mapleader = " "
 
@@ -26,6 +30,8 @@ vim.g.netrw_winsize = 60
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- Don't have `o` add a comment
+vim.opt.formatoptions:remove "o"
 
 -- remove bars
 --vim.o.ls = 0

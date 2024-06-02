@@ -475,7 +475,8 @@ awful.rules.rules = {
   {
     rule = {},
     properties = {
-      border_width = beautiful.border_width,
+      border_width = 0,
+      --border_width = beautiful.border_width,
       border_color = beautiful.border_normal,
       focus = awful.client.focus.filter,
       raise = true,

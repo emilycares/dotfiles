@@ -75,6 +75,7 @@ config.font = wezterm.font_with_fallback({
   --"M PLUS Code Latin 60",
   --{"VictorMono Nerd Font Propo", {style="Regular"} },
   --"VictorMono Nerd Font Mono",
+  --"Input Mono",
   "FiraCode Nerd Font Mono",
   "SauceCodePro Nerd Font",
   "Noto Color Emoji",

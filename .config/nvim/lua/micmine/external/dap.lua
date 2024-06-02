@@ -2,6 +2,7 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text"
   },
   keys = {
     {
@@ -61,7 +62,7 @@ return {
     {
       "<leader>de",
       function()
-        require("dapui").eval()
+        require("dapui").eval(nil, {enter = true})
       end,
     },
     {
@@ -113,5 +114,7 @@ return {
     dap.listeners.before.event_exited["dapui_config"] = function()
       dap_ui.close()
     end
+
+    require("nvim-dap-virtual-text").setup({})
   end,
 }
