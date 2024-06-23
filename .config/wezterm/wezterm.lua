@@ -18,9 +18,11 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
   -- Create a temporary file to pass to vim
   local name = os.tmpname()
   local f = io.open(name, "w+")
-  f:write(scrollback)
-  f:flush()
-  f:close()
+  if f ~= nil then
+    f:write(scrollback)
+    f:flush()
+    f:close()
+  end
 
   -- Open a new window running vim and tell it to open the file
   window:perform_action(
@@ -29,6 +31,17 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
     } }),
     pane
   )
+end)
+
+wezterm.on('trigger-execute-bottom', function(window, pane)
+  window:perform_action(wezterm.action.ActivatePaneDirection("Down"), pane)
+
+  local active_pane = window:active_pane()
+  -- CTRL + P and enter
+  active_pane:send_text("\x10")
+  active_pane:send_text("\x0D")
+
+  window:perform_action(wezterm.action.ActivatePaneDirection("Up"), pane)
 end)
 
 local keys = {
@@ -50,6 +63,7 @@ local keys = {
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
   { key = "b", mods = "LEADER", action = wezterm.action({ SendString = "\x02" }) },
   { key = "e", mods = "LEADER", action = wezterm.action({ EmitEvent = "trigger-vim-with-scrollback" }) },
+  { key = 'i', mods = 'LEADER', action = wezterm.action.EmitEvent('trigger-execute-bottom'), },
 }
 
 for i = 1, 9 do
