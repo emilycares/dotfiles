@@ -13,7 +13,7 @@ return {
     },
   },
   config = function()
-    local angular = require("micmine.util.angular");
+    local angular = require("emilycares.util.angular");
     local function custom_attach(bufnr)
       local api = require("nvim-tree.api")
 

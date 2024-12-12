@@ -1,7 +1,7 @@
 return {
-  "micmine/logana.nvim",
+  "emilycares/logana.nvim",
   config = function()
-    require("logana").analyze.set_parser("cargo")
+    require("logana").analyze.set_parser("maven")
   end,
   keys = {
     {

@@ -41,7 +41,7 @@ M.on_attach = function(client, bufnr)
   -- inlay_hints
   vim.keymap.set("n", "<leader>i", function()
     --vim.api.nvim_set_hl(bufnr, "LspInlayHint", { bg = "#000000", fg = "#00ff55" })
-    vim.lsp.inlay_hint(bufnr, nil)
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   end, ops)
 end
 

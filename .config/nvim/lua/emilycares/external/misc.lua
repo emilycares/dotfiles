@@ -1,3 +1,4 @@
+local config = require("codelens_extensions.config")
 return {
   {
     "folke/neodev.nvim",
@@ -42,10 +43,6 @@ return {
     "kdheepak/lazygit.nvim",
     keys = {
       {
-        "<leader>g",
-        function() end,
-      },
-      {
         "<leader>gu",
         function()
           vim.cmd("LazyGit")
@@ -57,40 +54,21 @@ return {
 
   -- syntax
   { "godlygeek/tabular", cmd = "Tabularize" },
-  { "scrooloose/nerdcommenter", event = "InsertEnter" },
-
-  -- clean buffers
-  { "Asheq/close-buffers.vim", event = "VeryLazy" },
-
-  -- cooperation
-  {
-    "krivahtoo/silicon.nvim",
-    cmd = "Silicon",
-    build = "./install.sh build",
-    config = function()
-      require("silicon").setup({
-        font = "SauceCodePro Nerd Font=16",
-        theme = "onehalfdark",
-        window_controls = false,
-        line_pad = 0,
-        pad_horiz = 0,
-        pad_vert = 0,
-        round_corner = false,
-        line_offset = 0,
-      })
-    end,
-  },
-  { "shortcuts/no-neck-pain.nvim", cmd = "NoNeckPain", version = "*" },
 
   {
-    "mbbill/undotree",
-    keys = {
-      {
-        "<F8>",
-        function()
-          vim.cmd("UndotreeToggle")
-        end,
-      },
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+    keys = { -- load the plugin only when using it's keybinding:
+      { "<F8>", "<cmd>lua require('undotree').toggle()<cr>" },
     },
+  },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    ft = { "css", "lua" },
+    config = function()
+      require("colorizer").setup({ "css", "lua" })
+    end,
   },
 }

@@ -25,14 +25,8 @@ vim.keymap.set("n", "n", "nzzzv");
 vim.keymap.set("n", "N", "Nzzzv");
 vim.keymap.set("n", "J", "mzJ`z");
 
--- Add undo break points
-vim.keymap.set("n", ",", ",<c-g>u")
-vim.keymap.set("n", ".", ".<c-g>u")
-
 -- exit terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
--- clean buffers
-vim.keymap.set("n", "<learder>dcb", ":Bdelete hidden<CR>");
 -- spellcheck
 vim.keymap.set("n", "<leader><F6>g", ":setlocal spell spelllang=de_ch<CR>");
 vim.keymap.set("n", "<leader><F6>e", ":setlocal spell spelllang=en_us<CR>");

@@ -24,6 +24,8 @@ vim.opt.ignorecase = true
 
 vim.g.mapleader = " "
 
+vim.g.mouse = ""
+vim.opt.mouse = ""
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 60
@@ -31,7 +33,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Don't have `o` add a comment
-vim.opt.formatoptions:remove "o"
+-- vim.opt.formatoptions:remove "o"
 
 -- remove bars
 --vim.o.ls = 0

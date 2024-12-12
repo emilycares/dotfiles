@@ -64,11 +64,11 @@ return {
         },
       })
 
-      require("micmine.snippet.typescript")
-      require("micmine.snippet.rust")
-      require("micmine.snippet.java")
-      require("micmine.snippet.html")
-      require("micmine.snippet.markdown")
+      -- require("emilycares.snippet.typescript")
+      require("emilycares.snippet.rust")
+      require("emilycares.snippet.java")
+      require("emilycares.snippet.html")
+      require("emilycares.snippet.markdown")
     end,
   },
 }

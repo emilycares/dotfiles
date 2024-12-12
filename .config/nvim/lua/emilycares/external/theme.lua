@@ -1,6 +1,6 @@
 return {
   {
-      "tjdevries/colorbuddy.nvim",
+    "tjdevries/colorbuddy.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     dependencies = {
@@ -21,6 +21,7 @@ return {
       --"catppuccin/nvim",
       --"2nthony/vitesse.nvim", "tjdevries/colorbuddy.nvim",
       --"rose-pine/neovim", name = "rose-pine",
+      -- "tjdevries/colorbuddy.nvim",gruvbuddy
     },
     --install = {
       --colorscheme = { "vitesse" },

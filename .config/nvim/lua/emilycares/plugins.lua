@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "micmine.external" },
+    { import = "emilycares.external" },
   },
   defaults = { lazy = true },
 })

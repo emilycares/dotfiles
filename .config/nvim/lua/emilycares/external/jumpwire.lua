@@ -1,5 +1,5 @@
 return {
-  "micmine/jumpwire.nvim",
+  "emilycares/jumpwire.nvim",
   keys = {
     -- asd
     {

@@ -3,6 +3,7 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        bind "Ctrl g" { SwitchToMode "Locked"; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
@@ -197,7 +198,7 @@ plugins {
 //   - detach (Default)
 //   - quit
 //
-// on_force_close "quit"
+on_force_close "quit"
 
 //  Send a request for a simplified ui (without arrow fonts) to plugins
 //  Options:

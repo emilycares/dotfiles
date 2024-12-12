@@ -1,7 +1,7 @@
-lua require('micmine.plugins')
-lua require('micmine.set')
-lua require('micmine.remaps')
-"lua require('micmine.dev')
+lua require('emilycares.plugins')
+lua require('emilycares.set')
+lua require('emilycares.remaps')
+"lua require('emilycares.dev')
 
 " theme
 " truecolor

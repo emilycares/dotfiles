@@ -81,7 +81,7 @@ config.adjust_window_size_when_changing_font_size = false
 config.font = wezterm.font_with_fallback({
   --"Liveoverfont",
   --"VictorMono NF",
-  --"JetBrains Mono Nerd Font",
+  "JetBrains Mono Nerd Font",
   --"Operator Mono Medium",
   --"Iosevka Nerd Font",
   --"Comic Mono",
@@ -119,5 +119,6 @@ config.mouse_bindings = {
 
 config.check_for_updates = false
 config.show_update_window = false
+config.enable_wayland = false
 
 return config;

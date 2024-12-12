@@ -1,5 +1,5 @@
 local home = os.getenv("HOME")
-local attach = require("micmine.util.attach")
+local attach = require("emilycares.util.attach")
 return {
   {
     "neovim/nvim-lspconfig",
@@ -32,38 +32,32 @@ return {
         clangd = {},
         rust_analyzer = {},
         zls = {},
-        html = { filetypes = { "html" } },
+        -- html = { filetypes = { "html" } },
         nil_ls = {},
         ocamllsp = {
           inlayHints = true,
         },
         elixirls = { cmd = { "elixir-ls" } },
-        tailwindcss = {},
-        qute_lsp = { filetypes = { "html" } },
-        tsserver = {
-          javascript = {
-            suggest = { completeFunctionCalls = true },
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = true,
+        -- tailwindcss = {},
+        -- qute_lsp = { filetypes = { "html" } },
+        java_lsp = { filetypes = { "java" } },
+        volar = {
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+        },
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                languages = { "javascript", "typescript", "vue" },
+              },
             },
           },
-          typescript = {
-            suggest = { completeFunctionCalls = true },
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = true,
-            },
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
           },
         },
         gopls = {
@@ -82,6 +76,9 @@ return {
           Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
+            completion = {
+              callSnippet = "Replace",
+            },
           },
         },
         jsonls = {
@@ -97,9 +94,10 @@ return {
             },
             schemas = {
               ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+              ["https://json.schemastore.org/swagger-2.0.json"] = "api.yml",
             },
           },
-        }
+        },
       }
       -- qute lsp server
       local configs = require("lspconfig.configs")
@@ -110,6 +108,19 @@ return {
           default_config = {
             cmd = { "qute-lsp" },
             filetypes = { "html" },
+            root_dir = function(fname)
+              return require("lspconfig").util.find_git_ancestor(fname)
+            end,
+            autostart = true,
+            settings = {},
+          },
+        }
+      end
+      if not configs.java_lsp then
+        configs.java_lsp = {
+          default_config = {
+            cmd = { "/mnt/data/rust/java_lsp/target/debug/java_lsp" },
+            filetypes = { "java" },
             root_dir = function(fname)
               return require("lspconfig").util.find_git_ancestor(fname)
             end,

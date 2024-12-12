@@ -9,21 +9,14 @@ return {
     },
   },
   config = function()
+    local lsp_format = {
+      function()
+        vim.lsp.buf.format()
+      end,
+    }
     require("formatter").setup({
       -- https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
       filetype = {
-        lua = {
-          require("formatter.filetypes.lua").stylua(),
-        },
-        rust = {
-          require("formatter.filetypes.rust").rustfmt(),
-        },
-        zig = {
-          require("formatter.filetypes.zig").zigfmt(),
-        },
-        go = {
-          require("formatter.filetypes.go").gofmt(),
-        },
         typescript = {
           require("formatter.filetypes.typescript").prettierd(),
         },
@@ -36,6 +29,10 @@ return {
         json = {
           require("formatter.filetypes.json").jq(),
         },
+        zig = lsp_format,
+        rust = lsp_format,
+        lua = lsp_format,
+        go = lsp_format,
       },
     })
   end,

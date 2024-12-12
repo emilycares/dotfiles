@@ -25,7 +25,7 @@ M._run_command = function(command, args)
   return {}
 end
 
--- setup quarkus find routes with https://github.com/micmine/qute-lsp
+-- setup quarkus find routes with https://github.com/emilycares/qute-lsp
 M.routes = function(opts)
   pickers
     .new(opts, {
